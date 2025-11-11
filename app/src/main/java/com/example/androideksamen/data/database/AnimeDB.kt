@@ -1,6 +1,6 @@
 package com.example.androideksamen.data.database
 
 
-data class Anime(
+data class AnimeDB(
     val id: Int = 0
 )

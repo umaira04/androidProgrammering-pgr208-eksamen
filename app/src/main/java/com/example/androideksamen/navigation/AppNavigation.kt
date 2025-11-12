@@ -15,12 +15,18 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
+import androidx.navigation.toRoute
 import com.example.androideksamen.screens.anime.AnimeViewModel
+import com.example.androideksamen.screens.animedetails.AnimeDetailsViewModel
 import com.example.androideksamen.screens.animeideas.AnimeIdeasViewModel
 import com.example.androideksamen.screens.animesearch.AnimeSearchViewModel
 import com.example.androideksamen.screens.character.CharacterViewModel
@@ -32,7 +38,8 @@ fun AppNavigation(
     animeViewModel: AnimeViewModel,
     animeSearchViewModel: AnimeSearchViewModel,
     animeIdeasViewModel: AnimeIdeasViewModel,
-    characterViewModel: CharacterViewModel
+    characterViewModel: CharacterViewModel,
+    animeDetailsViewModel: AnimeDetailsViewModel
 
 ){
     val navController = rememberNavController()
@@ -51,55 +58,69 @@ fun AppNavigation(
                         activeItem = 0
                         navController.navigate(NavRoutes.HomeRoute)
                     },
-                    icon = { Icon(imageVector = Icons.Default.Home,
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.Home,
                             contentDescription = null
                         )
                     }
                 ) // End Home
-                NavigationBarItem( // start
+
+                NavigationBarItem( // Start Anime
                     selected = activeItem == 1,
                     onClick = {
                         activeItem = 1
-                        navController.navigate(NavRoutes.)
+                        navController.navigate(NavRoutes.AnimeRoute)
                     },
-                    icon = { Icon(imageVector = Icons.Default.,
-                        contentDescription = null
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.Menu,
+                            contentDescription = null
                         )
                     }
-                ) // end
-                NavigationBarItem( // start
+                ) // End Anime
+
+                NavigationBarItem( // Start AnimeSearch
                     selected = activeItem == 2,
                     onClick = {
                         activeItem = 2
-                        navController.navigate(NavRoutes.)
+                        navController.navigate(NavRoutes.AnimeSearchRoute)
                     },
-                    icon = { Icon(imageVector = Icons.Default.,
-                        contentDescription = null
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.Search,
+                            contentDescription = null
                         )
                     }
-                ) // end
-                NavigationBarItem( // start
+                ) // End AnimeSearch
+
+                NavigationBarItem( // Start AnimeIdeas
                     selected = activeItem == 3,
                     onClick = {
                         activeItem = 3
-                        navController.navigate(NavRoutes.)
+                        navController.navigate(NavRoutes.AnimeIdeasRoute)
                     },
-                    icon = { Icon(imageVector = Icons.Default.,
-                        contentDescription = null
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.AddCircle,
+                            contentDescription = null
                         )
                     }
-                ) // end
-                NavigationBarItem( // start
+                ) // End AnimeIdeas
+
+                NavigationBarItem( // Start Character
                     selected = activeItem == 4,
                     onClick = {
                         activeItem = 4
-                        navController.navigate(NavRoutes.)
+                        navController.navigate(NavRoutes.CharacterRoute)
                     },
-                    icon = { Icon(imageVector = Icons.Default.,
-                        contentDescription = null
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Default.Person,
+                            contentDescription = null
                         )
                     }
-                ) // end
+                ) // End Character
             }
         } // End NavigationBar
 
@@ -115,7 +136,7 @@ fun AppNavigation(
                     HomeScreen(homeViewModel)
                 }
                 composable <NavRoutes.AnimeRoute> {
-                    AnimeScreen(animeViewModel)
+                    AnimeScreen(animeViewModel, navController)
                 }
                 composable <NavRoutes.AnimeSearchRoute> {
                     AnimeSearchScreen(animeSearchViewModel)
@@ -126,10 +147,17 @@ fun AppNavigation(
                 composable <NavRoutes.CharacterRoute> {
                     CharacterScreen(characterViewModel)
                 }
+                composable <NavRoutes.AnimeDetailsRoute> { backStackEntry ->
+                    val args = backStackEntry.toRoute<NavRoutes.AnimeDetailsRoute>()
+                    AnimeDetailsScreen(
+                        animeDetailsViewModel,
+                        navController,
+                        args.animeId
+                    )
+                }
             }
         }
     }
-
 }
 
 @Preview(showBackground = true, showSystemUi = true)

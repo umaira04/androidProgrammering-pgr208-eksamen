@@ -25,6 +25,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.toRoute
+import com.example.androideksamen.screens.anime.AnimeScreen
+import com.example.androideksamen.screens.anime.AnimeViewModel
+import com.example.androideksamen.screens.animedetails.AnimeDetailsScreen
+import com.example.androideksamen.screens.animedetails.AnimeDetailsViewModel
+import com.example.androideksamen.screens.animeideas.AnimeIdeasScreen
+import com.example.androideksamen.screens.animeideas.AnimeIdeasViewModel
+import com.example.androideksamen.screens.animesearch.AnimeSearchScreen
+import com.example.androideksamen.screens.animesearch.AnimeSearchViewModel
+import com.example.androideksamen.screens.character.CharacterScreen
+import com.example.androideksamen.screens.character.CharacterViewModel
+import com.example.androideksamen.screens.home.HomeScreen
 import com.example.androideksamen.screens.anime.AnimeViewModel
 import com.example.androideksamen.screens.animedetails.AnimeDetailsViewModel
 import com.example.androideksamen.screens.animeideas.AnimeIdeasViewModel

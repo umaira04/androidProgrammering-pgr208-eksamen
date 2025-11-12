@@ -1,2 +1,141 @@
 package com.example.androideksamen.navigation
 
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Modifier
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.compose.composable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import com.example.androideksamen.screens.anime.AnimeViewModel
+import com.example.androideksamen.screens.animeideas.AnimeIdeasViewModel
+import com.example.androideksamen.screens.animesearch.AnimeSearchViewModel
+import com.example.androideksamen.screens.character.CharacterViewModel
+import com.example.androideksamen.screens.home.HomeViewModel
+
+@Composable
+fun AppNavigation(
+    homeViewModel: HomeViewModel,
+    animeViewModel: AnimeViewModel,
+    animeSearchViewModel: AnimeSearchViewModel,
+    animeIdeasViewModel: AnimeIdeasViewModel,
+    characterViewModel: CharacterViewModel
+
+){
+    val navController = rememberNavController()
+    var activeItem by rememberSaveable() {
+        mutableIntStateOf(0)
+    }
+
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        bottomBar = {
+            NavigationBar(containerColor = Color(0xFF212121)
+            ) {
+                NavigationBarItem( // Start Home
+                    selected = activeItem == 0,
+                    onClick = {
+                        activeItem = 0
+                        navController.navigate(NavRoutes.HomeRoute)
+                    },
+                    icon = { Icon(imageVector = Icons.Default.Home,
+                            contentDescription = null
+                        )
+                    }
+                ) // End Home
+                NavigationBarItem( // start
+                    selected = activeItem == 1,
+                    onClick = {
+                        activeItem = 1
+                        navController.navigate(NavRoutes.)
+                    },
+                    icon = { Icon(imageVector = Icons.Default.,
+                        contentDescription = null
+                        )
+                    }
+                ) // end
+                NavigationBarItem( // start
+                    selected = activeItem == 2,
+                    onClick = {
+                        activeItem = 2
+                        navController.navigate(NavRoutes.)
+                    },
+                    icon = { Icon(imageVector = Icons.Default.,
+                        contentDescription = null
+                        )
+                    }
+                ) // end
+                NavigationBarItem( // start
+                    selected = activeItem == 3,
+                    onClick = {
+                        activeItem = 3
+                        navController.navigate(NavRoutes.)
+                    },
+                    icon = { Icon(imageVector = Icons.Default.,
+                        contentDescription = null
+                        )
+                    }
+                ) // end
+                NavigationBarItem( // start
+                    selected = activeItem == 4,
+                    onClick = {
+                        activeItem = 4
+                        navController.navigate(NavRoutes.)
+                    },
+                    icon = { Icon(imageVector = Icons.Default.,
+                        contentDescription = null
+                        )
+                    }
+                ) // end
+            }
+        } // End NavigationBar
+
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier.padding(innerPadding)
+        ) {
+            NavHost(
+                navController = navController,
+                startDestination = NavRoutes.HomeRoute
+            ) {
+                composable <NavRoutes.HomeRoute> {
+                    HomeScreen(homeViewModel)
+                }
+                composable <NavRoutes.AnimeRoute> {
+                    AnimeScreen(animeViewModel)
+                }
+                composable <NavRoutes.AnimeSearchRoute> {
+                    AnimeSearchScreen(animeSearchViewModel)
+                }
+                composable <NavRoutes.AnimeIdeasRoute> {
+                    AnimeIdeasScreen(animeIdeasViewModel)
+                }
+                composable <NavRoutes.CharacterRoute> {
+                    CharacterScreen(characterViewModel)
+                }
+            }
+        }
+    }
+
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun AppNavigationPreview(){
+    AppNavigation()
+}
+
+

@@ -153,14 +153,14 @@ fun AppNavigation(
                 composable <NavRoutes.CharacterRoute> {
                     CharacterScreen(characterViewModel)
                 }
-                composable <NavRoutes.AnimeDetailsRoute> { backStackEntry ->
+                /*composable <NavRoutes.AnimeDetailsRoute> { backStackEntry ->
                     val args = backStackEntry.toRoute<NavRoutes.AnimeDetailsRoute>()
                     AnimeDetailsScreen(
                         animeDetailsViewModel,
                         navController,
                         args.animeId
                     )
-                }
+                }*/
             }
         }
     }

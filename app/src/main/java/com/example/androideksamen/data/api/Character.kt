@@ -1,3 +1,5 @@
 package com.example.androideksamen.data.api
 
-data class Character()
+data class Character(
+    val id: Int
+)

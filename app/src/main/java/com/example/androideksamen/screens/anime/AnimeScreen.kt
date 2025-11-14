@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.androideksamen.components.items.AnimeItem
+import com.example.androideksamen.components.lists.AnimeList
 import com.example.androideksamen.data.api.Anime
 import com.example.androideksamen.navigation.NavRoutes
 
@@ -47,23 +48,16 @@ fun AnimeScreen(
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(start = 8.dp, 8.dp)
-
         )
 
-        LazyColumn(
-            modifier = Modifier.fillMaxSize()
-        ) {
-            items(mockAnime) { anime ->
-                AnimeItem(
-                    anime = anime,
-                    showDetails = {
-                        navController.navigate(
-                            NavRoutes.AnimeDetailsRoute(anime.id)
-                        )
-                    }
+        AnimeList(
+            animeList = mockAnime,
+            onAnimeClicked = { animeId ->
+                navController.navigate(
+                    NavRoutes.AnimeDetailsRoute(animeId)
                 )
             }
-        }
+        )
     }
 }
 

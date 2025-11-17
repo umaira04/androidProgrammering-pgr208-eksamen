@@ -1,4 +1,6 @@
 package com.example.androideksamen.screens.animesearch
 
-class AnimeSearchViewModel {
+import androidx.lifecycle.ViewModel
+
+class AnimeSearchViewModel : ViewModel(){
 }

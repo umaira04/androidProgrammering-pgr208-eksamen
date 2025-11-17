@@ -42,8 +42,9 @@ fun AnimeItem(
                 .height(96.dp)
                 .padding(8.dp)
         ) {
-            Column(modifier = Modifier
-                .padding(start = 8.dp)) {
+            Column(
+                modifier = Modifier.padding(start = 8.dp)
+            ) {
                 Text(
                     text = anime.title,
                     fontSize = 24.sp,
@@ -69,7 +70,7 @@ fun AnimeItem(
 
             Box(
                 modifier = Modifier
-                    .padding(start = 0.dp, 0.dp, 8.dp, 0.dp)
+                    .padding(end = 8.dp)
                     .size(120.dp, 80.dp)
                     .background(
                         color = Color.Black,

@@ -47,11 +47,11 @@ fun AnimeItem(
             ) {
                 Text(
                     text = anime.title,
-                    fontSize = 24.sp,
+                    fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
 
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
                     text = anime.genre,

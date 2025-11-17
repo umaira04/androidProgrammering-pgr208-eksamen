@@ -40,16 +40,16 @@ fun CharacterItem(
                 .padding(8.dp)
         ) {
             Column(
-                modifier = Modifier.padding(start = 8.dp)
+                modifier = Modifier.padding(start = 4.dp)
             ) {
                 Text(
                     text = character.name,
-                    fontSize = 24.sp,
+                    fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
             }
 
-            // TODO : legge til info om hvilken anime karakteren kommer fra
+            // TODO : legge til hvilken anime karakteren kommer fra
 
             Spacer(modifier = Modifier.weight(1f))
 

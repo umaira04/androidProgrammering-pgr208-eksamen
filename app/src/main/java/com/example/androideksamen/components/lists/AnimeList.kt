@@ -1,6 +1,5 @@
 package com.example.androideksamen.components.lists
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
@@ -12,9 +11,10 @@ import com.example.androideksamen.data.api.Anime
 @Composable
 fun AnimeList(
     animeList: List<Anime>,
-    onAnimeClicked: (Int) -> Unit
+    onAnimeClicked: (Int) -> Unit,
+    modifier: Modifier = Modifier
 ){
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
+    LazyColumn(modifier = modifier) {
         items(animeList) { anime ->
             AnimeItem(
                 anime = anime,

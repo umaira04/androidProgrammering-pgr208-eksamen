@@ -89,9 +89,10 @@ fun CharacterScreen(
                 //unfocusedContainerColor = Color(),
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent
-            )
+            ),
+            singleLine = true
         )
-    }
+    } // End column
 }
 
 @SuppressLint("ViewModelConstructorInComposable")

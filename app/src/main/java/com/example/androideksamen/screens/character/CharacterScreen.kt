@@ -1,6 +1,6 @@
 package com.example.androideksamen.screens.character
 
-import androidx.compose.foundation.background
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,7 +9,6 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,7 +32,7 @@ fun CharacterScreen(
     characterViewModel: CharacterViewModel
 ) {
     val focusManager = LocalFocusManager.current
-    var inputText by remember { mutableStateOf("") }
+    var searchQuery by remember { mutableStateOf("") }
 
     val mockCharacters = listOf(
         Character(1, "Pikachu"),
@@ -45,6 +44,10 @@ fun CharacterScreen(
         Character(7, "Lucario"),
         Character(8, "Pichu")
     )
+
+    val filteredCharacters = mockCharacters.filter { character ->
+        character.name.contains(searchQuery, ignoreCase = true)
+    }
 
     Column(
         modifier = Modifier
@@ -62,14 +65,14 @@ fun CharacterScreen(
 
         // CharacterList
         CharacterList(
-            characterList = mockCharacters,
+            characterList = filteredCharacters,
             modifier = Modifier.weight(1f)
         )
 
         // Søkefelt
         TextField(
-            value = inputText,
-            onValueChange = { inputText = it },
+            value = searchQuery,
+            onValueChange = { searchQuery = it },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(8.dp),
@@ -91,6 +94,7 @@ fun CharacterScreen(
     }
 }
 
+@SuppressLint("ViewModelConstructorInComposable")
 @Preview(showBackground = true)
 @Composable
 fun CharacterScreenPreview() {

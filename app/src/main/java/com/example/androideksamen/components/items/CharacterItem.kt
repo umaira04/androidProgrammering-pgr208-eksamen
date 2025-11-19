@@ -40,7 +40,7 @@ fun CharacterItem(
                 .padding(8.dp)
         ) {
             Column(
-                modifier = Modifier.padding(start = 4.dp)
+                modifier = Modifier.padding(start = 8.dp)
             ) {
                 Text(
                     text = character.name,

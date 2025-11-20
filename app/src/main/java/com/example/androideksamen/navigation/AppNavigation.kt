@@ -16,18 +16,14 @@ import androidx.navigation.compose.composable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.filled.AddCircle
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
-import androidx.navigation.toRoute
 import com.example.androideksamen.screens.anime.AnimeScreen
 import com.example.androideksamen.screens.anime.AnimeViewModel
-import com.example.androideksamen.screens.animedetails.AnimeDetailsScreen
 import com.example.androideksamen.screens.animedetails.AnimeDetailsViewModel
 import com.example.androideksamen.screens.animeideas.AnimeIdeasScreen
 import com.example.androideksamen.screens.animeideas.AnimeIdeasViewModel
@@ -35,12 +31,9 @@ import com.example.androideksamen.screens.animesearch.AnimeSearchScreen
 import com.example.androideksamen.screens.animesearch.AnimeSearchViewModel
 import com.example.androideksamen.screens.character.CharacterScreen
 import com.example.androideksamen.screens.character.CharacterViewModel
-import com.example.androideksamen.screens.home.HomeScreen
-import com.example.androideksamen.screens.home.HomeViewModel
 
 @Composable
 fun AppNavigation(
-    homeViewModel: HomeViewModel,
     animeViewModel: AnimeViewModel,
     animeSearchViewModel: AnimeSearchViewModel,
     animeIdeasViewModel: AnimeIdeasViewModel,
@@ -58,11 +51,11 @@ fun AppNavigation(
         bottomBar = {
             NavigationBar(containerColor = Color(0xFF212121)
             ) {
-                NavigationBarItem( // Start Home
+                NavigationBarItem( // Start Anime
                     selected = activeItem == 0,
                     onClick = {
-                        activeItem = 0
-                        navController.navigate(NavRoutes.HomeRoute)
+                        activeItem = 1
+                        navController.navigate(NavRoutes.AnimeRoute)
                     },
                     icon = {
                         Icon(
@@ -70,24 +63,10 @@ fun AppNavigation(
                             contentDescription = null
                         )
                     }
-                ) // End Home
-
-                NavigationBarItem( // Start Anime
-                    selected = activeItem == 1,
-                    onClick = {
-                        activeItem = 1
-                        navController.navigate(NavRoutes.AnimeRoute)
-                    },
-                    icon = {
-                        Icon(
-                            imageVector = Icons.Default.Menu,
-                            contentDescription = null
-                        )
-                    }
                 ) // End Anime
 
                 NavigationBarItem( // Start AnimeSearch
-                    selected = activeItem == 2,
+                    selected = activeItem == 1,
                     onClick = {
                         activeItem = 2
                         navController.navigate(NavRoutes.AnimeSearchRoute)
@@ -101,7 +80,7 @@ fun AppNavigation(
                 ) // End AnimeSearch
 
                 NavigationBarItem( // Start AnimeIdeas
-                    selected = activeItem == 3,
+                    selected = activeItem == 2,
                     onClick = {
                         activeItem = 3
                         navController.navigate(NavRoutes.AnimeIdeasRoute)
@@ -115,7 +94,7 @@ fun AppNavigation(
                 ) // End AnimeIdeas
 
                 NavigationBarItem( // Start Character
-                    selected = activeItem == 4,
+                    selected = activeItem == 3,
                     onClick = {
                         activeItem = 4
                         navController.navigate(NavRoutes.CharacterRoute)
@@ -136,11 +115,8 @@ fun AppNavigation(
         ) {
             NavHost(
                 navController = navController,
-                startDestination = NavRoutes.HomeRoute
+                startDestination = NavRoutes.AnimeRoute
             ) {
-                composable <NavRoutes.HomeRoute> {
-                    HomeScreen(homeViewModel)
-                }
                 composable <NavRoutes.AnimeRoute> {
                     AnimeScreen(animeViewModel, navController)
                 }

@@ -1,5 +1,5 @@
 package com.example.androideksamen.data.dataclasses
 
-data class CharacterImages(
+data class Animes(
 
 )

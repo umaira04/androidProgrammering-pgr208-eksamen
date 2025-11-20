@@ -42,7 +42,7 @@ fun AnimeDetailsItem() {
             )
     ) {
         Column(
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier.padding(8.dp)
         ) {
 
@@ -76,7 +76,6 @@ fun AnimeDetailsItem() {
                     )
                     Text(
                         text = "ポケモン",
-                        modifier = Modifier.padding(bottom = 8.dp),
                         style = TextStyle(
                             color = Color.Black,
                             fontSize = 16.sp,
@@ -86,23 +85,20 @@ fun AnimeDetailsItem() {
                     )
                 }
 
-                // Star rating box
-
-                Box(
+                Box(  // Star rating box
                     modifier = Modifier
-                        .size(60.dp, 30.dp)
+                        .size(56.dp, 32.dp)
                         .background(
                             color = Color(0xFFfdf1b2),
                             shape = RoundedCornerShape(8.dp)
                         )
                 ) {
                     Row(
+                        horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier
                             .fillMaxHeight()
                             .fillMaxWidth()
-                            .padding(8.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.SpaceEvenly,
+                            .padding(8.dp)
                     ) {
                         Icon(Icons.Filled.Star, contentDescription = "none")
                         Text("8.9 ")
@@ -110,19 +106,68 @@ fun AnimeDetailsItem() {
                 } // End Star rating box
             } // End row with title and rating box
 
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 8.dp)
+                    .padding(bottom = 8.dp),
+                horizontalArrangement = Arrangement.SpaceAround,
+            ) {
+                Column() {
+                    Text("Year: 1996 ")
+
+                }
+                Column() {
+                    Text("Episodes: 215")
+                }
+                Column() {
+                    Text("Type: TV")
+                }
+            } // End row with anime info: Year, Episodes, Type
+
+
+
             // Anime info
 
-            Text("Year: 1996 ")
-            Text("Type: TV")
-            Text("Number of episodes: 215")
             Text("Synopsis: Pokémon the Series primarily follows Ash Ketchum, a young boy from Pallet Town who dreams of becoming a Pokémon Master. After receiving his first Pokémon, Pikachu, from Professor Oak, Ash embarks on a journey across various regions — including Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, Alola, and Galar — where he challenges Gym Leaders, competes in regional Pokémon Leagues, or other competitions, and meets a variety of companions who support him in his goal.")
-            Text("Genres: Fantasy ")
+
+            Row( // Start row genres
+                modifier = Modifier
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Text("Genres:")
+                Box(
+                    modifier = Modifier
+                        .size(60.dp, 20.dp)
+                        .background(
+                            color = Color(0xFFfdb1c2),
+                            shape = RoundedCornerShape(8.dp)
+                        ),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("Fantasy")
+                }
+                Box(
+                    modifier = Modifier
+                        .size(60.dp, 20.dp)
+                        .background(
+                            color = Color(0xFFfdb1c2),
+                            shape = RoundedCornerShape(8.dp)
+                        ),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text("Action")
+                }
+            } // End row genres
+
             Text("More info: www.pokemon.no")
-        } // End Column
+        } // End Main Column for Card
 
-    } // End Box
+    } // End Main Box for Card
 
-} // End AnimeDetailsItem
+} // End AnimeDetailsItem function
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable

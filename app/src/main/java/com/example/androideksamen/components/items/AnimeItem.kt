@@ -42,6 +42,7 @@ fun AnimeItem(
                 .fillMaxWidth()
                 .height(96.dp)
                 .padding(8.dp)
+                .background(Color(0xffFF11FF))
         ) {
             Column(
                 modifier = Modifier.padding(start = 8.dp)

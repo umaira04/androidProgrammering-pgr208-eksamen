@@ -54,7 +54,7 @@ fun AppNavigation(
                 NavigationBarItem( // Start Anime
                     selected = activeItem == 0,
                     onClick = {
-                        activeItem = 1
+                        activeItem = 0
                         navController.navigate(NavRoutes.AnimeRoute)
                     },
                     icon = {
@@ -68,7 +68,7 @@ fun AppNavigation(
                 NavigationBarItem( // Start AnimeSearch
                     selected = activeItem == 1,
                     onClick = {
-                        activeItem = 2
+                        activeItem = 1
                         navController.navigate(NavRoutes.AnimeSearchRoute)
                     },
                     icon = {
@@ -82,7 +82,7 @@ fun AppNavigation(
                 NavigationBarItem( // Start AnimeIdeas
                     selected = activeItem == 2,
                     onClick = {
-                        activeItem = 3
+                        activeItem = 2
                         navController.navigate(NavRoutes.AnimeIdeasRoute)
                     },
                     icon = {
@@ -96,7 +96,7 @@ fun AppNavigation(
                 NavigationBarItem( // Start Character
                     selected = activeItem == 3,
                     onClick = {
-                        activeItem = 4
+                        activeItem = 3
                         navController.navigate(NavRoutes.CharacterRoute)
                     },
                     icon = {

@@ -42,20 +42,20 @@ fun AnimeScreen(
     var searchQuery by remember { mutableStateOf("") }
 
     val mockAnime = listOf(
-        Anime(1, "Pokemon", "Action", 2001),
-        Anime(2, "Naruto", "Action", 1999),
-        Anime(3, "Death Note","Action", 1988),
-        Anime(4, "One Piece", "Action", 1998),
-        Anime(5, "kajdwd", "Action", 2004),
-        Anime(6, "awodiawd", "Action", 2005),
-        Anime(7, "wldkwdk", "Action", 2010),
-        Anime(8, "wpdkwd", "Action", 1995),
-        Anime(9, "kjkjkjkj", "Action", 2001),
-        Anime(10, "wdkwldkwd", "Action", 2000)
+        Anime(1, "Pokemon", genres = "Action", year = 2001),
+        Anime(2, "Naruto", genres = "Action", year =  1999),
+        Anime(3, "Death Note", genres = "Action", year =  1988),
+        Anime(4, "One Piece", genres = "Action", year =  1998),
+        Anime(5, "kajdwd", genres = "Action", year =  2004),
+        Anime(6, "awodiawd", genres = "Action", year =  2005),
+        Anime(7, "wldkwdk", genres = "Action", year =  2010),
+        Anime(8, "wpdkwd", genres = "Action", year =  1995),
+        Anime(9, "kjkjkjkj", genres = "Action", year =  2001),
+        Anime(10, "wdkwldkwd", genres = "Action", year =  2000)
     )
 
     val filteredAnimes = mockAnime.filter { anime ->
-        anime.title.contains(searchQuery, ignoreCase = true)
+        anime.title_english.contains(searchQuery, ignoreCase = true)
     }
 
     Column(

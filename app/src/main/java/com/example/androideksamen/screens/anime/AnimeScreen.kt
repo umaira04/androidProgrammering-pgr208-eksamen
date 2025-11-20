@@ -30,6 +30,9 @@ import com.example.androideksamen.components.lists.AnimeList
 import com.example.androideksamen.data.api.Anime
 import com.example.androideksamen.navigation.NavRoutes
 
+//TODO: KNAPP FOR FAVORITTER SOM VISER KUN FAVORITT ANIMEER
+//TODO: HJERTEKNAPP TIL Å VELGE FAVORITTER
+//TODO: FILTER PÅ SJANGER
 @Composable
 fun AnimeScreen(
     animeViewModel: AnimeViewModel,

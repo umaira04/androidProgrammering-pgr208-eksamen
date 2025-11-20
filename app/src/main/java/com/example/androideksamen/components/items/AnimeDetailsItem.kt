@@ -43,7 +43,7 @@ fun AnimeDetailsItem() {
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(16.dp),
-            modifier = Modifier.padding(8.dp)
+            modifier = Modifier.padding(16.dp)
         ) {
 
 
@@ -106,7 +106,7 @@ fun AnimeDetailsItem() {
                 } // End Star rating box
             } // End row with title and rating box
 
-            Row(
+            Row( // Start row with anime info: Year, Episodes, Type
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 8.dp)
@@ -114,20 +114,38 @@ fun AnimeDetailsItem() {
                 horizontalArrangement = Arrangement.SpaceAround,
             ) {
                 Column() {
-                    Text("Year: 1996 ")
+                    Text(
+                        text = "Year: 1996",
+                        style = TextStyle(
+                            color = Color(0xFF656391),
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    )
 
                 }
                 Column() {
-                    Text("Episodes: 215")
+                    Text(
+                        text = "Episodes: 236",
+                        style = TextStyle(
+                            color = Color(0xFF656391),
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    )
                 }
                 Column() {
-                    Text("Type: TV")
+                    Text(
+                        text = "Type: TV",
+                        style = TextStyle(
+                            color = Color(0xFF656391),
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    )
                 }
-            } // End row with anime info: Year, Episodes, Type
-
-
-
-            // Anime info
+            }
+            // End row with anime info: Year, Episodes, Type
 
             Text("Synopsis: Pokémon the Series primarily follows Ash Ketchum, a young boy from Pallet Town who dreams of becoming a Pokémon Master. After receiving his first Pokémon, Pikachu, from Professor Oak, Ash embarks on a journey across various regions — including Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, Alola, and Galar — where he challenges Gym Leaders, competes in regional Pokémon Leagues, or other competitions, and meets a variety of companions who support him in his goal.")
 

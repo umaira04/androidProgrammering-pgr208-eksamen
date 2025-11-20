@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.androideksamen.components.lists.AnimeList
-import com.example.androideksamen.data.api.Anime
+import com.example.androideksamen.data.dataclasses.anime.Anime
 import com.example.androideksamen.navigation.NavRoutes
 
 //TODO: KNAPP FOR FAVORITTER SOM VISER KUN FAVORITT ANIMEER
@@ -55,7 +55,7 @@ fun AnimeScreen(
     )
 
     val filteredAnimes = mockAnime.filter { anime ->
-        anime.title_english.contains(searchQuery, ignoreCase = true)
+        anime.titleEnglish.contains(searchQuery, ignoreCase = true)
     }
 
     Column(

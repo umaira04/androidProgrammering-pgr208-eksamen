@@ -5,7 +5,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.androideksamen.components.items.CharacterItem
-import com.example.androideksamen.data.api.Character
+import com.example.androideksamen.data.dataclasses.Character
 
 @Composable
 fun CharacterList(

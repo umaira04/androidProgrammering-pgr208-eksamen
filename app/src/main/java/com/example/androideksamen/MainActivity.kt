@@ -19,11 +19,9 @@ import com.example.androideksamen.screens.animedetails.AnimeDetailsViewModel
 import com.example.androideksamen.screens.animeideas.AnimeIdeasViewModel
 import com.example.androideksamen.screens.animesearch.AnimeSearchViewModel
 import com.example.androideksamen.screens.character.CharacterViewModel
-import com.example.androideksamen.screens.home.HomeViewModel
 import com.example.androideksamen.ui.theme.AndroidEksamenTheme
 
 class MainActivity : ComponentActivity() {
-    private val _homeViewModel : HomeViewModel by viewModels()
     private val _animeViewModel : AnimeViewModel by viewModels()
     private val _animeSearchViewModel : AnimeSearchViewModel by viewModels()
     private val _animeIdeasViewModel : AnimeIdeasViewModel by viewModels()
@@ -38,7 +36,6 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Column(modifier = Modifier.padding(innerPadding)) {
                         AppNavigation(
-                            _homeViewModel,
                             _animeViewModel,
                             _animeSearchViewModel,
                             _animeIdeasViewModel,

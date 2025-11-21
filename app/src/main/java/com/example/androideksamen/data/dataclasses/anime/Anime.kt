@@ -9,10 +9,10 @@ data class Anime(
     val images: AnimeImages? = null,
 
     @SerializedName("title_english")
-    val titleEnglish: String,
+    val titleEnglish: String?,
 
     @SerializedName("title_japanese")
-    val titleJapanese: String,
+    val titleJapanese: String?,
 
     val year: Int? = null,
 
@@ -31,5 +31,5 @@ data class Anime(
     val url: String? = null,
 
     //USIKKER PÅ OM DENNE ØDELEGGER API INNHENTING
-    val isFavorite: Boolean = false
+    //val isFavorite: Boolean = false
 )

@@ -4,15 +4,15 @@ import com.google.gson.annotations.SerializedName
 
 data class Anime(
     @SerializedName("mal_id")
-    val id: Int? = null,
+    val id: Int,
 
     val images: AnimeImages? = null,
 
     @SerializedName("title_english")
-    val titleEnglish: String? = null,
+    val titleEnglish: String,
 
     @SerializedName("title_japanese")
-    val titleJapanese: String? = null,
+    val titleJapanese: String,
 
     val year: Int? = null,
 
@@ -28,5 +28,8 @@ data class Anime(
 
     val duration: String? = null,
 
-    val url: String? = null
+    val url: String? = null,
+
+    //USIKKER PÅ OM DENNE ØDELEGGER API INNHENTING
+    val isFavorite: Boolean = false
 )

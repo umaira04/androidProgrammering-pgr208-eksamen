@@ -7,7 +7,7 @@ data class Character(
     val id: Int? = null,
 
     @SerializedName("images")
-    val characterImage: CharacterImages,
+    val characterImage: CharacterImages?,
 
     val name: String?,
 

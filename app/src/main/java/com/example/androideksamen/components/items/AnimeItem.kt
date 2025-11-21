@@ -27,13 +27,14 @@ import com.example.androideksamen.data.dataclasses.anime.Genre
 @Composable
 fun AnimeItem(
     anime: Anime,
-    showDetails: () -> Unit
+    showDetails: (() -> Unit)? = null
+    //LEGG IN if NOT NULL PÅ SHOW DETAILS. SE SLIDESERIE 20 -U
 ) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clickable{showDetails()}
+            .clickable{ showDetails?.invoke() }
             .background(
                 color = Color(0xFFD0D0D0),
                 shape = RoundedCornerShape(8.dp)

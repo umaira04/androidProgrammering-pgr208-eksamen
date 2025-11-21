@@ -20,8 +20,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.androideksamen.components.lists.AnimeList
-import com.example.androideksamen.data.dataclasses.anime.Anime
-import com.example.androideksamen.data.dataclasses.anime.Genre
 import com.example.androideksamen.navigation.NavRoutes
 
 //TODO: KNAPP FOR FAVORITTER SOM VISER KUN FAVORITT ANIMEER
@@ -34,18 +32,6 @@ fun AnimeScreen(
 ) {
 
     val animes by animeViewModel.animes.collectAsState()
-    val mockAnime = listOf(
-        Anime(1, null, genres = listOf(Genre(name = "Action")), titleEnglish = "Pokemon", titleJapanese = "Pokemon Japan" ,year = 2001),
-        Anime(2, null, genres = listOf(Genre(name = "Action")), titleEnglish = "Naruto", titleJapanese = "Pokemon Japan" ,year =  1999),
-        Anime(3, null, genres = listOf(Genre(name = "Action")), titleEnglish = "One Piece", titleJapanese = "Pokemon Japan" ,year =  1988),
-        Anime(4, null, genres = listOf(Genre(name = "Action")), titleEnglish = "kwjdw", titleJapanese = "Pokemon Japan" ,year =  1998),
-        Anime(5, null, genres = listOf(Genre(name = "Action")), titleEnglish = "wkfjwkfj", titleJapanese = "Pokemon Japan", year =  2004),
-        Anime(6, null, genres = listOf(Genre(name = "Action")), titleEnglish = "owdowdo", titleJapanese = "Pokemon Japan", year =  2005),
-        Anime(7, null, genres = listOf(Genre(name = "Action")), titleEnglish = "popwoepo", titleJapanese = "Pokemon Japan", year =  2010),
-        Anime(8, null, genres = listOf(Genre(name = "Action")), titleEnglish = "qewewewe", titleJapanese = "Pokemon Japan" ,year =  1995),
-        Anime(9, null, genres = listOf(Genre(name = "Action")), titleEnglish = "wdwdwdwd", titleJapanese = "Pokemon Japan" ,year =  2001),
-        Anime(10, null, genres = listOf(Genre(name = "Action")), titleEnglish = "asasdasd", titleJapanese = "Pokemon Japan" ,year =  2000)
-    )
 
     Column(
         modifier = Modifier

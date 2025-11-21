@@ -7,6 +7,6 @@ data class AnimeImages(
 )
 
 data class JpgImage(
-    @SerializedName("image_url")
+    @SerializedName("large_image_url")
     val imageUrl: String? = null
 )

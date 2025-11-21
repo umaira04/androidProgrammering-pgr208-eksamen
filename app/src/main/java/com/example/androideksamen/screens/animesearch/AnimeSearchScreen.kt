@@ -12,6 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavController
 import com.example.androideksamen.components.items.AnimeItem
+import com.example.androideksamen.navigation.NavRoutes
 
 @Composable
 fun AnimeSearchScreen(
@@ -50,7 +51,9 @@ fun AnimeSearchScreen(
             }
 
             anime?.let { anime ->
-                AnimeItem(anime = anime)
+                AnimeItem(anime = anime,
+                    showDetails = {})
+
             } ?: Text("Søk for å vise anime")
 
             Text(anime.toString())

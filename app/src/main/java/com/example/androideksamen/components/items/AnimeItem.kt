@@ -27,14 +27,13 @@ import com.example.androideksamen.data.dataclasses.anime.Genre
 @Composable
 fun AnimeItem(
     anime: Anime,
-    showDetails: (() -> Unit)? = null
-    //LEGG IN if NOT NULL PÅ SHOW DETAILS. SE SLIDESERIE 20 -U
+    showDetails: () -> Unit
 ) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clickable{ showDetails?.invoke() }
+            .clickable{showDetails()}
             .background(
                 color = Color(0xFFD0D0D0),
                 shape = RoundedCornerShape(8.dp)
@@ -54,7 +53,7 @@ fun AnimeItem(
                 modifier = Modifier.padding(start = 8.dp)
             ) {
                 Text(
-                    text = anime.titleEnglish.toString(),
+                    text = anime.titleEnglish ?: "no english name",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFF0A0E0D)
@@ -70,7 +69,7 @@ fun AnimeItem(
                 Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
-                    text = anime.year.toString(),
+                    text = anime.year.toString() ?: "unknown year",
                     fontSize = 16.sp
                 )
             }

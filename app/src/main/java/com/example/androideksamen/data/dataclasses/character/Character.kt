@@ -11,7 +11,7 @@ data class CharacterResponse(
 
 data class Character(
     @SerializedName("mal_id")
-    val id: Int? = null,
+    val id: Int,
 
     @SerializedName("images")
     val characterImage: CharacterImages?,

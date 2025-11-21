@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -35,15 +36,16 @@ fun CharacterScreen(
     var searchQuery by remember { mutableStateOf("") }
 
     val mockCharacters = listOf(
-        Character(1, name = "Pikachu", characterImage = null, nameJapanese = "Japansk Pikachu",),
-        Character(2, name = "Charizard", characterImage = null, nameJapanese = "Japansk Pikachu",),
+        Character(1, name = "Pikachu", characterImage = null, nameJapanese = "Japansk Pikachu"),
+        Character(2, name = "Charizard", characterImage = null, nameJapanese = "Japansk Pikachu"),
         Character(3, name = "Bulbasaur", characterImage = null, nameJapanese = "Japansk Pikachu",),
-        Character(4, name = "Venusaur", characterImage = null, nameJapanese = "Japansk Pikachu",),
+        Character(4, name = "Venusaur", characterImage = null, nameJapanese = "Japansk Pikachu"),
         Character(5, name = "Groudon", characterImage = null, nameJapanese = "Japansk Pikachu",),
         Character(6, name = "Dragonite", characterImage = null, nameJapanese = "Japansk Pikachu",),
         Character(7, name = "Lucario", characterImage = null, nameJapanese = "Japansk Pikachu",),
         Character(8, name = "Pichu", characterImage = null, nameJapanese = "Japansk Pikachu",)
     )
+    val characters by characterViewModel.characters.collectAsState()
 
     val filteredCharacters = mockCharacters.filter { character ->
         character.name.contains(searchQuery, ignoreCase = true)
@@ -65,7 +67,7 @@ fun CharacterScreen(
 
         // CharacterList
         CharacterList(
-            characterList = filteredCharacters,
+            characterList = characters,
             modifier = Modifier.weight(1f)
         )
 

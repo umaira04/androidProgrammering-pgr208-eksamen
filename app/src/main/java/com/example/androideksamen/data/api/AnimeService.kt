@@ -9,7 +9,7 @@ import retrofit2.http.Path
 
 interface AnimeService {
 
-    @GET("anime/")
+    @GET("anime")
     suspend fun getAllAnime(
     ): Response<AnimeResponse>
 
@@ -19,7 +19,7 @@ interface AnimeService {
     ): Response<AnimeByIdResponse>
 
 
-    @GET("characters/")
+    @GET("characters")
     suspend fun getAllCharacters(
     ) : Response<CharacterResponse>
 }

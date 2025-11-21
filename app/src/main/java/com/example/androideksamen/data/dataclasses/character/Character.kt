@@ -16,7 +16,7 @@ data class Character(
     @SerializedName("images")
     val characterImage: CharacterImages?,
 
-    val name: String?,
+    val name: String,
 
     @SerializedName("name_kanji")
     val nameJapanese: String?

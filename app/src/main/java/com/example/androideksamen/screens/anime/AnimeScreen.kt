@@ -1,10 +1,12 @@
 package com.example.androideksamen.screens.anime
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
@@ -16,6 +18,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.font.FontWeight
@@ -28,6 +31,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.androideksamen.components.lists.AnimeList
 import com.example.androideksamen.data.dataclasses.anime.Anime
+import com.example.androideksamen.data.dataclasses.anime.Genre
 import com.example.androideksamen.navigation.NavRoutes
 
 //TODO: KNAPP FOR FAVORITTER SOM VISER KUN FAVORITT ANIMEER
@@ -38,29 +42,24 @@ fun AnimeScreen(
     animeViewModel: AnimeViewModel,
     navController: NavController
 ) {
-    val focusManager = LocalFocusManager.current
-    var searchQuery by remember { mutableStateOf("") }
 
     val mockAnime = listOf(
-        Anime(1, "Pokemon", genres = "Action", year = 2001),
-        Anime(2, "Naruto", genres = "Action", year =  1999),
-        Anime(3, "Death Note", genres = "Action", year =  1988),
-        Anime(4, "One Piece", genres = "Action", year =  1998),
-        Anime(5, "kajdwd", genres = "Action", year =  2004),
-        Anime(6, "awodiawd", genres = "Action", year =  2005),
-        Anime(7, "wldkwdk", genres = "Action", year =  2010),
-        Anime(8, "wpdkwd", genres = "Action", year =  1995),
-        Anime(9, "kjkjkjkj", genres = "Action", year =  2001),
-        Anime(10, "wdkwldkwd", genres = "Action", year =  2000)
+        Anime(1, null, genres = listOf(Genre("Action")), titleEnglish = "Pokemon", titleJapanese = "Pokemon Japan" ,year = 2001),
+        Anime(2, null, genres = listOf(Genre("Action")), titleEnglish = "Naruto", titleJapanese = "Pokemon Japan" ,year =  1999),
+        Anime(3, null, genres = listOf(Genre("Action")), titleEnglish = "One Piece", titleJapanese = "Pokemon Japan" ,year =  1988),
+        Anime(4, null, genres = listOf(Genre("Action")), titleEnglish = "kwjdw", titleJapanese = "Pokemon Japan" ,year =  1998),
+        Anime(5, null, genres = listOf(Genre("Action")), titleEnglish = "wkfjwkfj", titleJapanese = "Pokemon Japan", year =  2004),
+        Anime(6, null, genres = listOf(Genre("Action")), titleEnglish = "owdowdo", titleJapanese = "Pokemon Japan", year =  2005),
+        Anime(7, null, genres = listOf(Genre("Action")), titleEnglish = "popwoepo", titleJapanese = "Pokemon Japan", year =  2010),
+        Anime(8, null, genres = listOf(Genre("Action")), titleEnglish = "qewewewe", titleJapanese = "Pokemon Japan" ,year =  1995),
+        Anime(9, null, genres = listOf(Genre("Action")), titleEnglish = "wdwdwdwd", titleJapanese = "Pokemon Japan" ,year =  2001),
+        Anime(10, null, genres = listOf(Genre("Action")), titleEnglish = "asasdasd", titleJapanese = "Pokemon Japan" ,year =  2000)
     )
-
-    val filteredAnimes = mockAnime.filter { anime ->
-        anime.titleEnglish.contains(searchQuery, ignoreCase = true)
-    }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(Color(0xFFF7EAF9))
             .padding(8.dp)
     ) {
         // Tittel
@@ -68,42 +67,19 @@ fun AnimeScreen(
             "Anime List",
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
+            color = Color(0xFF0A0E0D),
             modifier = Modifier.padding(start = 8.dp, 8.dp)
         )
 
         // AnimeList
         AnimeList(
-            animeList = filteredAnimes,
+            animeList = mockAnime,
             modifier = Modifier.weight(1f),
             onAnimeClicked = { animeId ->
                 navController.navigate(
                     NavRoutes.AnimeDetailsRoute(animeId)
                 )
             }
-        )
-
-        // Søkefelt
-        TextField(
-            value = searchQuery,
-            onValueChange = { searchQuery = it},
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            placeholder = { Text("Søk etter anime") },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Search
-            ),
-            keyboardActions = KeyboardActions(
-                onSearch = { focusManager.clearFocus() }
-            ),
-            colors = TextFieldDefaults.colors(
-                //focusedContainerColor = Color(),
-                //unfocusedContainerColor = Color(),
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            ),
-            singleLine = true
         )
     } // End column
 }

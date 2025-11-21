@@ -35,14 +35,14 @@ fun CharacterScreen(
     var searchQuery by remember { mutableStateOf("") }
 
     val mockCharacters = listOf(
-        Character(1, "Pikachu"),
-        Character(2, "Charizard"),
-        Character(3, "Bulbasaur"),
-        Character(4, "Venusaur"),
-        Character(5, "Groudon"),
-        Character(6, "Dragonite"),
-        Character(7, "Lucario"),
-        Character(8, "Pichu")
+        Character(1, name = "Pikachu", characterImage = null, nameJapanese = "Japansk Pikachu",),
+        Character(2, name = "Charizard", characterImage = null, nameJapanese = "Japansk Pikachu",),
+        Character(3, name = "Bulbasaur", characterImage = null, nameJapanese = "Japansk Pikachu",),
+        Character(4, name = "Venusaur", characterImage = null, nameJapanese = "Japansk Pikachu",),
+        Character(5, name = "Groudon", characterImage = null, nameJapanese = "Japansk Pikachu",),
+        Character(6, name = "Dragonite", characterImage = null, nameJapanese = "Japansk Pikachu",),
+        Character(7, name = "Lucario", characterImage = null, nameJapanese = "Japansk Pikachu",),
+        Character(8, name = "Pichu", characterImage = null, nameJapanese = "Japansk Pikachu",)
     )
 
     val filteredCharacters = mockCharacters.filter { character ->

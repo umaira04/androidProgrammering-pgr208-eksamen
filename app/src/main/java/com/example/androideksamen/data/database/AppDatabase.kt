@@ -1,4 +1,15 @@
 package com.example.androideksamen.data.database
 
-abstract class AppDatabase  {
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import com.example.androideksamen.data.dataclasses.animeIdea.AnimeIdea
+
+@Database(
+    entities = [AnimeIdea::class],
+    version = 1,
+    exportSchema = false
+)
+
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun animeDao(): AnimeDao
 }

@@ -47,6 +47,13 @@ fun CharacterItem(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
+
+                Spacer(modifier = Modifier.height(4.dp))
+
+                Text(
+                    text = character.nameJapanese ?: "No japanese name",
+                    fontSize = 16.sp
+                )
             }
 
             // TODO : legge til hvilken anime karakteren kommer fra
@@ -72,7 +79,11 @@ fun CharacterItemPreview(){
     CharacterItem(
         character = Character(
             id = 1,
-            name = "Pikachu"
+            name = "Pikachu",
+            characterImage = null,
+            nameJapanese = "Japansk Pikachu",
+
+
         )
     )
 }

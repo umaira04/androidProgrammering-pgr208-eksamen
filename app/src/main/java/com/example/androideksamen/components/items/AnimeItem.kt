@@ -53,7 +53,7 @@ fun AnimeItem(
                 modifier = Modifier.padding(start = 8.dp)
             ) {
                 Text(
-                    text = anime.titleEnglish,
+                    text = anime.titleEnglish.toString(),
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFF0A0E0D)

@@ -15,7 +15,7 @@ class AnimeViewModel : ViewModel() {
     val animes = _animes.asStateFlow()
 
     fun setAnimes() {
-        viewModelScope.launch(Dispatchers.IO){
+        viewModelScope.launch(Dispatchers.IO) {
             _animes.value = AnimeAPIRepository.getAllAnime()
         }
     }

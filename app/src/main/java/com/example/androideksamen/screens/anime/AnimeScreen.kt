@@ -3,8 +3,10 @@ package com.example.androideksamen.screens.anime
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -44,16 +46,16 @@ fun AnimeScreen(
 ) {
 
     val mockAnime = listOf(
-        Anime(1, null, genres = listOf(Genre("Action")), titleEnglish = "Pokemon", titleJapanese = "Pokemon Japan" ,year = 2001),
-        Anime(2, null, genres = listOf(Genre("Action")), titleEnglish = "Naruto", titleJapanese = "Pokemon Japan" ,year =  1999),
-        Anime(3, null, genres = listOf(Genre("Action")), titleEnglish = "One Piece", titleJapanese = "Pokemon Japan" ,year =  1988),
-        Anime(4, null, genres = listOf(Genre("Action")), titleEnglish = "kwjdw", titleJapanese = "Pokemon Japan" ,year =  1998),
-        Anime(5, null, genres = listOf(Genre("Action")), titleEnglish = "wkfjwkfj", titleJapanese = "Pokemon Japan", year =  2004),
-        Anime(6, null, genres = listOf(Genre("Action")), titleEnglish = "owdowdo", titleJapanese = "Pokemon Japan", year =  2005),
-        Anime(7, null, genres = listOf(Genre("Action")), titleEnglish = "popwoepo", titleJapanese = "Pokemon Japan", year =  2010),
-        Anime(8, null, genres = listOf(Genre("Action")), titleEnglish = "qewewewe", titleJapanese = "Pokemon Japan" ,year =  1995),
-        Anime(9, null, genres = listOf(Genre("Action")), titleEnglish = "wdwdwdwd", titleJapanese = "Pokemon Japan" ,year =  2001),
-        Anime(10, null, genres = listOf(Genre("Action")), titleEnglish = "asasdasd", titleJapanese = "Pokemon Japan" ,year =  2000)
+        Anime(1, null, genres = listOf(Genre(name = "Action")), titleEnglish = "Pokemon", titleJapanese = "Pokemon Japan" ,year = 2001),
+        Anime(2, null, genres = listOf(Genre(name = "Action")), titleEnglish = "Naruto", titleJapanese = "Pokemon Japan" ,year =  1999),
+        Anime(3, null, genres = listOf(Genre(name = "Action")), titleEnglish = "One Piece", titleJapanese = "Pokemon Japan" ,year =  1988),
+        Anime(4, null, genres = listOf(Genre(name = "Action")), titleEnglish = "kwjdw", titleJapanese = "Pokemon Japan" ,year =  1998),
+        Anime(5, null, genres = listOf(Genre(name = "Action")), titleEnglish = "wkfjwkfj", titleJapanese = "Pokemon Japan", year =  2004),
+        Anime(6, null, genres = listOf(Genre(name = "Action")), titleEnglish = "owdowdo", titleJapanese = "Pokemon Japan", year =  2005),
+        Anime(7, null, genres = listOf(Genre(name = "Action")), titleEnglish = "popwoepo", titleJapanese = "Pokemon Japan", year =  2010),
+        Anime(8, null, genres = listOf(Genre(name = "Action")), titleEnglish = "qewewewe", titleJapanese = "Pokemon Japan" ,year =  1995),
+        Anime(9, null, genres = listOf(Genre(name = "Action")), titleEnglish = "wdwdwdwd", titleJapanese = "Pokemon Japan" ,year =  2001),
+        Anime(10, null, genres = listOf(Genre(name = "Action")), titleEnglish = "asasdasd", titleJapanese = "Pokemon Japan" ,year =  2000)
     )
 
     Column(
@@ -71,6 +73,8 @@ fun AnimeScreen(
             modifier = Modifier.padding(start = 8.dp, 8.dp)
         )
 
+        Spacer(modifier = Modifier.height(4.dp))
+
         // AnimeList
         AnimeList(
             animeList = mockAnime,
@@ -81,6 +85,10 @@ fun AnimeScreen(
                 )
             }
         )
+
+        // Vis favoritter
+
+
     } // End column
 }
 

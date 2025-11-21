@@ -96,7 +96,7 @@ fun AnimeItemPreview(){
         anime = Anime(
             id = 1,
             titleEnglish = "Pokemon",
-            genres = listOf(Genre("Action")),
+            genres = listOf(Genre(name = "Action")),
             year = 1997,
             titleJapanese = "Pokemon Japan"
         ),

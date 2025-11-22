@@ -17,7 +17,7 @@ object AnimeDbRepository {
         ).build()
     }
 
-    suspend fun getAnimeIdeas(): List<AnimeIdea> {
+    suspend fun getAnimeIdeas(): List<AnimeDB> {
         try {
             return _animeDao.getAnimeIdeas()
         } catch (e: Exception) {
@@ -26,7 +26,7 @@ object AnimeDbRepository {
         }
     }
 
-    suspend fun insertAnimeIdeas(animeIdea: AnimeIdea): Long {
+    suspend fun insertAnimeIdeas(animeIdea: AnimeDB): Long {
         try {
             return _animeDao.insertAnimeIdea(animeIdea)
         } catch (e: Exception) {

@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.example.androideksamen.data.dataclasses.animeIdea.AnimeIdea
 
 @Database(
-    entities = [AnimeIdea::class],
+    entities = [AnimeDB::class],
     version = 1,
     exportSchema = false
 )

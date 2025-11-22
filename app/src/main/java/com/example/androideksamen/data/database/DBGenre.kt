@@ -1,6 +1,6 @@
 package com.example.androideksamen.data.database
 
-enum class Genre {
+enum class DBGenre {
     FANTASY,
     ACTION,
     COMEDY,

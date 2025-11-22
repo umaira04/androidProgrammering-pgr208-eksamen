@@ -11,8 +11,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -31,6 +37,8 @@ import com.example.androideksamen.data.dataclasses.anime.Genre
 @Composable
 fun AnimeItem(
     anime: Anime,
+    isFavorite: Boolean,
+    onFavoriteClick: () -> Unit,
     showDetails: () -> Unit
 ) {
     Box(
@@ -45,6 +53,14 @@ fun AnimeItem(
             Column(
                 modifier = Modifier.padding(16.dp)
             ) {
+                Row( // Tittel med hjerte
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+
+
+
                 Text( // English
                     text = anime.titleEnglish.toString(),
                     fontSize = if (anime.titleEnglish.toString().length > 20) 24.sp else 32.sp,
@@ -54,6 +70,16 @@ fun AnimeItem(
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFF0A0E0D)
                 )
+
+                IconButton(onClick = onFavoriteClick) {
+                    Icon(
+                        imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
+                        contentDescription = if (isFavorite) "Remove" else "Favorite",
+                        tint = if (isFavorite) Color(0xFF324663) else Color(0xFF324663),
+                        modifier = Modifier.size(32.dp)
+                        )
+                    }
+                } // end row
 
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -117,6 +143,8 @@ fun AnimeItemPreview(){
             year = 1997,
             titleJapanese = "ポケモン"
         ),
+        isFavorite =  false,
+        onFavoriteClick = {},
         showDetails = {}
     )
 }

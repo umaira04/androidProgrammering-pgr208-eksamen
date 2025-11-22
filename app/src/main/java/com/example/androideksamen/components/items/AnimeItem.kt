@@ -68,17 +68,15 @@ fun AnimeItem(
                     )
                     Box(
                         modifier = Modifier
+                            .rotate(90f)
                             .width(50.dp)
-                            .height(402.dp),
+                            .height(270.dp),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
                             text = anime.titleJapanese.toString(),
                             fontSize = 24.sp,
-                            maxLines = 1,
-                            color = Color(0xFF0A0E0D),
-                            modifier = Modifier
-                                .rotate(90f)
+                            color = Color(0xFF0A0E0D)
                         )
                     }
                 }

@@ -7,9 +7,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -44,43 +45,43 @@ fun AnimeItem(
             Column(
                 modifier = Modifier.padding(16.dp)
             ) {
-                Text(
+                Text( // English
                     text = anime.titleEnglish.toString(),
-                    fontSize = 32.sp,
+                    fontSize = if (anime.titleEnglish.toString().length > 20) 24.sp else 32.sp,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    lineHeight = 32.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFF0A0E0D)
                 )
 
-                Spacer(modifier = Modifier.height(4.dp))
+                Spacer(modifier = Modifier.height(16.dp))
 
-                Box(
+                Box( // Main box
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(402.dp)
                 ) {
-                    Box(
+                    Box( // Image (skal byttes ut med bilde)
                         modifier = Modifier
                             .width(270.dp)
                             .height(402.dp)
                             .clip(RoundedCornerShape(8.dp))
                             .background(Color.Magenta)
                     )
-                    Box(
+                    Text( // Japanese
+                        text = anime.titleJapanese.toString(),
+                        fontSize = if (anime.titleJapanese.toString().length > 12) 24.sp else 32.sp,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                        lineHeight = 32.sp,
+                        color = Color(0xFF0A0E0D),
                         modifier = Modifier
-                            .width(50.dp)
-                            .height(402.dp),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = anime.titleJapanese.toString(),
-                            fontSize = 24.sp,
-                            color = Color(0xFF0A0E0D),
-                            maxLines = 1,
-                            modifier = Modifier
-                                .rotate(90f)
-                        )
-                    }
-                }
+                            .align(Alignment.Center)
+                            .offset(x = 144.dp)
+                            .rotate(90f)
+                    )
+                } // End main box
 
                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -93,7 +94,6 @@ fun AnimeItem(
                         fontSize = 24.sp,
                         color = Color(0xFF0A0E0D)
                     )
-
                     Text(
                         text = anime.year.toString(),
                         fontSize = 24.sp,
@@ -101,10 +101,6 @@ fun AnimeItem(
                     )
                 }
             }
-
-
-            
-
     }
 }
 
@@ -117,7 +113,7 @@ fun AnimeItemPreview(){
             titleEnglish = "Pokemon",
             genres = listOf(Genre(name = "Action")),
             year = 1997,
-            titleJapanese = "Pokemon Japan"
+            titleJapanese = "ポケモン"
         ),
         showDetails = {}
     )

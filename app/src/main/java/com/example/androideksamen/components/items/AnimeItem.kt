@@ -60,7 +60,6 @@ fun AnimeItem(
                 Box( // Main box
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(402.dp)
                 ) {
                     Box( // Image (skal byttes ut med bilde)
                         modifier = Modifier
@@ -90,13 +89,16 @@ fun AnimeItem(
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        text = anime.genres?.take(2)?.joinToString(", ") { it.name ?: "Unknown"  } ?: "No genres",
+                        text = anime.genres?.firstOrNull()?.name ?: "",
                         fontSize = 24.sp,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
                         color = Color(0xFF0A0E0D)
                     )
                     Text(
-                        text = anime.year.toString(),
+                        text = anime.year?.toString() ?: "",
                         fontSize = 24.sp,
+                        maxLines = 1,
                         color = Color(0xFF0A0E0D)
                     )
                 }

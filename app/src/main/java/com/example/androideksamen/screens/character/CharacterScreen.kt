@@ -71,29 +71,6 @@ fun CharacterScreen(
             modifier = Modifier.weight(1f)
         )
 
-        // Søkefelt
-        TextField(
-            value = searchQuery,
-            onValueChange = { searchQuery = it },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp),
-            placeholder = { Text("Søk etter karakter") },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Search
-            ),
-            keyboardActions = KeyboardActions(
-                onSearch = { focusManager.clearFocus() }
-            ),
-            colors = TextFieldDefaults.colors(
-                //focusedContainerColor = Color(),
-                //unfocusedContainerColor = Color(),
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            ),
-            singleLine = true
-        )
     } // End column
 }
 

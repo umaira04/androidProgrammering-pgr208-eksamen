@@ -3,7 +3,6 @@ package com.example.androideksamen.data.database
 import android.content.Context
 import android.util.Log
 import androidx.room.Room
-import com.example.androideksamen.data.dataclasses.animeIdea.AnimeIdea
 
 object AnimeDbRepository {
     private lateinit var _appDatabase: AppDatabase

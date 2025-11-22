@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androideksamen.data.database.AnimeDB
 import com.example.androideksamen.data.database.AnimeDbRepository
-import com.example.androideksamen.data.dataclasses.animeIdea.AnimeIdea
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,6 +19,10 @@ class AnimeIdeasViewModel : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             _animeIdeas.value = AnimeDbRepository.getAnimeIdeas()
         }
+    }
+
+    init {
+        setAnimeIdeas()
     }
 
     fun insertAnimeIdea(animeIdea: AnimeDB) {

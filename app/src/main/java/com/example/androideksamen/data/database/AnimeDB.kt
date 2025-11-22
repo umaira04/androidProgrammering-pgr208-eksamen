@@ -8,6 +8,5 @@ data class AnimeDB(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val title: String,
-    val DBGenre: DBGenre,
     val synopsis: String
 )

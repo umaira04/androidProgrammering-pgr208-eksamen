@@ -20,7 +20,6 @@ class CharacterViewModel : ViewModel() {
             _characters.value = AnimeAPIRepository.getAllCharacters()
         }
     }
-
     init {
         setCharacters()
     }

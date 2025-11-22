@@ -4,15 +4,14 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.androideksamen.data.dataclasses.animeIdea.AnimeIdea
 
 @Dao
 interface AnimeDao {
 
-    @Query("SELECT * FROM AnimeIdea")
-    suspend fun getAnimeIdeas(): List<AnimeIdea>
+    @Query("SELECT * FROM anime_idea")
+    suspend fun getAnimeIdeas(): List<AnimeDB>
 
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAnimeIdea(animeIdea: AnimeIdea): Long
+    suspend fun insertAnimeIdea(animeIdea: AnimeDB): Long
 }

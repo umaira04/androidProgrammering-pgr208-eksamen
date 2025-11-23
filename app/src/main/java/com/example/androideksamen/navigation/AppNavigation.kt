@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -48,17 +48,17 @@ fun AppNavigation(
     val navController = rememberNavController()
     var activeItem by rememberSaveable() { mutableIntStateOf(0) }
     val animeTheme = NavigationBarItemDefaults.colors(
-        indicatorColor = Color(0xFFFDB1C2),
-        selectedIconColor = Color(0xFF0A0E0D),
-        unselectedIconColor = Color(0xFF0A0E0D),
-        selectedTextColor = Color(0xFF0A0E0D),
-        unselectedTextColor = Color(0xFF0A0E0D)
+        indicatorColor = Color(0xFF0A0E0D),
+        selectedIconColor = Color(0xFFF5F5F5),
+        unselectedIconColor = Color(0xFFF5F5F5),
+        selectedTextColor = Color(0xFFF5F5F5),
+        unselectedTextColor = Color(0xFFF5F5F5)
     )
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
-            NavigationBar(containerColor = Color(0xFFFDF1B2)
+            NavigationBar(containerColor = Color(0xFF656391)
             ) {
                 NavigationBarItem( // Start Anime
                     selected = activeItem == 0,
@@ -116,7 +116,7 @@ fun AppNavigation(
                     },
                     icon = {
                         Icon(
-                            imageVector = Icons.Default.Person,
+                            imageVector = Icons.Default.Face,
                             contentDescription = null
                         )
                     },

@@ -21,6 +21,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import com.example.androideksamen.screens.anime.AnimeScreen
 import com.example.androideksamen.screens.anime.AnimeViewModel
@@ -142,6 +143,16 @@ fun AppNavigation(
     }
 }
 
-
+@Preview(showBackground = true)
+@Composable
+fun AppNavigationPreview() {
+    AppNavigation(
+        animeViewModel = AnimeViewModel(),
+        animeSearchViewModel = AnimeSearchViewModel(),
+        animeIdeasViewModel = AnimeIdeasViewModel(),
+        characterViewModel = CharacterViewModel(),
+        animeDetailsViewModel = AnimeDetailsViewModel()
+    )
+}
 
 

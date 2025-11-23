@@ -60,75 +60,52 @@ fun AnimeItem(
             Box( // Main box
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(402.dp)
             ) {
-                Row( // Tittel med hjerte
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                Text( // English
-                    text = anime.titleEnglish?: "",
-                    fontSize = if (anime.titleEnglish.toString().length > 20) 24.sp else 32.sp,
+                Box( // Image (skal byttes ut med bilde)
+                    modifier = Modifier
+                        .width(270.dp)
+                        .height(402.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(Color.Magenta)
+                )
+                Text( // Japanese
+                    text = anime.titleJapanese.toString(),
+                    fontSize = if (anime.titleJapanese.toString().length > 12) 24.sp else 32.sp,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                     lineHeight = 32.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF0A0E0D)
-                )
-                } // end row
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                Box( // Main box
+                    color = Color(0xFF0A0E0D),
                     modifier = Modifier
-                        .fillMaxWidth()
-                ) {
-                    Box( // Image (skal byttes ut med bilde)
-                        modifier = Modifier
-                            .width(270.dp)
-                            .height(402.dp)
-                            .clip(RoundedCornerShape(8.dp))
-                            .background(Color.Magenta)
-                    )
-                    Text( // Japanese
-                        text = anime.titleJapanese?: "",
-                        fontSize = if (anime.titleJapanese.toString().length > 12) 24.sp else 32.sp,
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis,
-                        lineHeight = 32.sp,
-                        color = Color(0xFF0A0E0D),
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                            .offset(x = 144.dp)
-                            .rotate(90f)
-                    )
-                } // End main box
+                        .align(Alignment.Center)
+                        .offset(x = 144.dp)
+                        .rotate(90f)
+                )
+            } // End main box
 
             Spacer(modifier = Modifier.height(16.dp))
 
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(
-                        text = anime.genres?.firstOrNull()?.name ?: "",
-                        fontSize = 24.sp,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        color = Color(0xFF0A0E0D)
-                    )
-                    Text(
-                        text = anime.year?.toString() ?: "",
-                        fontSize = 24.sp,
-                        maxLines = 1,
-                        color = Color(0xFF0A0E0D)
-                    )
-                }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = anime.genres?.firstOrNull()?.name ?: "",
+                    fontSize = 24.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    color = Color(0xFF0A0E0D)
+                )
+                Text(
+                    text = anime.year?.toString() ?: "",
+                    fontSize = 24.sp,
+                    maxLines = 1,
+                    color = Color(0xFF0A0E0D)
+                )
             }
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable

@@ -37,7 +37,7 @@ fun AnimeScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFF7EAF9))
-            .padding(8.dp)
+            .padding(horizontal = 8.dp)
     ) {
         // Tittel
         Text(

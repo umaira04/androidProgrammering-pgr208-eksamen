@@ -1,5 +1,6 @@
 package com.example.androideksamen.navigation
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -11,7 +12,9 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -19,6 +22,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -42,14 +46,19 @@ fun AppNavigation(
 
 ){
     val navController = rememberNavController()
-    var activeItem by rememberSaveable() {
-        mutableIntStateOf(0)
-    }
+    var activeItem by rememberSaveable() { mutableIntStateOf(0) }
+    val animeTheme = NavigationBarItemDefaults.colors(
+        indicatorColor = Color(0xFFFDB1C2),
+        selectedIconColor = Color(0xFF0A0E0D),
+        unselectedIconColor = Color(0xFF0A0E0D),
+        selectedTextColor = Color(0xFF0A0E0D),
+        unselectedTextColor = Color(0xFF0A0E0D)
+    )
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
-            NavigationBar(containerColor = Color(0xFF212121)
+            NavigationBar(containerColor = Color(0xFFFDF1B2)
             ) {
                 NavigationBarItem( // Start Anime
                     selected = activeItem == 0,
@@ -62,7 +71,9 @@ fun AppNavigation(
                             imageVector = Icons.Default.Home,
                             contentDescription = null
                         )
-                    }
+                    },
+                    label = { Text("Anime") },
+                    colors = animeTheme
                 ) // End Anime
 
                 NavigationBarItem( // Start AnimeSearch
@@ -76,7 +87,9 @@ fun AppNavigation(
                             imageVector = Icons.Default.Search,
                             contentDescription = null
                         )
-                    }
+                    },
+                    label = { Text("Search") },
+                    colors = animeTheme
                 ) // End AnimeSearch
 
                 NavigationBarItem( // Start AnimeIdeas
@@ -90,7 +103,9 @@ fun AppNavigation(
                             imageVector = Icons.Default.AddCircle,
                             contentDescription = null
                         )
-                    }
+                    },
+                    label = { Text("Ideas") },
+                    colors = animeTheme
                 ) // End AnimeIdeas
 
                 NavigationBarItem( // Start Character
@@ -104,7 +119,10 @@ fun AppNavigation(
                             imageVector = Icons.Default.Person,
                             contentDescription = null
                         )
-                    }
+                    },
+                    label = { Text("Characters") },
+                    colors = animeTheme
+
                 ) // End Character
             }
         } // End NavigationBar
@@ -142,6 +160,17 @@ fun AppNavigation(
     }
 }
 
-
+@SuppressLint("ViewModelConstructorInComposable")
+@Preview(showBackground = true)
+@Composable
+fun AppNavigationPreview() {
+    AppNavigation(
+        animeViewModel = AnimeViewModel(),
+        animeSearchViewModel = AnimeSearchViewModel(),
+        animeIdeasViewModel = AnimeIdeasViewModel(),
+        characterViewModel = CharacterViewModel(),
+        animeDetailsViewModel = AnimeDetailsViewModel()
+    )
+}
 
 

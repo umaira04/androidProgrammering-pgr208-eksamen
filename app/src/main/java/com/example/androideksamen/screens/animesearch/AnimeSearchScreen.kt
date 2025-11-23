@@ -12,7 +12,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavController
 import com.example.androideksamen.components.items.AnimeItem
-import com.example.androideksamen.navigation.NavRoutes
 
 @Composable
 fun AnimeSearchScreen(

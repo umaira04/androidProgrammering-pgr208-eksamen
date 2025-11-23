@@ -36,14 +36,31 @@ fun AnimeItem(
     Box(
         modifier = Modifier
             .padding(8.dp)
-            .clickable{showDetails()}
+            .clickable { showDetails() }
             .background(
                 color = Color(0xFFFBBAED),
                 shape = RoundedCornerShape(8.dp)
             )
     ) {
-            Column(
-                modifier = Modifier.padding(16.dp)
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text( // English
+                text = anime.titleEnglish.toString(),
+                fontSize = if (anime.titleEnglish.toString().length > 20) 24.sp else 32.sp,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
+                lineHeight = 32.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF0A0E0D)
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Box( // Main box
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(402.dp)
             ) {
                 Row( // Tittel med hjerte
                     modifier = Modifier.fillMaxWidth(),
@@ -88,7 +105,7 @@ fun AnimeItem(
                     )
                 } // End main box
 
-                Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -109,12 +126,13 @@ fun AnimeItem(
                     )
                 }
             }
+        }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun AnimeItemPreview(){
+fun AnimeItemPreview() {
     AnimeItem(
         anime = Anime(
             id = 1,

@@ -62,20 +62,25 @@ fun AnimeItem(
                     .fillMaxWidth()
                     .height(402.dp)
             ) {
-                Box( // Image (skal byttes ut med bilde)
-                    modifier = Modifier
-                        .width(270.dp)
-                        .height(402.dp)
-                        .clip(RoundedCornerShape(8.dp))
-                        .background(Color.Magenta)
-                )
-                Text( // Japanese
-                    text = anime.titleJapanese.toString(),
-                    fontSize = if (anime.titleJapanese.toString().length > 12) 24.sp else 32.sp,
+                Row( // Tittel med hjerte
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                Text( // English
+                    text = anime.titleEnglish?: "",
+                    fontSize = if (anime.titleEnglish.toString().length > 20) 24.sp else 32.sp,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                     lineHeight = 32.sp,
-                    color = Color(0xFF0A0E0D),
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF0A0E0D)
+                )
+                } // end row
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                Box( // Main box
                     modifier = Modifier
                         .fillMaxWidth()
                 ) {
@@ -87,7 +92,7 @@ fun AnimeItem(
                             .background(Color.Magenta)
                     )
                     Text( // Japanese
-                        text = anime.titleJapanese.toString(),
+                        text = anime.titleJapanese?: "",
                         fontSize = if (anime.titleJapanese.toString().length > 12) 24.sp else 32.sp,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis,

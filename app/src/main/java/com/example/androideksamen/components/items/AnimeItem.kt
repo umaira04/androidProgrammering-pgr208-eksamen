@@ -17,7 +17,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -44,7 +43,7 @@ fun AnimeItem(
             )
     ) {
         Column(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(horizontal = 24.dp, vertical = 16.dp)
         ) {
             Text( // English
                 text = anime.titleEnglish?.toString() ?: "No english title",
@@ -60,7 +59,7 @@ fun AnimeItem(
 
             Box( // Main box
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth() //TODO: endre dette
             ) {
                 AsyncImage(
                     model = anime.images?.jpg?.imageUrl,
@@ -78,7 +77,7 @@ fun AnimeItem(
                     color = Color(0xFF0A0E0D),
                     modifier = Modifier
                         .align(Alignment.Center)
-                        .offset(x = 144.dp)
+                        .offset(x = 144.dp) // TODO: burde ikke bruke offset
                         .rotate(90f)
                 )
             } // End main box
@@ -90,14 +89,14 @@ fun AnimeItem(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = anime.genres?.firstOrNull()?.name ?: "",
+                    text = anime.genres?.firstOrNull()?.name ?: "No genre",
                     fontSize = 24.sp,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     color = Color(0xFF0A0E0D)
                 )
                 Text(
-                    text = anime.year?.toString() ?: "",
+                    text = anime.year?.toString() ?: "No year",
                     fontSize = 24.sp,
                     maxLines = 1,
                     color = Color(0xFF0A0E0D)

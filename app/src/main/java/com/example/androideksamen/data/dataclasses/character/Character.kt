@@ -7,7 +7,10 @@ data class CharacterResponse(
     val data: List<Character>
 )
 
-
+/*data class CharacterFavorites(
+    val character: Character,
+    val isFavorite: Boolean = false
+)*/
 
 data class Character(
     @SerializedName("mal_id")

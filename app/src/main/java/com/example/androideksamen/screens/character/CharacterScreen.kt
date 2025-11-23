@@ -1,19 +1,21 @@
 package com.example.androideksamen.screens.character
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -24,37 +26,25 @@ import com.example.androideksamen.data.dataclasses.character.Character
 fun CharacterScreen(
     characterViewModel: CharacterViewModel
 ) {
-    val focusManager = LocalFocusManager.current
-    var searchQuery by remember { mutableStateOf("") }
 
-    val mockCharacters = listOf(
-        Character(1, name = "Pikachu", characterImage = null, nameJapanese = "Japansk Pikachu"),
-        Character(2, name = "Charizard", characterImage = null, nameJapanese = "Japansk Pikachu"),
-        Character(3, name = "Bulbasaur", characterImage = null, nameJapanese = "Japansk Pikachu",),
-        Character(4, name = "Venusaur", characterImage = null, nameJapanese = "Japansk Pikachu"),
-        Character(5, name = "Groudon", characterImage = null, nameJapanese = "Japansk Pikachu",),
-        Character(6, name = "Dragonite", characterImage = null, nameJapanese = "Japansk Pikachu",),
-        Character(7, name = "Lucario", characterImage = null, nameJapanese = "Japansk Pikachu",),
-        Character(8, name = "Pichu", characterImage = null, nameJapanese = "Japansk Pikachu",)
-    )
     val characters by characterViewModel.characters.collectAsState()
-
-    val filteredCharacters = mockCharacters.filter { character ->
-        character.name.contains(searchQuery, ignoreCase = true)
-    }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(8.dp)
+            .background(Color(0xFFF7EAF9))
+            .padding(8.dp, 8.dp, 8.dp, 0.dp)
     ) {
-
         // Tittel
         Text(
-            text = "Character List",
+            text = "Characters",
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(start = 8.dp, top = 8.dp)
+            color = Color(0xFF0A0E0D),
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .padding(vertical = 8.dp)
+                .fillMaxWidth()
         )
 
         // CharacterList

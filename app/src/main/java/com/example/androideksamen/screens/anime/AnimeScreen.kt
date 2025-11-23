@@ -39,7 +39,7 @@ fun AnimeScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFF7EAF9))
-            .padding(horizontal = 8.dp)
+            .padding(8.dp, 8.dp, 8.dp, 0.dp)
     ) {
         // Tittel
         Text(
@@ -49,11 +49,9 @@ fun AnimeScreen(
             color = Color(0xFF0A0E0D),
             textAlign = TextAlign.Center,
             modifier = Modifier
-                .padding( top = 16.dp)
+                .padding(vertical = 8.dp)
                 .fillMaxWidth()
         )
-
-        Spacer(modifier = Modifier.height(4.dp))
 
         // AnimeList
         AnimeList(
@@ -67,7 +65,6 @@ fun AnimeScreen(
         )
 
         // Vis favoritter
-
 
     } // End column
 }

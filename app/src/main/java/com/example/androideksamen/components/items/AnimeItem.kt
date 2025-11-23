@@ -25,6 +25,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.example.androideksamen.data.dataclasses.anime.Anime
 import com.example.androideksamen.data.dataclasses.anime.Genre
 
@@ -46,7 +47,7 @@ fun AnimeItem(
             modifier = Modifier.padding(16.dp)
         ) {
             Text( // English
-                text = anime.titleEnglish.toString(),
+                text = anime.titleEnglish?.toString() ?: "No english title",
                 fontSize = if (anime.titleEnglish.toString().length > 20) 24.sp else 32.sp,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
@@ -61,12 +62,12 @@ fun AnimeItem(
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
-                Box( // Image (skal byttes ut med bilde)
+                AsyncImage(
+                    model = anime.images?.jpg?.imageUrl,
+                    contentDescription = "bilde av ${anime.titleEnglish}",
                     modifier = Modifier
                         .width(270.dp)
                         .height(402.dp)
-                        .clip(RoundedCornerShape(8.dp))
-                        .background(Color.Magenta)
                 )
                 Text( // Japanese
                     text = anime.titleJapanese.toString(),

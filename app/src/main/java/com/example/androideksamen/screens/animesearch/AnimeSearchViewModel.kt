@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 
 class AnimeSearchViewModel : ViewModel() {
 
+    //FORELESNING 9 FOR Å SE AKKURAT DENNE OPPGAVEN
     private val _anime = MutableStateFlow<Anime?>(null)
 
     val anime = _anime.asStateFlow()

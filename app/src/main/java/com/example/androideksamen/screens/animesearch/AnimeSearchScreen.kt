@@ -13,6 +13,8 @@ import androidx.compose.runtime.setValue
 import androidx.navigation.NavController
 import com.example.androideksamen.components.items.AnimeItem
 
+
+//FORELESNING 9 FOR Å SE AKKURAT DENNE OPPGAVEN
 @Composable
 fun AnimeSearchScreen(
     animeSearchViewModel: AnimeSearchViewModel,

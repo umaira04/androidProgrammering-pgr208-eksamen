@@ -18,12 +18,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.example.androideksamen.data.dataclasses.character.Character
 
 @Composable
 fun CharacterItem(
     character: Character
-){
+) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -56,11 +57,13 @@ fun CharacterItem(
                 )
             }
 
-            // TODO : legge til hvilken anime karakteren kommer fra
+            // TODO : legge inn link til myanimelist.com wiki til karakteren?
 
             Spacer(modifier = Modifier.weight(1f))
 
-            Box(
+            AsyncImage(
+                model = character.characterImage?.jpg?.imageUrl,
+                contentDescription = "bilde av ${character.name}",
                 modifier = Modifier
                     .padding(end = 8.dp)
                     .size(120.dp, 80.dp)
@@ -75,7 +78,7 @@ fun CharacterItem(
 
 @Preview(showBackground = true)
 @Composable
-fun CharacterItemPreview(){
+fun CharacterItemPreview() {
     CharacterItem(
         character = Character(
             id = 1,
@@ -84,7 +87,7 @@ fun CharacterItemPreview(){
             nameJapanese = "Japansk Pikachu",
 
 
-        )
+            )
     )
 }
 

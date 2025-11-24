@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -38,6 +39,7 @@ import com.example.androideksamen.data.dataclasses.character.Character
 //TODO: søk
 //TODO: endre fontSize i animeitem så det er likt som characteritem
 @Composable
+//hvorfor har du ikke brukt dataklassen i character som også har favorites??
 fun CharacterItem(
     character: Character,
     isFavorite: Boolean = false
@@ -70,18 +72,21 @@ fun CharacterItem(
                     fontSize = if (character.name.toString().length > 16) 16.sp else 24.sp,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
                 )
 
                 Text(
                     text = character.nameJapanese ?: "No japanese name",
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
+                    color = Color.Black
                 )
 
                 Text(
                     text = "Noe info her også",
-                    fontSize = 16.sp
+                    fontSize = 16.sp,
+                    color = Color.Black
                 )
             }
 
@@ -92,7 +97,7 @@ fun CharacterItem(
                 modifier = Modifier.size(40.dp)
             ) {
                 Icon(
-                    imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
+                    imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                     contentDescription = "Favorite",
                     modifier = Modifier.size(40.dp)
                 )

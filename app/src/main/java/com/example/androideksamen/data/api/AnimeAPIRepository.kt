@@ -77,7 +77,6 @@ object AnimeAPIRepository {
             if (response.isSuccessful) {
                 val charList = response.body()?.data ?: emptyList()
 
-                Log.d("MAIN_CHARS_RAW", response.body()?.data.toString())//TODO DEBUG
 
                 return charList.filter { it.role.equals("Main", ignoreCase = true) }
                     .map { it.character }

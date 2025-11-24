@@ -294,7 +294,7 @@ fun AnimeDetailsItem(
         //TODO? LEGGE INN EN IF HER SOM KUN VISER DERSOM DEN HAR EN LINK? -U
         item {
             Text(
-                // More infomation
+                // More information
                 text = "More information",
                 color = Color(0xFF656391),
                 fontSize = 24.sp,

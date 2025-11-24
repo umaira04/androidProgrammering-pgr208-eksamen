@@ -61,9 +61,8 @@ fun AnimeSearchScreen(
         Row(modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp)
-            .background(color = Color(0Xfff6f6f6))
-            , horizontalArrangement = Arrangement.Center
-
+            .background(color = Color(0Xfff6f6f6)),
+            horizontalArrangement = Arrangement.Center
         ) {
             TextField(
                 value = id,

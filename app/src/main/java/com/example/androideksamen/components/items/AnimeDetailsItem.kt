@@ -43,7 +43,9 @@ fun AnimeDetailsItem() {
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(16.dp),
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier
+                .padding(16.dp)
+                .fillMaxWidth()
         ) {
 
 

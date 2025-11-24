@@ -47,7 +47,7 @@ fun AnimeSearchScreen(
             .fillMaxSize()
     ) {
         Text(
-            "Search for anime's",
+            "Search for animes",
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
             color = Color(0xFF0A0E0D),

@@ -46,7 +46,7 @@ fun AnimeSearchScreen(
             .fillMaxSize()
     ) {
         Text(
-            "Search for anime's",
+            "Search for animes",
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
             color = Color(0xFF0A0E0D),
@@ -57,12 +57,11 @@ fun AnimeSearchScreen(
         )
 
         //TODO LEGGE INN ANNEN TYPE TEKSTBOKS SÅ MAN KAN TRYKKE ENTER PÅ TASTATUR?
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp)
-                .background(color = Color(0Xfff6f6f6)), horizontalArrangement = Arrangement.Center
-
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp)
+            .background(color = Color(0Xfff6f6f6)),
+            horizontalArrangement = Arrangement.Center
         ) {
             TextField(
                 value = id,

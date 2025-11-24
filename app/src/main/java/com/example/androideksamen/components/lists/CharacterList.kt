@@ -14,7 +14,7 @@ fun CharacterList(
 ) {
     LazyColumn(modifier = modifier)
     {
-        items(characterList){ character ->
+        items(characterList) { character ->
             CharacterItem(character = character)
         }
     }

@@ -27,6 +27,8 @@ object AnimeAPIRepository {
 
     private val _animeService = _retrofit.create(AnimeService::class.java)
 
+
+    //GET ALL ANIME FROM API
     suspend fun getAllAnime(): List<Anime> {
         try {
             val response = _animeService.getAllAnime()
@@ -65,6 +67,25 @@ object AnimeAPIRepository {
             }
         } catch (e: Exception) {
             Log.d("getAnimeByIdCATCH", e.toString())
+            return emptyList()
+        }
+    }
+
+    suspend fun getAllMainCharacters(animeId: Int): List<Character> {
+        try {
+            val response = _animeService.getMainCharactersByAnimeId(animeId)
+            if (response.isSuccessful) {
+                val charList = response.body()?.data ?: emptyList()
+
+                Log.d("MAIN_CHARS_RAW", response.body()?.data.toString())//TODO DEBUG
+
+                return charList.filter { it.role.equals("Main", ignoreCase = true) }
+                    .map { it.character }
+            } else {
+                return emptyList()
+            }
+        } catch (e: Exception) {
+            Log.d("getAllMainCharactersCATCH", e.toString())
             return emptyList()
         }
     }

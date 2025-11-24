@@ -12,9 +12,9 @@ import com.example.androideksamen.data.database.AnimeDB
 //TODO: LAGE ET ITEM SOM KAN VISE IDEER SOM BRUKEREN HAR LAGRET
 
 @Composable
-fun AnimeIdeaItem( animeIdea: AnimeDB){
-    Box(modifier = Modifier.background(Color(0xffff00ff))){
-        Column(){
+fun AnimeIdeaItem(animeIdea: AnimeDB) {
+    Box(modifier = Modifier.background(Color(0xffff00ff))) {
+        Column {
             Text(animeIdea.title)
             Text(animeIdea.synopsis)
         }

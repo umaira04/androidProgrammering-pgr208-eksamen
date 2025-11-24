@@ -3,10 +3,8 @@ package com.example.androideksamen.screens.anime
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -72,7 +70,7 @@ fun AnimeScreen(
 @SuppressLint("ViewModelConstructorInComposable")
 @Preview(showBackground = true)
 @Composable
-fun AnimeScreenPreview(){
+fun AnimeScreenPreview() {
     AnimeScreen(
         animeViewModel = AnimeViewModel(),
         navController = rememberNavController()

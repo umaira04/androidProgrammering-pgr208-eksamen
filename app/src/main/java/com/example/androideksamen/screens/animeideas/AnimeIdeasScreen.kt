@@ -25,25 +25,25 @@ fun AnimeIdeasScreen(
     var synopsis: String by remember { mutableStateOf("") }
 
 
-    Column() {//MAIN COLUMN START
+    Column {//MAIN COLUMN START
         Text("AnimeIdeasScreen")
 
         TextField(
             value = title,
-            onValueChange = {title = it},
-            label = {Text("Tittel")}
+            onValueChange = { title = it },
+            label = { Text("Tittel") }
         )
         TextField(
             value = synopsis,
-            onValueChange = {synopsis = it},
-            label = {Text("Synopsis")}
+            onValueChange = { synopsis = it },
+            label = { Text("Synopsis") }
         )
 
         Button(
             onClick = {
-                if(title.isNotEmpty() && synopsis.isNotEmpty()) {
+                if (title.isNotEmpty() && synopsis.isNotEmpty()) {
                     animeIdeasViewModel.insertAnimeIdea(
-                        AnimeDB(title= title, synopsis = synopsis)
+                        AnimeDB(title = title, synopsis = synopsis)
                     )
                 }
             }
@@ -51,13 +51,13 @@ fun AnimeIdeasScreen(
             Text("Lagre anime")
         }
 
-        if( animeIdeas.value.count() > 0 ){
+        if (animeIdeas.value.count() > 0) {
             LazyColumn {
-                items( animeIdeas.value ){ animeIdea ->
+                items(animeIdeas.value) { animeIdea ->
                     AnimeIdeaItem(animeIdea)
                 }
             }
-        }else{
+        } else {
             Text("Lagre dine animeideer")
         }
 

@@ -16,7 +16,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -58,11 +57,11 @@ fun AnimeSearchScreen(
         )
 
         //TODO LEGGE INN ANNEN TYPE TEKSTBOKS SÅ MAN KAN TRYKKE ENTER PÅ TASTATUR?
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp)
-            .background(color = Color(0Xfff6f6f6))
-            , horizontalArrangement = Arrangement.Center
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp)
+                .background(color = Color(0Xfff6f6f6)), horizontalArrangement = Arrangement.Center
 
         ) {
             TextField(

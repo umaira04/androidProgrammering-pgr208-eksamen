@@ -1,14 +1,11 @@
 package com.example.androideksamen.components.items
 
-import android.R
-import android.R.attr.fontWeight
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -17,7 +14,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -92,7 +88,7 @@ fun CharacterItem(
             }
 
             // TODO : legge inn link til myanimelist.com wiki til karakteren?
-            
+
             IconButton(
                 onClick = {},
                 modifier = Modifier.size(40.dp)
@@ -126,10 +122,10 @@ fun CharacterItemPreview() {
             name = "Pikachu",
             characterImage = null,
             nameJapanese = "Japansk Pikachu",
-            ),
+        ),
         isFavorite = false
     )
 
-   
+
 }
 

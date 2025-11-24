@@ -8,7 +8,7 @@ data class CharacterResponse(
 )
 
 data class FilteredCharacterResponse(
-    val data:  List<MainCharacter>
+    val data: List<MainCharacter>
 )
 
 
@@ -35,4 +35,4 @@ data class MainCharacter(
     val character: Character,
     val role: String?,
 
-)
+    )

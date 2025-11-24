@@ -13,7 +13,7 @@ fun AnimeList(
     animeList: List<Anime>,
     onAnimeClicked: (Int) -> Unit,
     modifier: Modifier = Modifier
-){
+) {
     LazyColumn(modifier = modifier) {
         items(animeList) { anime ->
             AnimeItem(

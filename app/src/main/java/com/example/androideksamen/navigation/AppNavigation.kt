@@ -26,8 +26,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import com.example.androideksamen.screens.anime.AnimeScreen
 import com.example.androideksamen.screens.anime.AnimeViewModel
+import com.example.androideksamen.screens.animedetails.AnimeDetailsScreen
 import com.example.androideksamen.screens.animedetails.AnimeDetailsViewModel
 import com.example.androideksamen.screens.animeideas.AnimeIdeasScreen
 import com.example.androideksamen.screens.animeideas.AnimeIdeasViewModel
@@ -147,14 +149,14 @@ fun AppNavigation(
                 composable <NavRoutes.CharacterRoute> {
                     CharacterScreen(characterViewModel)
                 }
-                /*composable <NavRoutes.AnimeDetailsRoute> { backStackEntry ->
+                composable <NavRoutes.AnimeDetailsRoute> { backStackEntry ->
                     val args = backStackEntry.toRoute<NavRoutes.AnimeDetailsRoute>()
                     AnimeDetailsScreen(
                         animeDetailsViewModel,
                         navController,
                         args.animeId
                     )
-                }*/
+                }
             }
         }
     }

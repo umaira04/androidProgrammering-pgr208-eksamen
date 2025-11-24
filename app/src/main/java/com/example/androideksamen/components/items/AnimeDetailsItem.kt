@@ -1,7 +1,6 @@
 package com.example.androideksamen.components.items
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -38,15 +37,6 @@ fun AnimeDetailsItem(
     anime: Anime,
     goBack: () -> Unit
 ) {
-
-    Button(
-        // Go back button
-        onClick = { goBack },
-    ) {
-        Text("Go back")
-    } // End go back button
-
-
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier
@@ -57,6 +47,16 @@ fun AnimeDetailsItem(
             )
             .padding(horizontal = 24.dp, vertical = 16.dp)
     ) {
+
+        item {
+            Button(
+                // Go back button
+                onClick = { goBack() },
+            ) {
+                Text("Go back")
+            }
+        } // End go back button
+
 
         item { // Image
             AsyncImage(
@@ -75,8 +75,11 @@ fun AnimeDetailsItem(
                 modifier = Modifier
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Column() {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
                     Text( // Title english
                         text = anime.titleEnglish ?: "No english title",
                         fontSize = if (anime.titleEnglish.toString().length > 20) 24.sp else 32.sp,
@@ -98,23 +101,25 @@ fun AnimeDetailsItem(
 
                 Box(  // Yellow rating box
                     modifier = Modifier
-                        .size(56.dp, 32.dp)
+                        .size(80.dp, 32.dp)
                         .background(
                             color = Color(0xFFfdf1b2),
-                            shape = RoundedCornerShape(8.dp)
+                            shape = RoundedCornerShape(16.dp)
                         )
                 ) {
                     Row(
-                        horizontalArrangement = Arrangement.SpaceBetween,
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
                             .fillMaxHeight()
                             .fillMaxWidth()
-                            .padding(8.dp)
+                            .padding(horizontal = 8.dp)
+
 
                     ) {
                         Icon(Icons.Filled.Star, contentDescription = "none")
                         Text(
-                            text = anime.score?.toString() ?: "No rating",
+                            text = anime.score?.toString() ?: "...",
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold,
                         )
@@ -127,16 +132,16 @@ fun AnimeDetailsItem(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 8.dp)
-                    .padding(bottom = 8.dp),
+                    .padding(top = 16.dp)
+                    .padding(bottom = 16.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "Year ",
+                        text = "Year",
                         color = Color(0xFF656391),
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold
@@ -144,18 +149,17 @@ fun AnimeDetailsItem(
                     Text(
                         text = anime.year?.toString() ?: "No year",
                         color = Color.Black,
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold
+                        fontSize = 16.sp
                     )
 
                 }
 
                 Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        text = "Type ",
+                        text = "Type",
                         color = Color(0xFF656391),
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold
@@ -163,8 +167,7 @@ fun AnimeDetailsItem(
                     Text(
                         text = anime.type ?: "No type",
                         color = Color.Black,
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold
+                        fontSize = 16.sp
                     )
                 }
 
@@ -172,11 +175,11 @@ fun AnimeDetailsItem(
                     if (anime.type == "TV") {
 
                         Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                            verticalArrangement = Arrangement.spacedBy(8.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             Text(
-                                text = "Episodes ",
+                                text = "Episodes",
                                 color = Color(0xFF656391),
                                 fontSize = 24.sp,
                                 fontWeight = FontWeight.Bold
@@ -184,16 +187,16 @@ fun AnimeDetailsItem(
                             Text(
                                 text = anime.episodes?.toString() ?: "No episodes",
                                 color = Color.Black,
-                                fontSize = 24.sp,
-                                fontWeight = FontWeight.Bold
+                                fontSize = 16.sp,
                             )
                         }
                     } else { // End if anime.type == TV
                         Column(
+                            verticalArrangement = Arrangement.spacedBy(8.dp),
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             Text(
-                                text = "Duration ",
+                                text = "Duration",
                                 color = Color(0xFF656391),
                                 fontSize = 24.sp,
                                 fontWeight = FontWeight.Bold
@@ -203,7 +206,6 @@ fun AnimeDetailsItem(
                                 style = TextStyle(
                                     color = Color.Black,
                                     fontSize = 16.sp,
-                                    fontWeight = FontWeight.Bold
                                 )
                             )
                         }
@@ -238,7 +240,7 @@ fun AnimeDetailsItem(
 
         item {
             Column(
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 Text(
                     text = "Genres ",
@@ -254,11 +256,12 @@ fun AnimeDetailsItem(
                     anime.genres?.forEach { genre ->
                         Box(
                             modifier = Modifier
-                                .size(80.dp, 24.dp)
+                                .size(80.dp, 32.dp)
                                 .background(
                                     color = Color(0xFF979ffb),
-                                    shape = RoundedCornerShape(8.dp)
-                                ),
+                                    shape = RoundedCornerShape(16.dp)
+                                )
+                                .padding(horizontal = 8.dp),
                             contentAlignment = Alignment.Center
                         ) {
                             Text(
@@ -275,18 +278,21 @@ fun AnimeDetailsItem(
 
         item {
             Text(
-                text = "More info",
+                // More infomation
+                text = "More information",
                 color = Color(0xFF656391),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
             )
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(
-                text = anime.url.toString(),
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(  // URL
+                text = anime.url.toString(), // TO DO: GJØRE DENNE KLIKKBAR
                 color = Color.Black,
                 fontSize = 16.sp
             )
-        }
-    } // End Main Column for Card
+        } // End more information
+    } // End Main LazyColumn
+} // End AnimeDetailsItem
 
-} // End Main Box for Card
+

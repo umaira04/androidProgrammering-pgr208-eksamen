@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
@@ -31,17 +32,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.androideksamen.data.dataclasses.anime.Anime
+import com.example.androideksamen.data.dataclasses.character.Character
 
+
+//MULIG Å LEGGE TILBAKE KNAPP UTENFOR ITEM?? -U
 @Composable
 fun AnimeDetailsItem(
-    anime: Anime,
-    goBack: () -> Unit
+    anime: Anime, goBack: () -> Unit,
+    //CHAT ER DETTE CRACKHEAD KODE? SKAL PRØVE Å COOKE -U
+    isSearchScreen: Boolean = false, characters: List<Character> = emptyList()
 ) {
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight()
             .background(
                 color = Color(0xFFFBBAED),
             )
@@ -72,8 +76,7 @@ fun AnimeDetailsItem(
 
         item { // Start row with title and rating box
             Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -103,8 +106,7 @@ fun AnimeDetailsItem(
                     modifier = Modifier
                         .size(80.dp, 32.dp)
                         .background(
-                            color = Color(0xFFfdf1b2),
-                            shape = RoundedCornerShape(16.dp)
+                            color = Color(0xFFfdf1b2), shape = RoundedCornerShape(16.dp)
                         )
                 ) {
                     Row(
@@ -165,9 +167,7 @@ fun AnimeDetailsItem(
                         fontWeight = FontWeight.Bold
                     )
                     Text(
-                        text = anime.type ?: "No type",
-                        color = Color.Black,
-                        fontSize = 16.sp
+                        text = anime.type ?: "No type", color = Color.Black, fontSize = 16.sp
                     )
                 }
 
@@ -202,8 +202,7 @@ fun AnimeDetailsItem(
                                 fontWeight = FontWeight.Bold
                             )
                             Text(
-                                text = anime.duration ?: "No duration",
-                                style = TextStyle(
+                                text = anime.duration ?: "No duration", style = TextStyle(
                                     color = Color.Black,
                                     fontSize = 16.sp,
                                 )
@@ -249,8 +248,7 @@ fun AnimeDetailsItem(
                     fontWeight = FontWeight.Bold
                 )
                 Row( // Start row genres
-                    modifier = Modifier
-                        .fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     anime.genres?.forEach { genre ->
@@ -276,9 +274,27 @@ fun AnimeDetailsItem(
             } // End row genres
         }
 
+        //UMAIR PRØVER Å COOKE START
+
+        if (isSearchScreen) {
+            item {
+                Text(
+                    text = "Main characters",
+                    color = Color(0xFF656391),
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            items(characters) { character ->
+                CharacterItem(character = character)
+            }
+        } //UMAIR PRØVER Å COOKE END
+
+
+        //TODO? LEGGE INN EN IF HER SOM KUN VISER DERSOM DEN HAR EN LINK? -U
         item {
             Text(
-                // More infomation
+                // More information
                 text = "More information",
                 color = Color(0xFF656391),
                 fontSize = 24.sp,
@@ -287,9 +303,8 @@ fun AnimeDetailsItem(
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(  // URL
-                text = anime.url.toString(), // TO DO: GJØRE DENNE KLIKKBAR
-                color = Color.Black,
-                fontSize = 16.sp
+                text = anime.url.toString(), // TODO: GJØRE DENNE KLIKKBAR
+                color = Color.Black, fontSize = 16.sp
             )
         } // End more information
     } // End Main LazyColumn

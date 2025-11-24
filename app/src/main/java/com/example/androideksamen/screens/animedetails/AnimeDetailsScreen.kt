@@ -3,6 +3,7 @@ package com.example.androideksamen.screens.animedetails
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -58,12 +59,12 @@ fun AnimeDetailsScreen(
     }
 }// End AnimeDetailsScreen
 
-    @Preview(showBackground = true, showSystemUi = true)
-    @Composable
-    fun AnimeDetailsScreenPreview() {
-        AnimeDetailsScreen(
-            animeDetailsViewModel = AnimeDetailsViewModel(),
-            navController = rememberNavController(),
-            animeId = 1
-        )
-    }
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun AnimeDetailsScreenPreview() {
+    AnimeDetailsScreen(
+        animeDetailsViewModel = AnimeDetailsViewModel(),
+        navController = rememberNavController(),
+        animeId = 1
+    )
+}

@@ -1,5 +1,6 @@
 package com.example.androideksamen.components.items
 
+import android.R
 import android.R.attr.fontWeight
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -99,7 +100,8 @@ fun CharacterItem(
                 Icon(
                     imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                     contentDescription = "Favorite",
-                    modifier = Modifier.size(40.dp)
+                    modifier = Modifier.size(40.dp),
+                    tint = Color.Red
                 )
             }
 

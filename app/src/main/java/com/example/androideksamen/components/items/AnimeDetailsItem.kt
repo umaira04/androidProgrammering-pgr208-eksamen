@@ -1,7 +1,7 @@
 package com.example.androideksamen.components.items
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,82 +12,91 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import com.example.androideksamen.data.dataclasses.anime.Anime
 
-
-//anime : Anime SKAL TAS MOT SOM PARAMETER
 @Composable
-fun AnimeDetailsItem() {
+fun AnimeDetailsItem(
+    anime: Anime,
+    goBack: () -> Unit
+) {
 
-    Box(
-        modifier = Modifier
-            .border(2.dp, Color.Gray)
-            .fillMaxWidth()
-            .background(
-                color = Color.White,
-                shape = RoundedCornerShape(8.dp)
-            )
+    Button(
+        // Go back button
+        onClick = { goBack },
     ) {
-        Column(
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth()
-        ) {
+        Text("Go back")
+    } // End go back button
 
 
-            Box( // PLACEHOLDER FOR BILDE
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+            .background(
+                color = Color(0xFFFBBAED),
+            )
+            .padding(horizontal = 24.dp, vertical = 16.dp)
+    ) {
+
+        item { // Image
+            AsyncImage(
+                model = anime.images?.jpg?.imageUrl,
+                contentDescription = "bilde av ${anime.titleEnglish}",
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .size(400.dp)
-                    .background(
-                        color = Color.Gray,
-                        shape = RoundedCornerShape(8.dp)
-                    )
-            ) // End image placeholder box
+                    .clip(RoundedCornerShape(8.dp))
+                    .padding(bottom = 8.dp)
+            )
+        }// End image
 
-            Spacer(modifier = Modifier.height(8.dp))
-
-            // Start for rad med tittel og rating boks
+        item { // Start row with title and rating box
             Row(
                 modifier = Modifier
                     .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Column() {
-                    Text(
-                        text = "Pokemon",
-                        style = TextStyle(
-                            color = Color.Black,
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight.Bold
-                        )
+                    Text( // Title english
+                        text = anime.titleEnglish ?: "No english title",
+                        fontSize = if (anime.titleEnglish.toString().length > 20) 24.sp else 32.sp,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                        lineHeight = 32.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFF0A0E0D)
                     )
-                    Text(
-                        text = "ポケモン",
-                        style = TextStyle(
-                            color = Color.Black,
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold,
-
-                            )
+                    Text( // Title japanese
+                        text = anime.titleJapanese ?: "No japanese title",
+                        fontSize = if (anime.titleJapanese.toString().length > 12) 16.sp else 24.sp,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                        lineHeight = 24.sp,
+                        color = Color(0xFF0A0E0D)
                     )
                 }
 
-                Box(  // Star rating box
+                Box(  // Yellow rating box
                     modifier = Modifier
                         .size(56.dp, 32.dp)
                         .background(
@@ -101,96 +110,183 @@ fun AnimeDetailsItem() {
                             .fillMaxHeight()
                             .fillMaxWidth()
                             .padding(8.dp)
+
                     ) {
                         Icon(Icons.Filled.Star, contentDescription = "none")
-                        Text("8.9 ")
+                        Text(
+                            text = anime.score?.toString() ?: "No rating",
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold,
+                        )
                     }
-                } // End Star rating box
+                } // End yellow rating box
             } // End row with title and rating box
+        }
 
-            Row( // Start row with anime info: Year, Episodes, Type
+        item {  // Row with anime info: Year, Episodes, Type
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 8.dp)
                     .padding(bottom = 8.dp),
-                horizontalArrangement = Arrangement.SpaceAround,
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Column() {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
                     Text(
-                        text = "Year: 1996",
-                        style = TextStyle(
-                            color = Color(0xFF656391),
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold
-                        )
+                        text = "Year ",
+                        color = Color(0xFF656391),
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = anime.year?.toString() ?: "No year",
+                        color = Color.Black,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold
                     )
 
                 }
-                Column() {
+
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
                     Text(
-                        text = "Episodes: 236",
-                        style = TextStyle(
-                            color = Color(0xFF656391),
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold
-                        )
+                        text = "Type ",
+                        color = Color(0xFF656391),
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = anime.type ?: "No type",
+                        color = Color.Black,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold
                     )
                 }
-                Column() {
-                    Text(
-                        text = "Type: TV",
-                        style = TextStyle(
-                            color = Color(0xFF656391),
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                    )
-                }
+
+                if (anime.type != null) {
+                    if (anime.type == "TV") {
+
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            Text(
+                                text = "Episodes ",
+                                color = Color(0xFF656391),
+                                fontSize = 24.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                text = anime.episodes?.toString() ?: "No episodes",
+                                color = Color.Black,
+                                fontSize = 24.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+                    } else { // End if anime.type == TV
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(
+                                text = "Duration ",
+                                color = Color(0xFF656391),
+                                fontSize = 24.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                text = anime.duration ?: "No duration",
+                                style = TextStyle(
+                                    color = Color.Black,
+                                    fontSize = 16.sp,
+                                    fontWeight = FontWeight.Bold
+                                )
+                            )
+                        }
+                    } // End else if anime.type != TV
+                } // End if anime.type != null
+
             }
-            // End row with anime info: Year, Episodes, Type
+        }// End row with anime info: Year, Episodes, Type
 
-            Text("Synopsis: Pokémon the Series primarily follows Ash Ketchum, a young boy from Pallet Town who dreams of becoming a Pokémon Master. After receiving his first Pokémon, Pikachu, from Professor Oak, Ash embarks on a journey across various regions — including Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, Alola, and Galar — where he challenges Gym Leaders, competes in regional Pokémon Leagues, or other competitions, and meets a variety of companions who support him in his goal.")
-
-            Row( // Start row genres
+        item {  // Synposis
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    .fillMaxWidth()
+                    .padding(top = 8.dp)
+                    .padding(bottom = 8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Text("Genres:")
-                Box(
+                Text(
+                    "Synopsis ",
+                    color = Color(0xFF656391),
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    anime.synopsis ?: "No synopsis",
+                    color = Color.Black,
+                    fontSize = 16.sp,
+                    lineHeight = 24.sp
+                )
+            }
+        } // End synopsis
+
+        item {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                Text(
+                    text = "Genres ",
+                    color = Color(0xFF656391),
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold
+                )
+                Row( // Start row genres
                     modifier = Modifier
-                        .size(60.dp, 20.dp)
-                        .background(
-                            color = Color(0xFFfdb1c2),
-                            shape = RoundedCornerShape(8.dp)
-                        ),
-                    contentAlignment = Alignment.Center
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    Text("Fantasy")
-                }
-                Box(
-                    modifier = Modifier
-                        .size(60.dp, 20.dp)
-                        .background(
-                            color = Color(0xFFfdb1c2),
-                            shape = RoundedCornerShape(8.dp)
-                        ),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text("Action")
+                    anime.genres?.forEach { genre ->
+                        Box(
+                            modifier = Modifier
+                                .size(80.dp, 24.dp)
+                                .background(
+                                    color = Color(0xFF979ffb),
+                                    shape = RoundedCornerShape(8.dp)
+                                ),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = genre.name.toString(),
+                                fontSize = 16.sp,
+                                overflow = TextOverflow.Ellipsis,
+                                color = Color.White
+                            )
+                        }
+                    }
                 }
             } // End row genres
+        }
 
-            Text("More info: www.pokemon.no")
-        } // End Main Column for Card
+        item {
+            Text(
+                text = "More info",
+                color = Color(0xFF656391),
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = anime.url.toString(),
+                color = Color.Black,
+                fontSize = 16.sp
+            )
+        }
+    } // End Main Column for Card
 
-    } // End Main Box for Card
-
-} // End AnimeDetailsItem function
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun AnimeDetailsItemPreview() {
-    AnimeDetailsItem()
-}
+} // End Main Box for Card

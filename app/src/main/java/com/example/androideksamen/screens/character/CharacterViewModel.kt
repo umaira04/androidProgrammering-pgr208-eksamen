@@ -27,11 +27,11 @@ class CharacterViewModel : ViewModel() {
         setCharacters()
     }
 
-    fun toggleFavorite(characterId: Int){
+    fun toggleFavorite(characterId: Int) {
         val currentFavorites = _favorites.value.toMutableList()
         val idString = characterId.toString()
 
-        if (currentFavorites.contains(idString)){
+        if (currentFavorites.contains(idString)) {
             currentFavorites.remove(idString)
             Log.d("CharacterViewModel", "Fjernet favoritt: $idString")
         } else {

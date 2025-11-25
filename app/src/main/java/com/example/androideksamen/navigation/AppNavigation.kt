@@ -57,6 +57,7 @@ fun AppNavigation(
         unselectedTextColor = Color(0xFFF5F5F5)
     )
 
+    //TODO fikse bug som gjør at man kan gå tilbake på mobilen uten at navbaren flytter seg
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         bottomBar = {

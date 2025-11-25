@@ -31,7 +31,7 @@ import com.example.androideksamen.components.items.AnimeDetailsItem
 fun AnimeSearchScreen(
     animeSearchViewModel: AnimeSearchViewModel,
     navController: NavController
-) {
+) { //AnimeSearchScreen START
 
     val anime by animeSearchViewModel.anime.collectAsState()
     val mainCharacters by animeSearchViewModel.mainCharacters.collectAsState()
@@ -44,7 +44,7 @@ fun AnimeSearchScreen(
         modifier = Modifier
             .background(color = Color(0xFFFBBAED))
             .fillMaxSize()
-    ) {
+    ) { //MAIN COLUMN START
         Text(
             "Search for animes",
             fontSize = 28.sp,
@@ -57,10 +57,11 @@ fun AnimeSearchScreen(
         )
 
         //TODO LEGGE INN ANNEN TYPE TEKSTBOKS SÅ MAN KAN TRYKKE ENTER PÅ TASTATUR?
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp)
-            .background(color = Color(0Xfff6f6f6)),
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp)
+                .background(color = Color(0Xfff6f6f6)),
             horizontalArrangement = Arrangement.Center
         ) {
             TextField(
@@ -95,5 +96,5 @@ fun AnimeSearchScreen(
         } ?: Text("Search for an anime by ID")
 
 
-    }
-}
+    }//MAIN COLUMN END
+} //AnimeSearchScreen END

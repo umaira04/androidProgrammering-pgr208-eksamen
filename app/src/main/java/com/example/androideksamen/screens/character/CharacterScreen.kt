@@ -6,10 +6,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -26,6 +30,14 @@ fun CharacterScreen(
 
     val characters by characterViewModel.characters.collectAsState()
     val favorites by characterViewModel.favorites.collectAsState()
+
+    var showOnlyFavorites: Boolean by remember { mutableStateOf(false) }
+
+    val displayedCharacters = if (showOnlyFavorites) {
+        characters.filter { favorites.contains(it.id) }
+    } else {
+        characters
+    }
 
     Column(
         modifier = Modifier
@@ -44,10 +56,19 @@ fun CharacterScreen(
                 .padding(vertical = 8.dp)
                 .fillMaxWidth()
         )
+        Button(onClick = {
+            if (!showOnlyFavorites) {
+                showOnlyFavorites = true
+            } else {
+                showOnlyFavorites = false
+            }
+        }) {
+            Text("Toggle favorites")
+        }
 
         // CharacterList
         CharacterList(
-            characterList = characters,
+            characterList = displayedCharacters,
             favorites = favorites,
             onFavoriteClick = { characterId ->
                 characterViewModel.toggleFavorite(characterId)

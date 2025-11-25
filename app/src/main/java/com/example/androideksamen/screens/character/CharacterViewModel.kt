@@ -14,7 +14,7 @@ class CharacterViewModel : ViewModel() {
     private val _characters = MutableStateFlow<List<Character>>(emptyList())
     val characters = _characters.asStateFlow()
 
-    private val _favorites = MutableStateFlow<List<String>>(emptyList())
+    private val _favorites = MutableStateFlow<List<Int>>(emptyList())
     val favorites = _favorites.asStateFlow()
 
     fun setCharacters() {
@@ -27,16 +27,15 @@ class CharacterViewModel : ViewModel() {
         setCharacters()
     }
 
-    fun toggleFavorite(characterId: Int) {
+    fun toggleFavorite(charId: Int) {
         val currentFavorites = _favorites.value.toMutableList()
-        val idString = characterId.toString()
 
-        if (currentFavorites.contains(idString)) {
-            currentFavorites.remove(idString)
-            Log.d("CharacterViewModel", "Fjernet favoritt: $idString")
+        if (currentFavorites.contains(charId)) {
+            currentFavorites.remove(charId)
+            Log.d("CharacterViewModel", "Fjernet favoritt: $charId")
         } else {
-            currentFavorites.add(idString)
-            Log.d("CharacterViewModel", "La til favoritt: $idString")
+            currentFavorites.add(charId)
+            Log.d("CharacterViewModel", "La til favoritt: $charId")
         }
         _favorites.value = currentFavorites
     }

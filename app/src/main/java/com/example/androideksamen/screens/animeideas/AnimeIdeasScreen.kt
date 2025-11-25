@@ -40,7 +40,7 @@ fun AnimeIdeasScreen(
         animeIdeasViewModel.deleteAnimeIdea(animeIdea)
     }
 
-    Column() {//MAIN COLUMN START
+    Column {//MAIN COLUMN START
         Text("AnimeIdeasScreen")
 
         TextField(

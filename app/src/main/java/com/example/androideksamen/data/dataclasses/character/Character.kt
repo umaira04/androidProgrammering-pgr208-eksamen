@@ -7,6 +7,11 @@ data class CharacterResponse(
     val data: List<Character>
 )
 
+data class FilteredCharacterResponse(
+    val data: List<MainCharacter>
+)
+
+
 /*data class CharacterFavorites(
     val character: Character,
     val isFavorite: Boolean = false
@@ -24,3 +29,10 @@ data class Character(
     @SerializedName("name_kanji")
     val nameJapanese: String?
 )
+
+
+data class MainCharacter(
+    val character: Character,
+    val role: String?,
+
+    )

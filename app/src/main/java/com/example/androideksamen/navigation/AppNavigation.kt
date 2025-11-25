@@ -46,9 +46,9 @@ fun AppNavigation(
     characterViewModel: CharacterViewModel,
     animeDetailsViewModel: AnimeDetailsViewModel
 
-){
+) {
     val navController = rememberNavController()
-    var activeItem by rememberSaveable() { mutableIntStateOf(0) }
+    var activeItem by rememberSaveable { mutableIntStateOf(0) }
     val animeTheme = NavigationBarItemDefaults.colors(
         indicatorColor = Color(0xFF0A0E0D),
         selectedIconColor = Color(0xFFF5F5F5),
@@ -60,7 +60,8 @@ fun AppNavigation(
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
-            NavigationBar(containerColor = Color(0xFF656391)
+            NavigationBar(
+                containerColor = Color(0xFF656391)
             ) {
                 NavigationBarItem( // Start Anime
                     selected = activeItem == 0,
@@ -137,19 +138,19 @@ fun AppNavigation(
                 navController = navController,
                 startDestination = NavRoutes.AnimeRoute
             ) {
-                composable <NavRoutes.AnimeRoute> {
+                composable<NavRoutes.AnimeRoute> {
                     AnimeScreen(animeViewModel, navController)
                 }
-                composable <NavRoutes.AnimeSearchRoute> {
+                composable<NavRoutes.AnimeSearchRoute> {
                     AnimeSearchScreen(animeSearchViewModel, navController)
                 }
-                composable <NavRoutes.AnimeIdeasRoute> {
+                composable<NavRoutes.AnimeIdeasRoute> {
                     AnimeIdeasScreen(animeIdeasViewModel)
                 }
-                composable <NavRoutes.CharacterRoute> {
+                composable<NavRoutes.CharacterRoute> {
                     CharacterScreen(characterViewModel)
                 }
-                composable <NavRoutes.AnimeDetailsRoute> { backStackEntry ->
+                composable<NavRoutes.AnimeDetailsRoute> { backStackEntry ->
                     val args = backStackEntry.toRoute<NavRoutes.AnimeDetailsRoute>()
                     AnimeDetailsScreen(
                         animeDetailsViewModel,

@@ -1,13 +1,11 @@
 package com.example.androideksamen.components.items
 
-import android.R.attr.fontWeight
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -16,7 +14,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -38,6 +36,7 @@ import com.example.androideksamen.data.dataclasses.character.Character
 //TODO: søk
 //TODO: endre fontSize i animeitem så det er likt som characteritem
 @Composable
+//hvorfor har du ikke brukt dataklassen i character som også har favorites??
 fun CharacterItem(
     character: Character,
     isFavorite: Boolean = false
@@ -70,31 +69,35 @@ fun CharacterItem(
                     fontSize = if (character.name.toString().length > 16) 16.sp else 24.sp,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
                 )
 
                 Text(
                     text = character.nameJapanese ?: "No japanese name",
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
+                    color = Color.Black
                 )
 
                 Text(
                     text = "Noe info her også",
-                    fontSize = 16.sp
+                    fontSize = 16.sp,
+                    color = Color.Black
                 )
             }
 
             // TODO : legge inn link til myanimelist.com wiki til karakteren?
-            
+
             IconButton(
                 onClick = {},
                 modifier = Modifier.size(40.dp)
             ) {
                 Icon(
-                    imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder,
+                    imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                     contentDescription = "Favorite",
-                    modifier = Modifier.size(40.dp)
+                    modifier = Modifier.size(40.dp),
+                    tint = Color.Red
                 )
             }
 
@@ -119,10 +122,10 @@ fun CharacterItemPreview() {
             name = "Pikachu",
             characterImage = null,
             nameJapanese = "Japansk Pikachu",
-            ),
+        ),
         isFavorite = false
     )
 
-   
+
 }
 

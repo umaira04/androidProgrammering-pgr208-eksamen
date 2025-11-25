@@ -10,8 +10,7 @@ import kotlinx.coroutines.launch
 
 //TRENGER VI EN EGEN VIEWMODEL HER? DETAILSSCREEN KAN JO BARE HENTE FRA ANIMEVM
 // --UMAIR
-// TROR DEN MÅ HA EGEN? HAN GJORDE DET I FORELESNING.
-// MEN DA HADDE VI OGSÅ BARE EN SCREEN -- JEANETTE
+// TROR DEN MÅ HA EGEN? HAN GJORDE DET I FORELESNING. -- JEANETTE
 class AnimeDetailsViewModel : ViewModel() {
     private val _anime = MutableStateFlow<Anime?>(null)
     val anime = _anime.asStateFlow()

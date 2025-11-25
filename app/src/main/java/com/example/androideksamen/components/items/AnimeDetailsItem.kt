@@ -48,7 +48,7 @@ fun AnimeDetailsItem(
             .padding(horizontal = 24.dp, vertical = 16.dp)
     ) {
 
-        item {
+        item { // TO DO: DENNE MÅ STYLES SÅ ALLE KNAPPENE VÅRE ER LIKE
             Button(
                 // Go back button
                 onClick = { goBack() },
@@ -114,8 +114,6 @@ fun AnimeDetailsItem(
                             .fillMaxHeight()
                             .fillMaxWidth()
                             .padding(horizontal = 8.dp)
-
-
                     ) {
                         Icon(Icons.Filled.Star, contentDescription = "none")
                         Text(

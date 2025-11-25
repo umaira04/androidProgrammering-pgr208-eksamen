@@ -67,7 +67,7 @@ fun AnimeSearchScreen(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth()
-        ){
+        ) {
             anime?.let { anime ->
                 AnimeDetailsItem(
                     anime = anime,

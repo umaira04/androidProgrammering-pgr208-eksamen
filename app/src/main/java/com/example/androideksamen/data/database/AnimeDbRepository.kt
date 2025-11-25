@@ -45,6 +45,7 @@ object AnimeDbRepository {
 
         suspend fun updateAnimeIdea(animeIdea: AnimeDB): Int {
             try {
+                Log.d("updateAnimeIdea", animeIdea.toString())
                 return _animeDao.updateAnimeIdea(animeIdea)
             } catch (e: Exception) {
                 Log.d("updateAnimeIdeasCatch", e.message.toString())

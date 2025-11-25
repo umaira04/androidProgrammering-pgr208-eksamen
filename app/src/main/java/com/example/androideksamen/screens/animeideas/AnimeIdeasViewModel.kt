@@ -55,6 +55,23 @@ class AnimeIdeasViewModel : ViewModel() {
         }
     }
 
+    fun updateAnimeIdea(animeIdea: AnimeDB) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val updatedRows = AnimeDbRepository.updateAnimeIdea(animeIdea)
+            Log.d("animeIdea updatedRows", updatedRows.toString())
+            if (updatedRows > 0) {
+                setAnimeIdeas()
+                Log.d("animeIdeaState updated", _animeIdeas.toString())
+            } else {
+                // LEGGE INN KODE FOR Å SI IFRA TIL BRUKER AT NOE HAR GÅTT GALT
+                Log.d(
+                    "updateAnimeIdeaElse", "error updating animeIdea from AnimeIdeasViewModel"
+                )
+            }
+        }
+    }
+
+
     //TODO: SLIDESERIE 19.
     // TODO: LEGG INN FUNKSJONALITET FOR Å GI INPUT I I SCREEN
 

@@ -49,7 +49,7 @@ fun AnimeDetailsItem(
             .background(
                 color = Color(0xFFFBBAED),
             )
-            .padding(horizontal = 24.dp, vertical = 16.dp)
+            .padding(horizontal = 24.dp)
     ) {
 
         item { // TO DO: DENNE MÅ STYLES SÅ ALLE KNAPPENE VÅRE ER LIKE

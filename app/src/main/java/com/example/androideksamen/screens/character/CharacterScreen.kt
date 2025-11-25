@@ -25,6 +25,7 @@ fun CharacterScreen(
 ) {
 
     val characters by characterViewModel.characters.collectAsState()
+    val favorites by characterViewModel.favorites.collectAsState()
 
     Column(
         modifier = Modifier
@@ -47,6 +48,10 @@ fun CharacterScreen(
         // CharacterList
         CharacterList(
             characterList = characters,
+            favorites = favorites,
+            onFavoriteClick = { characterId ->
+                characterViewModel.toggleFavorite(characterId)
+            },
             modifier = Modifier.weight(1f)
         )
 

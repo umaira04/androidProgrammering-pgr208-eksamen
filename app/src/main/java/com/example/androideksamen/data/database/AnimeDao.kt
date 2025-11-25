@@ -22,4 +22,7 @@ interface AnimeDao {
 
     @Delete
     suspend fun deleteAnimeIdea(animeIdea: AnimeDB) : Int
+
+    @Query("SELECT * FROM anime_idea WHERE id = :id")
+    suspend fun getAnimeIdeaById(id: Int): AnimeDB?
 }

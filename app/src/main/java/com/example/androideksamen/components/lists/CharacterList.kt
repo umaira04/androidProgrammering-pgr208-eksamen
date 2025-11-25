@@ -10,7 +10,7 @@ import com.example.androideksamen.data.dataclasses.character.Character
 @Composable
 fun CharacterList(
     characterList: List<Character>,
-    favorites: List<String>,
+    favorites: List<Int>,
     onFavoriteClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -18,7 +18,7 @@ fun CharacterList(
         items(characterList) { character ->
             CharacterItem(
                 character = character,
-                isFavorite = favorites.contains(character.id.toString()),
+                isFavorite = favorites.contains(character.id),
                 onFavClick = { onFavoriteClick(character.id) }
             )
         }

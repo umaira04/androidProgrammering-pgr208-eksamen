@@ -18,10 +18,10 @@ interface AnimeDao {
     suspend fun insertAnimeIdea(animeIdea: AnimeDB): Long
 
     @Update
-    suspend fun updateAnimeIdea(animeIdea: AnimeDB) : Int
+    suspend fun updateAnimeIdea(animeIdea: AnimeDB): Int
 
     @Delete
-    suspend fun deleteAnimeIdea(animeIdea: AnimeDB) : Int
+    suspend fun deleteAnimeIdea(animeIdea: AnimeDB): Int
 
     @Query("SELECT * FROM anime_idea WHERE id = :id")
     suspend fun getAnimeIdeaById(id: Int): AnimeDB?

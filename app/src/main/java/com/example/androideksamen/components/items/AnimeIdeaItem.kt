@@ -8,8 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material3.Button
@@ -28,21 +26,20 @@ fun AnimeIdeaItem(
     animeIdea: AnimeDB,
     handleEditBtnClick: (AnimeDB) -> Unit,
     handleDeleteBtnClick: (AnimeDB) -> Unit
-    )
-{
+) {
     Box(
         modifier = Modifier
             .background(Color(0xFFa4facb))
             .fillMaxWidth()
     ) {
-        Column() {
+        Column {
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
             ) {
-                Column() {
+                Column {
                     Text(animeIdea.title)
                     Text(animeIdea.synopsis)
                 }
@@ -51,12 +48,12 @@ fun AnimeIdeaItem(
                     modifier = Modifier
                 ) {
                     Button(
-                        onClick = {handleEditBtnClick(animeIdea)}
+                        onClick = { handleEditBtnClick(animeIdea) }
                     ) {
                         Icon(Icons.Outlined.Edit, contentDescription = "none")
                     }
                     Button(
-                        onClick = {handleDeleteBtnClick(animeIdea)}
+                        onClick = { handleDeleteBtnClick(animeIdea) }
                     ) {
                         Icon(Icons.Outlined.Delete, contentDescription = "none")
                     }

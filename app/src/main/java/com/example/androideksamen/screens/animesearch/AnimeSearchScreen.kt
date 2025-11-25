@@ -75,7 +75,7 @@ fun AnimeSearchScreen(
                     isSearchScreen = true,
                     characters = mainCharacters
                 )
-            } ?: Text("")
+            }
         }
 
         Row(modifier = Modifier

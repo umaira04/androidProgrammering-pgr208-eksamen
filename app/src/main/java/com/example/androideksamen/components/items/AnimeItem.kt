@@ -71,7 +71,7 @@ fun AnimeItem(
                 Text( // Japanese
                     text = anime.titleJapanese.toString(),
                     fontSize = if (anime.titleJapanese.toString().length > 12) 24.sp else 32.sp,
-                    maxLines = 2,
+                    maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     lineHeight = 32.sp,
                     color = Color(0xFF0A0E0D),

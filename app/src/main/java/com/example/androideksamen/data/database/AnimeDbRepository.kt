@@ -48,7 +48,7 @@ object AnimeDbRepository {
                 return _animeDao.updateAnimeIdea(animeIdea)
             } catch (e: Exception) {
                 Log.d("updateAnimeIdeasCatch", e.message.toString())
-                return -1 // ER DETTE RIKTIG?
+                return -1 // ER DETTE RIKTIG? Skal det være long? Eller noe annet?
             }
         }
 
@@ -57,7 +57,7 @@ object AnimeDbRepository {
                 return _animeDao.deleteAnimeIdea(animeIdea)
             } catch (e: Exception) {
                 Log.d("deleteAnimeIdeasCatch", e.message.toString())
-                return -1 // ER DETTE RIKTIG?
+                return -1 // ER DETTE RIKTIG? Skal det være long? Eller noe annet?
             }
         }
     }

@@ -40,6 +40,21 @@ class AnimeIdeasViewModel : ViewModel() {
         }
     }
 
+    fun deleteAnimeIdea(animeIdea: AnimeDB) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val deletedRows = AnimeDbRepository.deleteAnimeIdea(animeIdea)
+            if (deletedRows > 0) {
+                _animeIdeas.value -= animeIdea
+            } else {
+                // LEGG INN KODE FOR Å SI IFRA TIL BRUKER AT NOE HAR GÅTT GALT
+                Log.d(
+                    "deleteAnimeIdeaElse", "error deleting animeIdea from AnimeIdeasViewModel"
+                )
+            }
+
+        }
+    }
+
     //TODO: SLIDESERIE 19.
     // TODO: LEGG INN FUNKSJONALITET FOR Å GI INPUT I I SCREEN
 

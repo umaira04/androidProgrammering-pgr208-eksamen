@@ -24,6 +24,16 @@ fun AnimeIdeasScreen(
     var title: String by remember { mutableStateOf("") }
     var synopsis: String by remember { mutableStateOf("") }
 
+    fun handleEditBtnClick(animeIdea : AnimeDB) {
+        title = animeIdea.title
+        synopsis = animeIdea.synopsis
+    }
+
+    fun handleDeleteBtnClick(animeIdea : AnimeDB) {
+        animeIdeasViewModel.deleteAnimeIdea(animeIdea)
+    }
+
+
 
     Column() {//MAIN COLUMN START
         Text("AnimeIdeasScreen")
@@ -54,10 +64,15 @@ fun AnimeIdeasScreen(
         if( animeIdeas.value.count() > 0 ){
             LazyColumn {
                 items( animeIdeas.value ){ animeIdea ->
-                    AnimeIdeaItem(animeIdea)
+                    AnimeIdeaItem(
+                        animeIdea,
+                        handleEditBtnClick = {handleEditBtnClick(animeIdea = it)},
+                        handleDeleteBtnClick = {handleDeleteBtnClick(animeIdea = it)}
+                    )
                 }
             }
-        }else{
+        }
+        else{
             Text("Lagre dine animeideer")
         }
 

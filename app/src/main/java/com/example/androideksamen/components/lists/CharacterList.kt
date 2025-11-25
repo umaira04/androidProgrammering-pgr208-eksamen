@@ -10,12 +10,17 @@ import com.example.androideksamen.data.dataclasses.character.Character
 @Composable
 fun CharacterList(
     characterList: List<Character>,
+    favorites: List<String>,
+    onFavoriteClick: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    LazyColumn(modifier = modifier)
-    {
+    LazyColumn(modifier = modifier) {
         items(characterList) { character ->
-            CharacterItem(character = character)
+            CharacterItem(
+                character = character,
+                isFavorite = favorites.contains(character.id.toString()),
+                onFavClick = { onFavoriteClick(character.id) }
+            )
         }
     }
 }

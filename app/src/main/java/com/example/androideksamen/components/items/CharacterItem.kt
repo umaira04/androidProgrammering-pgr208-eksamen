@@ -30,16 +30,14 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.androideksamen.data.dataclasses.character.Character
 
-
-//TODO: legge til fav
 //TODO: filter etter fav
 //TODO: søk
 //TODO: endre fontSize i animeitem så det er likt som characteritem
 @Composable
-//hvorfor har du ikke brukt dataklassen i character som også har favorites??
 fun CharacterItem(
     character: Character,
-    isFavorite: Boolean = false
+    isFavorite: Boolean = false,
+    onFavClick: () -> Unit = {}
 ) {
     Box(
         modifier = Modifier
@@ -90,14 +88,14 @@ fun CharacterItem(
             // TODO : legge inn link til myanimelist.com wiki til karakteren?
 
             IconButton(
-                onClick = {},
+                onClick = onFavClick,
                 modifier = Modifier.size(40.dp)
             ) {
                 Icon(
                     imageVector = if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                     contentDescription = "Favorite",
                     modifier = Modifier.size(40.dp),
-                    tint = Color.Red
+                    tint = Color(0xFF324663)
                 )
             }
 

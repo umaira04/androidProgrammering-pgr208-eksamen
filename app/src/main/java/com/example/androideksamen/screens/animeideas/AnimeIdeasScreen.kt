@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Warning
@@ -34,7 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.androideksamen.components.items.AnimeIdeaItem
+import com.example.androideksamen.components.lists.AnimeIdeaList
 import com.example.androideksamen.data.database.AnimeDB
 import kotlinx.coroutines.delay
 
@@ -100,7 +98,7 @@ fun AnimeIdeasScreen(
         )
 
         Text(
-            text = "Title",
+            text = "Title *",
             fontSize = 16.sp,
             modifier = Modifier
                 .padding(horizontal = 24.dp)
@@ -109,7 +107,7 @@ fun AnimeIdeasScreen(
         TextField(
             value = title,
             onValueChange = { title = it },
-            placeholder = { Text("Title") },
+            placeholder = { Text("Enter your anime title...") },
             modifier = Modifier
                 .padding(horizontal = 16.dp)
                 .clip(RoundedCornerShape(32.dp))
@@ -127,7 +125,7 @@ fun AnimeIdeasScreen(
         )
 
         Text(
-            text = "Synopsis",
+            text = "Synopsis *",
             fontSize = 16.sp,
             modifier = Modifier
                 .padding(horizontal = 24.dp)
@@ -136,7 +134,7 @@ fun AnimeIdeasScreen(
         TextField(
             value = synopsis,
             onValueChange = { synopsis = it },
-            placeholder = { Text("Synopsis") },
+            placeholder = { Text("Describe your anime idea...") },
             modifier = Modifier
                 .padding(horizontal = 16.dp)
                 .clip(RoundedCornerShape(32.dp))
@@ -279,17 +277,13 @@ fun AnimeIdeasScreen(
             }
         } else {
             if (animeIdeas.value.count() > 0 && !isDeleting) {
-                LazyColumn {
-                    items(animeIdeas.value) { animeIdea ->
-                        AnimeIdeaItem(
-                            animeIdea,
-                            handleEditBtnClick = { handleEditBtnClick(animeIdea = it) },
-                            handleDeleteBtnClick = { handleDeleteBtnClick(animeIdea = it) }
-                        )
-                    }
-                }
+                AnimeIdeaList(
+                    animeIdeas =  animeIdeas.value,
+                    handleEditBtnClick = { handleEditBtnClick(animeIdea = it) },
+                    handleDeleteBtnClick = { handleDeleteBtnClick(animeIdea = it) }
+                )
             } else {
-                Text("No anime ideas found")
+                Text("No anime ideas yet")
             }
         }
     } //MAIN COLUMN END

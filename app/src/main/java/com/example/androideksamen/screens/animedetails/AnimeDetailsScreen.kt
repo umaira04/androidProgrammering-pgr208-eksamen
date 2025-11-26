@@ -47,17 +47,6 @@ fun AnimeDetailsScreen(
             .padding(8.dp, 8.dp, 8.dp, 0.dp)
     ) {
 
-        // Tittel
-        Text(
-            "Anime Details",
-            fontSize = 28.sp,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp)
-        )
-
         IconButton( // TODO: DENNE MÅ STYLES SÅ ALLE KNAPPENE VÅRE ER LIKE
             // Go back button
             onClick = { navController.popBackStack() },

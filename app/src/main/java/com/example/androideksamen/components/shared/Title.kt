@@ -17,7 +17,7 @@ fun Title(
 ){
     Text(
         text = title,
-        fontSize = 28.sp,
+        fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
         color = Color(0xFF0A0E0D),
         textAlign = TextAlign.Center,

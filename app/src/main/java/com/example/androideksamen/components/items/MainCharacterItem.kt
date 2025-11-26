@@ -78,7 +78,7 @@ fun MainCharacterItem(
                 //LINK TO MYANIMELIST WIKI FOR CHARACTER
 
                 Text(
-                    text = "åpne i myanimelist",
+                    text = "Open in myanimelist",
                     color = Color.Black,
                     fontSize = 16.sp,
                     modifier = Modifier

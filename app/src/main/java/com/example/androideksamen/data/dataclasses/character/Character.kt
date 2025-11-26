@@ -21,7 +21,9 @@ data class Character(
     val name: String,
 
     @SerializedName("name_kanji")
-    val nameJapanese: String?
+    val nameJapanese: String?,
+
+    val url: String?
 )
 
 

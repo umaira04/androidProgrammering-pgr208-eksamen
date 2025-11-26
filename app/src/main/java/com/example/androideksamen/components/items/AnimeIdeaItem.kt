@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -13,8 +12,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Edit
-import androidx.compose.material.icons.outlined.Warning
-import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -45,56 +42,49 @@ fun AnimeIdeaItem(
                 shape = RoundedCornerShape(8.dp)
             )
     ) {
-        Column {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier
+                .padding(16.dp)
+        ) {
             Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
+                horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
+                modifier = Modifier.fillMaxWidth()
             ) {
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                            modifier = Modifier
-                                .padding(8.dp)
+                IconButton(
+                    onClick = { handleDeleteBtnClick(animeIdea) },
+                    modifier = Modifier
+                        .size(48.dp)
+                        .clip(RoundedCornerShape(25.dp))
+                        .background(Color.White)
                 ) {
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        IconButton(
-                            onClick = { handleDeleteBtnClick(animeIdea) },
-                            modifier = Modifier
-                                .size(48.dp)
-                                .clip(RoundedCornerShape(25.dp))
-                        ) {
-                            Icon(Icons.Outlined.Delete, contentDescription = "none")
-                        }
-                        IconButton(
-                            onClick = { handleEditBtnClick(animeIdea) },
-                            modifier = Modifier
-                                .size(48.dp)
-                                .clip(RoundedCornerShape(25.dp))
-                        ) {
-                            Icon(Icons.Outlined.Edit, contentDescription = "none")
-                        }
-
-                    }
-                    Text(
-                        text = "Title",
-                    color = Color(0xFF656391),
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold
-                    )
-                    Text(animeIdea.title)
-                    Text(
-                        text = "Synopsis",
-                        color = Color(0xFF656391),
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Text(animeIdea.synopsis)
+                    Icon(Icons.Outlined.Delete, contentDescription = "none")
+                }
+                IconButton(
+                    onClick = { handleEditBtnClick(animeIdea) },
+                    modifier = Modifier
+                        .size(48.dp)
+                        .clip(RoundedCornerShape(25.dp))
+                        .background(Color.White)
+                ) {
+                    Icon(Icons.Outlined.Edit, contentDescription = "none")
                 }
             }
+            Text(
+                text = "Title",
+                color = Color(0xFF656391),
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Text(animeIdea.title)
+            Text(
+                text = "Synopsis",
+                color = Color(0xFF656391),
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold
+            )
+            Text(animeIdea.synopsis)
         }
+
     }
 }

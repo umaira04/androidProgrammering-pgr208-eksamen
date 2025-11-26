@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.Button
@@ -22,6 +23,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -37,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.items.AnimeIdeaItem
 import com.example.androideksamen.data.database.AnimeDB
+import kotlinx.coroutines.delay
 
 @Composable
 fun AnimeIdeasScreen(
@@ -51,6 +54,14 @@ fun AnimeIdeasScreen(
     var isEditing by remember { mutableStateOf(false) }
     var isDeleting by remember { mutableStateOf(false) }
     var animeIdeaToDelete: AnimeDB? by remember { mutableStateOf(null) }
+    var userFeedbackMessage by remember { mutableStateOf("") }
+
+    LaunchedEffect(userFeedbackMessage) {
+        if (userFeedbackMessage.isNotEmpty()) {
+            delay(3000)
+            userFeedbackMessage = ""
+        }
+    }
 
     fun handleEditBtnClick(animeIdea: AnimeDB) {
         title = animeIdea.title
@@ -147,6 +158,7 @@ fun AnimeIdeasScreen(
                             isEditing = false
                             title = ""
                             synopsis = ""
+                            userFeedbackMessage = "Update: Successful"
                         }
                     }
                 ) {
@@ -165,6 +177,14 @@ fun AnimeIdeasScreen(
             }
         } else {
 
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+
+            ) {
             Button(
                 onClick = {
                     if (title.isNotEmpty() && synopsis.isNotEmpty()) {
@@ -173,12 +193,19 @@ fun AnimeIdeasScreen(
                         )
                         title = ""
                         synopsis = ""
+                        userFeedbackMessage = "Save: Successful"
                     }
                 }
             ) {
                 Text("Save anime")
             }
+                Text(
+                    text = userFeedbackMessage,
+                    color = Color(0xFF08864A),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold)
         }
+            }
 
         if (isDeleting) {
 
@@ -221,6 +248,7 @@ fun AnimeIdeasScreen(
                                 }
                                 isDeleting = false
                                 animeIdeaToDelete = null
+                                userFeedbackMessage = "Delete: Successful"
                             }
                         ) {
                             Text("Delete")

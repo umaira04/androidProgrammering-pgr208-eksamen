@@ -54,7 +54,7 @@ fun AnimeSearchScreen(
     ) {
         // Tittel
         Text(
-            "Search for animes",
+            "Search",
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
             color = Color(0xFF0A0E0D),
@@ -75,10 +75,13 @@ fun AnimeSearchScreen(
             } else if (!isSearched) {
                 Text(
                     text = "Search for anime by ID",
-                    fontSize = 16.sp,
+                    fontSize = 18.sp,
                     color = Color.Black,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(top = 8.dp)
+                    fontWeight = FontWeight.SemiBold,
+                    modifier = Modifier
+                        .padding(top = 8.dp)
+                        .fillMaxWidth(),
+                    textAlign = TextAlign.Center
                 )
             } else {
                 anime?.let { anime ->
@@ -88,9 +91,7 @@ fun AnimeSearchScreen(
                         characters = mainCharacters
                     )
                 }
-
             }
-
         }
 
         Row(

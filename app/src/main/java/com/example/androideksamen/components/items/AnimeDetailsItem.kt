@@ -145,7 +145,7 @@ fun AnimeDetailsItem(
                 ) {
                     Text(
                         text = "Year",
-                        color = Color(0xFF656391),
+                        color = Color(0xFF0A0E0D),
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold
                     )
@@ -162,7 +162,7 @@ fun AnimeDetailsItem(
                 ) {
                     Text(
                         text = "Type",
-                        color = Color(0xFF656391),
+                        color = Color(0xFF0A0E0D),
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold
                     )
@@ -197,13 +197,13 @@ fun AnimeDetailsItem(
                         ) {
                             Text(
                                 text = "Duration",
-                                color = Color(0xFF656391),
+                                color = Color(0xFF0A0E0D),
                                 fontSize = 24.sp,
                                 fontWeight = FontWeight.Bold
                             )
                             Text(
                                 text = anime.duration ?: "No duration", style = TextStyle(
-                                    color = Color.Black,
+                                    color = Color(0xFF0A0E0D),
                                     fontSize = 16.sp,
                                 )
                             )
@@ -224,7 +224,7 @@ fun AnimeDetailsItem(
             ) {
                 Text(
                     "Synopsis ",
-                    color = Color(0xFF656391),
+                    color = Color(0xFF0A0E0D),
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -243,7 +243,7 @@ fun AnimeDetailsItem(
             ) {
                 Text(
                     text = "Genres ",
-                    color = Color(0xFF656391),
+                    color = Color(0xFF0A0E0D),
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -256,7 +256,7 @@ fun AnimeDetailsItem(
                             modifier = Modifier
                                 .height(32.dp)
                                 .background(
-                                    color = Color(0xFF979ffb),
+                                    color = Color(0xFFFDF1B2),
                                     shape = RoundedCornerShape(16.dp)
                                 )
                                 .padding(horizontal = 8.dp),
@@ -265,8 +265,9 @@ fun AnimeDetailsItem(
                             Text(
                                 text = genre.name.toString(),
                                 fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold,
                                 overflow = TextOverflow.Ellipsis,
-                                color = Color.White
+                                color = Color(0xFF0A0E0D)
                             )
                         }
                     }
@@ -280,7 +281,7 @@ fun AnimeDetailsItem(
             item {
                 Text(
                     text = "Main characters",
-                    color = Color(0xFF656391),
+                    color = Color(0xFF0A0E0D),
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -295,7 +296,7 @@ fun AnimeDetailsItem(
             Text(
                 // More information
                 text = "More information",
-                color = Color(0xFF656391),
+                color = Color(0xFF0A0E0D),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(bottom = 8.dp)

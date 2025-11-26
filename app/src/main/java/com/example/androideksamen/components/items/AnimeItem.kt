@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -46,7 +47,7 @@ fun AnimeItem(
             modifier = Modifier.padding(horizontal = 24.dp, vertical = 16.dp)
         ) {
             Text( // English
-                text = anime.titleEnglish?.toString() ?: "No english title",
+                text = anime.titleEnglish ?: "No english title",
                 fontSize = if (anime.titleEnglish.toString().length > 20) 24.sp else 32.sp,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
@@ -67,6 +68,7 @@ fun AnimeItem(
                     modifier = Modifier
                         .width(270.dp)
                         .height(402.dp)
+                        .clip(RoundedCornerShape(8.dp))
                 )
                 Text( // Japanese
                     text = anime.titleJapanese.toString(),

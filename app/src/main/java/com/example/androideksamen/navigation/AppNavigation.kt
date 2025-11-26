@@ -142,7 +142,7 @@ fun AppNavigation(
                     AnimeScreen(animeViewModel, navController)
                 }
                 composable<NavRoutes.AnimeSearchRoute> {
-                    AnimeSearchScreen(animeSearchViewModel, navController)
+                    AnimeSearchScreen(animeSearchViewModel)
                 }
                 composable<NavRoutes.AnimeIdeasRoute> {
                     AnimeIdeasScreen(animeIdeasViewModel)

@@ -2,14 +2,20 @@ package com.example.androideksamen.screens.anime
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Warning
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -51,15 +57,38 @@ fun AnimeScreen(
         )
 
         // AnimeList
-        AnimeList(
-            animeList = animes,
-            modifier = Modifier.weight(1f),
-            onAnimeClicked = { animeId ->
-                navController.navigate(
-                    NavRoutes.AnimeDetailsRoute(animeId)
+        if (animes.isEmpty()) {
+            Text(
+                text = "We're currently having an error loading animes. \nPlease check your network connection and try again",
+                fontSize = 16.sp,
+                color = Color.Black,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(vertical = 16.dp)
+            )
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Icon(
+                    imageVector = Icons.Outlined.Warning,
+                    contentDescription = "none",
+                    tint = Color.Red,
+                    modifier = Modifier.size(88.dp)
                 )
+
             }
-        )
+        } else {
+            AnimeList(
+                animeList = animes,
+                modifier = Modifier.weight(1f),
+                onAnimeClicked = { animeId ->
+                    navController.navigate(
+                        NavRoutes.AnimeDetailsRoute(animeId)
+                    )
+                }
+            )
+
+        }
 
         // Vis favoritter
 

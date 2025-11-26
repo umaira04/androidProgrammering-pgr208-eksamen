@@ -2,6 +2,7 @@ package com.example.androideksamen.screens.anime
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,6 +28,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.androideksamen.components.lists.AnimeList
+import com.example.androideksamen.components.shared.ErrorLoading
 import com.example.androideksamen.navigation.NavRoutes
 
 //TODO: HJERTEKNAPP TIL Å VELGE FAVORITTER
@@ -59,25 +61,7 @@ fun AnimeScreen(
 
         // AnimeList
         if (animes.isEmpty()) {
-            Text(
-                text = "We're currently having an error loading animes. \nPlease check your network connection and try again",
-                fontSize = 16.sp,
-                color = Color.Black,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(vertical = 16.dp)
-            )
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Icon(
-                    imageVector = Icons.Outlined.Warning,
-                    contentDescription = "none",
-                    tint = Color.Red,
-                    modifier = Modifier.size(88.dp)
-                )
-
-            }
+            ErrorLoading(1, "anime")
         } else {
             AnimeList(
                 animeList = animes,

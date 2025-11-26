@@ -58,7 +58,7 @@ fun AnimeDetailsItem(
             .padding(horizontal = 24.dp)
     ) {
 
-        item { // TO DO: DENNE MÅ STYLES SÅ ALLE KNAPPENE VÅRE ER LIKE
+        item { // TODO: DENNE MÅ STYLES SÅ ALLE KNAPPENE VÅRE ER LIKE
             Button(
                 // Go back button
                 onClick = { goBack() },
@@ -296,7 +296,7 @@ fun AnimeDetailsItem(
                 )
             }
             items(characters) { character ->
-                CharacterItem(character = character)
+                MainCharacterItem(character = character)
             }
         } //UMAIR PRØVER Å COOKE END
 

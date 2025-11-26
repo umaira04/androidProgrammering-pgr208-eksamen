@@ -321,6 +321,7 @@ fun AnimeDetailsItem(
                         val intent = Intent(Intent.ACTION_VIEW, anime.url?.toUri())
                         context.startActivity(intent)
                     }
+                    .padding(bottom = 8.dp)
             )
         } // End more information
     } // End Main LazyColumn

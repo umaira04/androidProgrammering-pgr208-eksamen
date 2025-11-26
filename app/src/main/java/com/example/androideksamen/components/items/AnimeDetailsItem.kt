@@ -180,7 +180,7 @@ fun AnimeDetailsItem(
                         ) {
                             Text(
                                 text = "Episodes",
-                                color = Color(0xFF656391),
+                                color = Color(0xFF0A0E0D),
                                 fontSize = 24.sp,
                                 fontWeight = FontWeight.Bold
                             )

@@ -78,7 +78,8 @@ fun AnimeSearchScreen(
             }
         }
 
-        Row(modifier = Modifier
+        Row(
+            modifier = Modifier
                 .fillMaxWidth()
                 .background(Color.Transparent)
                 .padding(vertical = 8.dp),

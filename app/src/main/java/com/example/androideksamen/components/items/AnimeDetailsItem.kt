@@ -1,6 +1,8 @@
 package com.example.androideksamen.components.items
 
+import android.content.Intent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,11 +26,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.net.toUri
 import coil.compose.AsyncImage
 import com.example.androideksamen.data.dataclasses.anime.Anime
 import com.example.androideksamen.data.dataclasses.character.Character
@@ -38,9 +42,12 @@ import com.example.androideksamen.data.dataclasses.character.Character
 @Composable
 fun AnimeDetailsItem(
     anime: Anime, goBack: () -> Unit,
-    //CHAT ER DETTE CRACKHEAD KODE? SKAL PRØVE Å COOKE -U
     isSearchScreen: Boolean = false, characters: List<Character> = emptyList()
+
 ) {
+    val context = LocalContext.current
+
+    //TODO? ENDRE TIL EN COLUMN?? OG HELLER KALLE PÅ I EN LAZYCOLUMN
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier
@@ -305,10 +312,15 @@ fun AnimeDetailsItem(
                 modifier = Modifier.padding(bottom = 8.dp)
             )
 
-            Text(  // URL
-                text = anime.url.toString(), // TODO: GJØRE DENNE KLIKKBAR
-                color = Color.Black, fontSize = 16.sp,
-                modifier = Modifier.padding(bottom = 8.dp)
+            Text(
+                text = anime.url.toString(),
+                color = Color.Black,
+                fontSize = 16.sp,
+                modifier = Modifier
+                    .clickable {
+                        val intent = Intent(Intent.ACTION_VIEW, anime.url?.toUri())
+                        context.startActivity(intent)
+                    }
             )
         } // End more information
     } // End Main LazyColumn

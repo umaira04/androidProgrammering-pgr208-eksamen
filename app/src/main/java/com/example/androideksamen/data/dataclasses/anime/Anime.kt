@@ -30,6 +30,4 @@ data class Anime(
 
     val url: String? = null,
 
-    //USIKKER PÅ OM DENNE ØDELEGGER API INNHENTING
-    //val isFavorite: Boolean = false
-)
+    )

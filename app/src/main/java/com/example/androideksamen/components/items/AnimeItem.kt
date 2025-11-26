@@ -38,7 +38,7 @@ fun AnimeItem(
             .padding(8.dp)
             .clickable { showDetails() }
             .background(
-                color = Color(0xFFF9FAFB),
+                color = Color(0xFFF7EAF9),
                 shape = RoundedCornerShape(8.dp)
             )
     ) {
@@ -75,6 +75,7 @@ fun AnimeItem(
                     overflow = TextOverflow.Ellipsis,
                     lineHeight = 32.sp,
                     color = Color(0xFF0A0E0D),
+                    fontWeight = FontWeight.Bold,
                     modifier = Modifier
                         .align(Alignment.Center)
                         .offset(x = 144.dp) // TODO: si at det er AI?
@@ -93,13 +94,15 @@ fun AnimeItem(
                     fontSize = 24.sp,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-                    color = Color(0xFF0A0E0D)
+                    color = Color(0xFF0A0E0D),
+                    fontWeight = FontWeight.Bold
                 )
                 Text(
                     text = anime.year?.toString() ?: "No year",
                     fontSize = 24.sp,
                     maxLines = 1,
-                    color = Color(0xFF0A0E0D)
+                    color = Color(0xFF0A0E0D),
+                    fontWeight = FontWeight.Bold
                 )
             }
         }

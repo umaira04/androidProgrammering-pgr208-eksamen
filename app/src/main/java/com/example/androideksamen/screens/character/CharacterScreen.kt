@@ -2,6 +2,7 @@ package com.example.androideksamen.screens.character
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,6 +15,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -56,22 +58,30 @@ fun CharacterScreen(
                 .padding(vertical = 8.dp)
                 .fillMaxWidth()
         )
-        Button(onClick = {
-            showOnlyFavorites = !showOnlyFavorites
-        }) {
-            Text("Toggle favorites")
+        Box(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()
+        ) {
+            // CharacterList
+            CharacterList(
+                characterList = displayedCharacters,
+                favorites = favorites,
+                onFavoriteClick = { characterId ->
+                    characterViewModel.toggleFavorite(characterId)
+                },
+                modifier = Modifier.fillMaxSize()
+            )
+
+            Button(
+                onClick = { showOnlyFavorites = !showOnlyFavorites },
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(16.dp)
+            ) {
+                Text("Toggle favorites")
+            }
         }
-
-        // CharacterList
-        CharacterList(
-            characterList = displayedCharacters,
-            favorites = favorites,
-            onFavoriteClick = { characterId ->
-                characterViewModel.toggleFavorite(characterId)
-            },
-            modifier = Modifier.weight(1f)
-        )
-
     } // End column
 }
 

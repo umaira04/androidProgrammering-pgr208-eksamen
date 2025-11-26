@@ -57,11 +57,7 @@ fun CharacterScreen(
                 .fillMaxWidth()
         )
         Button(onClick = {
-            if (!showOnlyFavorites) {
-                showOnlyFavorites = true
-            } else {
-                showOnlyFavorites = false
-            }
+            showOnlyFavorites = !showOnlyFavorites
         }) {
             Text("Toggle favorites")
         }

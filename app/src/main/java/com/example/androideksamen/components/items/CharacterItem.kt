@@ -49,7 +49,7 @@ fun CharacterItem(
             .fillMaxWidth()
             .padding(8.dp)
             .background(
-                color = Color(0xFFFDF1B2),
+                color = Color(0xFFF7EAF9),
                 shape = RoundedCornerShape(8.dp)
             )
     ) {
@@ -83,11 +83,10 @@ fun CharacterItem(
                     color = Color.Black
                 )
 
-
                 //LINK TO MYANIMELIST WIKI FOR CHARACTER
 
                 Text(
-                    text = "åpne i myanimelist",
+                    text = "Open in MyAnimeList.net",
                     color = Color.Black,
                     fontSize = 16.sp,
                     modifier = Modifier

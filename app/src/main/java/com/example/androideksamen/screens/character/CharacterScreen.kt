@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -49,7 +51,7 @@ fun CharacterScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFF7EAF9))
+            .background(Color(0xFFFBBAED))
             .padding(8.dp, 8.dp, 8.dp, 0.dp)
     ) {
         // Tittel
@@ -100,11 +102,9 @@ fun CharacterScreen(
                         text = "No favorites. Press the heart to mark a character as favorite",
                         fontSize = 16.sp,
                         color = Color.Black,
-                        fontWeight = FontWeight.Bold,
                         modifier = Modifier.padding(top = 8.dp)
                     )
                 } else {
-
 
                     CharacterList(
                         characterList = displayedCharacters,
@@ -121,7 +121,11 @@ fun CharacterScreen(
                 onClick = { showOnlyFavorites = !showOnlyFavorites },
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
-                    .padding(16.dp)
+                    .padding(16.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xFF324663),
+                    contentColor = Color.White
+                )
             ) {
                 if (!showOnlyFavorites) {
                     Text("Show favorites")

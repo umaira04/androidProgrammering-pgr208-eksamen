@@ -44,23 +44,27 @@ fun AnimeIdeaItem(
         Column(
             verticalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier
-                .padding(16.dp)
         ) {
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(color = Color(0xFF656391),
+                        shape = RoundedCornerShape(topEnd = 8.dp, topStart = 8.dp))
+                    .padding(8.dp)
+
             ) {
                 IconButton(
                     onClick = { handleDeleteBtnClick(animeIdea) },
                     modifier = Modifier
                         .size(48.dp)
                         .clip(RoundedCornerShape(25.dp))
-                        .background(Color(0xFF324663))
+                        .background(Color(0xFFF9FAFB))
                 ) {
                     Icon(
                         Icons.Outlined.Delete,
                         contentDescription = "Delete",
-                        tint = Color(0xFFF9FAFB)
+                        tint = Color(0xFF324663)
                     )
                 }
                 IconButton(
@@ -68,30 +72,34 @@ fun AnimeIdeaItem(
                     modifier = Modifier
                         .size(48.dp)
                         .clip(RoundedCornerShape(25.dp))
-                        .background(Color(0xFF324663))
+                        .background(Color(0xFFF9FAFB))
                 ) {
                     Icon(
                         Icons.Outlined.Edit,
                         contentDescription = "Edit",
-                        tint = Color(0xFFF9FAFB)
+                        tint = Color(0xFF324663)
                     )
 
                 }
             }
+            Column(
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier
+                    .padding(8.dp)
+            ) {
             Text(
-                text = "Title",
-                color = Color(0xFF656391),
+                text = animeIdea.title,
+                color = Color(0xFF0A0E0D),
                 fontSize = 24.sp,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
             )
-            Text(animeIdea.title)
-            Text(
-                text = "Synopsis",
-                color = Color(0xFF656391),
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold
+            Text(text = animeIdea.synopsis,
+                color = Color(0xFF0A0E0D),
+                fontSize = 16.sp,
+                modifier = Modifier
             )
-            Text(animeIdea.synopsis)
+            }
         }
 
     }

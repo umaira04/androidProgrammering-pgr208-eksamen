@@ -57,7 +57,6 @@ fun AnimeScreen(
         } else {
             AnimeList(
                 animeList = animes,
-                modifier = Modifier.weight(1f),
                 onAnimeClicked = { animeId ->
                     navController.navigate(
                         NavRoutes.AnimeDetailsRoute(animeId)

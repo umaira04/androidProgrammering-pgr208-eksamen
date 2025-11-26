@@ -85,7 +85,6 @@ fun CharacterScreen(
                         onFavoriteClick = { characterId ->
                             characterViewModel.toggleFavorite(characterId)
                         },
-                        modifier = Modifier.fillMaxSize()
                     )
                 }
             }

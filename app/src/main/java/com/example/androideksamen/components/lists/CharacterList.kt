@@ -1,5 +1,6 @@
 package com.example.androideksamen.components.lists
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
@@ -12,9 +13,10 @@ fun CharacterList(
     characterList: List<Character>,
     favorites: List<Int>,
     onFavoriteClick: (Int) -> Unit,
-    modifier: Modifier = Modifier
 ) {
-    LazyColumn(modifier = modifier) {
+    LazyColumn(
+        modifier = Modifier.fillMaxSize()
+    ) {
         items(characterList) { character ->
             CharacterItem(
                 character = character,

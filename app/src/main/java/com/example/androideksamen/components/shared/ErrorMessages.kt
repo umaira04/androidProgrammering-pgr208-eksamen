@@ -36,7 +36,9 @@ fun ErrorLoading(errorType: Int, errorItem: String? = null) {
                 fontSize = 16.sp,
                 color = Color.Black,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(top = 8.dp).fillMaxWidth(),
+                modifier = Modifier
+                    .padding(top = 8.dp)
+                    .fillMaxWidth(),
                 textAlign = TextAlign.Center
             )
         } else {
@@ -45,7 +47,9 @@ fun ErrorLoading(errorType: Int, errorItem: String? = null) {
                 fontSize = 16.sp,
                 color = Color.Black,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(top = 8.dp).fillMaxWidth(),
+                modifier = Modifier
+                    .padding(top = 8.dp)
+                    .fillMaxWidth(),
                 textAlign = TextAlign.Center
             )
         }

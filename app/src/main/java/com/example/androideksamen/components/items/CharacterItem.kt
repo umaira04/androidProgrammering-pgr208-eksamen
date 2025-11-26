@@ -34,7 +34,6 @@ import androidx.core.net.toUri
 import coil.compose.AsyncImage
 import com.example.androideksamen.data.dataclasses.character.Character
 
-//TODO: filter etter fav
 //TODO: søk
 //TODO: endre fontSize i animeitem så det er likt som characteritem
 @Composable

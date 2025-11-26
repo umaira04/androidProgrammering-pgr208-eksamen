@@ -301,7 +301,6 @@ fun AnimeDetailsItem(
         } //UMAIR PRØVER Å COOKE END
 
 
-        //TODO? LEGGE INN EN IF HER SOM KUN VISER DERSOM DEN HAR EN LINK? -U
         item {
             Text(
                 // More information

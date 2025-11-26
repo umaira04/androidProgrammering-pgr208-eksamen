@@ -19,7 +19,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.androideksamen.data.database.AnimeDB
 
-//TODO: LAGE ET ITEM SOM KAN VISE IDEER SOM BRUKEREN HAR LAGRET
 
 @Composable
 fun AnimeIdeaItem(

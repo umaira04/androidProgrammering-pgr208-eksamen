@@ -72,8 +72,4 @@ class AnimeIdeasViewModel : ViewModel() {
     }
 
 
-    //TODO: SLIDESERIE 19.
-    // TODO: LEGG INN FUNKSJONALITET FOR Å GI INPUT I I SCREEN
-
-
 }

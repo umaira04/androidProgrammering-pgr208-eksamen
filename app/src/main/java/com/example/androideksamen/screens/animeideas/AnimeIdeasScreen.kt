@@ -79,7 +79,7 @@ fun AnimeIdeasScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFFDF1B2))
+            .background(Color(0xFFFBBAED))
             .padding(8.dp, 8.dp, 8.dp, 0.dp)
 
     ) {
@@ -87,7 +87,7 @@ fun AnimeIdeasScreen(
             "Anime ideas",
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(0xFF324663),
+            color = Color(0xFF0A0E0D),
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .padding(vertical = 8.dp)
@@ -102,45 +102,59 @@ fun AnimeIdeasScreen(
                 .fillMaxWidth()
         )
 
+        Text(
+            text = "Title",
+            fontSize = 16.sp,
+            modifier = Modifier
+                .padding(horizontal = 24.dp)
+        )
+
         TextField(
             value = title,
             onValueChange = { title = it },
-            label = { Text("Tittel") },
+            placeholder = { Text("Title") },
             modifier = Modifier
                 .padding(horizontal = 16.dp)
                 .clip(RoundedCornerShape(32.dp))
                 .fillMaxWidth(),
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = Color.White,
-                unfocusedContainerColor = Color.LightGray,
-                focusedIndicatorColor = Color.Gray,
+                unfocusedContainerColor = Color(0xFFF7EAF9),
+                focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
-                focusedPlaceholderColor = Color(0xFFF7EAF9),
-                unfocusedPlaceholderColor = Color(0xFFF7EAF9),
-                focusedTextColor = Color.Black,
-                unfocusedTextColor = Color.Gray
-            ),
+                focusedPlaceholderColor = Color(0xFF0A0E0D),
+                unfocusedPlaceholderColor = Color(0xFF0A0E0D),
+                focusedTextColor = Color(0xFF0A0E0D),
+                unfocusedTextColor = Color(0xFF0A0E0D)
+            )
         )
+
+        Text(
+            text = "Synopsis",
+            fontSize = 16.sp,
+            modifier = Modifier
+                .padding(horizontal = 24.dp)
+        )
+
         TextField(
             value = synopsis,
             onValueChange = { synopsis = it },
-            label = { Text("Synopsis") },
+            placeholder = { Text("Synopsis") },
             modifier = Modifier
                 .padding(horizontal = 16.dp)
                 .clip(RoundedCornerShape(32.dp))
                 .fillMaxWidth(),
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = Color.White,
-                unfocusedContainerColor = Color.LightGray,
-                focusedIndicatorColor = Color.Gray,
+                unfocusedContainerColor = Color(0xFFF7EAF9),
+                focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
-                focusedPlaceholderColor = Color(0xFFF7EAF9),
-                unfocusedPlaceholderColor = Color(0xFFF7EAF9),
-                focusedTextColor = Color.Black,
-                unfocusedTextColor = Color.Gray
-            ),
+                focusedPlaceholderColor = Color(0xFF0A0E0D),
+                unfocusedPlaceholderColor = Color(0xFF0A0E0D),
+                focusedTextColor = Color(0xFF0A0E0D),
+                unfocusedTextColor = Color(0xFF0A0E0D)
+            )
         )
-
 
         if (isEditing) {
             Row(
@@ -238,7 +252,7 @@ fun AnimeIdeasScreen(
                     )
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        modifier = Modifier.padding(top=16.dp)
+                        modifier = Modifier.padding(top = 16.dp)
 
                     ) {
                         Button(

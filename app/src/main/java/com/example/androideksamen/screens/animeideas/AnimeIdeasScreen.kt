@@ -278,7 +278,7 @@ fun AnimeIdeasScreen(
         } else {
             if (animeIdeas.value.count() > 0 && !isDeleting) {
                 AnimeIdeaList(
-                    animeIdeas =  animeIdeas.value,
+                    animeIdeas = animeIdeas.value,
                     handleEditBtnClick = { handleEditBtnClick(animeIdea = it) },
                     handleDeleteBtnClick = { handleDeleteBtnClick(animeIdea = it) }
                 )

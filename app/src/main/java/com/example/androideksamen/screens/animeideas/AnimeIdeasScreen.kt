@@ -33,6 +33,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.lists.AnimeIdeaList
+import com.example.androideksamen.components.shared.Title
 import com.example.androideksamen.data.database.AnimeDB
 import kotlinx.coroutines.delay
 
@@ -78,16 +79,7 @@ fun AnimeIdeasScreen(
             .padding(8.dp, 8.dp, 8.dp, 0.dp)
 
     ) {
-        Text(
-            "Anime ideas",
-            fontSize = 28.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color(0xFF0A0E0D),
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(vertical = 8.dp)
-                .fillMaxWidth()
-        )
+        Title("Anime Ideas")
 
         Text(
             "Make your personal anime ideas!",

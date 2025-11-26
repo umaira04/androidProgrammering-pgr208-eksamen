@@ -1,5 +1,6 @@
 package com.example.androideksamen.screens.animesearch
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -33,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.androideksamen.components.items.AnimeDetailsItem
+import com.example.androideksamen.components.shared.ErrorLoading
 
 
 //FORELESNING 9 FOR Å SE AKKURAT DENNE OPPGAVEN
@@ -45,6 +47,7 @@ fun AnimeSearchScreen(
     val mainCharacters by animeSearchViewModel.mainCharacters.collectAsState()
     var id by remember { mutableStateOf("") }
     val focusManager = LocalFocusManager.current
+    var isSearched by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -68,13 +71,28 @@ fun AnimeSearchScreen(
                 .weight(1f)
                 .fillMaxWidth()
         ) {
-            anime?.let { anime ->
-                AnimeDetailsItem(
-                    anime = anime,
-                    isSearchScreen = true,
-                    characters = mainCharacters
+
+            if (anime == null && isSearched) {
+                ErrorLoading(2)
+            } else if (!isSearched) {
+                Text(
+                    text = "Search for anime by ID",
+                    fontSize = 16.sp,
+                    color = Color.Black,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(top = 8.dp)
                 )
+            } else {
+                anime?.let { anime ->
+                    AnimeDetailsItem(
+                        anime = anime,
+                        isSearchScreen = true,
+                        characters = mainCharacters
+                    )
+                }
+
             }
+
         }
 
         Row(
@@ -98,6 +116,8 @@ fun AnimeSearchScreen(
                         if (idParsed != null) {
                             animeSearchViewModel.setAnimeById(idParsed)
                             animeSearchViewModel.setAnimeMainCharactersByAnimeId(idParsed)
+                            isSearched = true
+                            Log.i("searchItem", anime.toString())
                         }
                         focusManager.clearFocus()
                     }

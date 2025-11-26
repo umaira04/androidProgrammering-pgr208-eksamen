@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -92,48 +91,55 @@ fun AnimeDetailsItem(
                         fontWeight = FontWeight.Bold,
                         color = Color(0xFF0A0E0D)
                     )
-                    Text( // Title japanese
-                        text = anime.titleJapanese ?: "No japanese title",
-                        fontSize = if (anime.titleJapanese.toString().length > 12) 16.sp else 24.sp,
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis,
-                        lineHeight = 24.sp,
-                        color = Color(0xFF0A0E0D)
-                    )
-                }
-
-                Box(  // Yellow rating box
-                    modifier = Modifier
-                        .size(80.dp, 32.dp)
-                        .background(
-                            color = Color(0xFFfdf1b2), shape = RoundedCornerShape(16.dp)
-                        )
-                ) {
                     Row(
-                        horizontalArrangement = Arrangement.Center,
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .fillMaxHeight()
-                            .fillMaxWidth()
-                            .padding(horizontal = 8.dp)
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Icon(Icons.Filled.Star, contentDescription = "none")
-                        Text(
-                            text = anime.score?.toString() ?: "...",
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold,
+                        Text( // Title japanese
+                            text = anime.titleJapanese ?: "No japanese title",
+                            fontSize = if (anime.titleJapanese.toString().length > 12) 16.sp else 24.sp,
+                            maxLines = 2,
+                            overflow = TextOverflow.Ellipsis,
+                            lineHeight = 24.sp,
+                            color = Color(0xFF0A0E0D),
+                            modifier = Modifier
+                                .weight(1f)
+                                .padding(end = 8.dp)
                         )
-                    }
-                } // End yellow rating box
-            } // End row with title and rating box
+                        Box(  // Yellow rating box
+                            modifier = Modifier
+                                .size(80.dp, 32.dp)
+                                .background(
+                                    color = Color(0xFFfdf1b2), shape = RoundedCornerShape(16.dp)
+                                )
+                        ) {
+                            Row(
+                                horizontalArrangement = Arrangement.Center,
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier
+                                    .fillMaxHeight()
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 8.dp)
+                            ) {
+                                Icon(Icons.Filled.Star, contentDescription = "none")
+                                Text(
+                                    text = anime.score?.toString() ?: "...",
+                                    fontSize = 16.sp,
+                                    fontWeight = FontWeight.Bold,
+                                )
+                            }
+                        } // End yellow rating box
+                    } // End row with japanese title and rating bow
+                } //
+            } // End row
         }
 
         item {  // Row with anime info: Year, Episodes, Type
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 16.dp)
-                    .padding(bottom = 16.dp),
+                    .padding(vertical = 16.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column(
@@ -151,7 +157,6 @@ fun AnimeDetailsItem(
                         color = Color.Black,
                         fontSize = 16.sp
                     )
-
                 }
 
                 Column(
@@ -252,7 +257,7 @@ fun AnimeDetailsItem(
                     anime.genres?.forEach { genre ->
                         Box(
                             modifier = Modifier
-                                .size(80.dp, 32.dp)
+                                .height(32.dp)
                                 .background(
                                     color = Color(0xFF979ffb),
                                     shape = RoundedCornerShape(16.dp)
@@ -297,12 +302,13 @@ fun AnimeDetailsItem(
                 color = Color(0xFF656391),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(bottom = 8.dp)
             )
-            Spacer(modifier = Modifier.height(16.dp))
 
             Text(  // URL
                 text = anime.url.toString(), // TODO: GJØRE DENNE KLIKKBAR
-                color = Color.Black, fontSize = 16.sp
+                color = Color.Black, fontSize = 16.sp,
+                modifier = Modifier.padding(bottom = 8.dp)
             )
         } // End more information
     } // End Main LazyColumn

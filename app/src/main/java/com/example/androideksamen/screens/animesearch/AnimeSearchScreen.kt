@@ -107,15 +107,15 @@ fun AnimeSearchScreen(
                     .clip(RoundedCornerShape(32.dp))
                     .fillMaxWidth(),
                 colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color(0xFF656391),
-                    unfocusedContainerColor = Color(0xFF656391),
+                    focusedContainerColor = Color.White,
+                    unfocusedContainerColor = Color(0xFFF7EAF9),
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
-                    focusedPlaceholderColor = Color(0xFFF7EAF9),
-                    unfocusedPlaceholderColor = Color(0xFFF7EAF9),
-                    focusedTextColor = Color(0xFFFFFFFF),
-                    unfocusedTextColor = Color(0xFFFFFFFF)
-                ),
+                    focusedPlaceholderColor = Color(0xFF0A0E0D),
+                    unfocusedPlaceholderColor = Color(0xFF0A0E0D),
+                    focusedTextColor = Color(0xFF0A0E0D),
+                    unfocusedTextColor = Color(0xFF0A0E0D)
+                )
             )
         }
     }

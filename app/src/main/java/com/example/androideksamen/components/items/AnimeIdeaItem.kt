@@ -37,7 +37,7 @@ fun AnimeIdeaItem(
             .fillMaxWidth()
             .padding(8.dp)
             .background(
-                color = Color(0xFF90FDE6),
+                color = Color(0xFFF9FAFB),
                 shape = RoundedCornerShape(8.dp)
             )
     ) {
@@ -55,18 +55,27 @@ fun AnimeIdeaItem(
                     modifier = Modifier
                         .size(48.dp)
                         .clip(RoundedCornerShape(25.dp))
-                        .background(Color.White)
+                        .background(Color(0xFF324663))
                 ) {
-                    Icon(Icons.Outlined.Delete, contentDescription = "none")
+                    Icon(
+                        Icons.Outlined.Delete,
+                        contentDescription = "Delete",
+                        tint = Color(0xFFF9FAFB)
+                    )
                 }
                 IconButton(
                     onClick = { handleEditBtnClick(animeIdea) },
                     modifier = Modifier
                         .size(48.dp)
                         .clip(RoundedCornerShape(25.dp))
-                        .background(Color.White)
+                        .background(Color(0xFF324663))
                 ) {
-                    Icon(Icons.Outlined.Edit, contentDescription = "none")
+                    Icon(
+                        Icons.Outlined.Edit,
+                        contentDescription = "Edit",
+                        tint = Color(0xFFF9FAFB)
+                    )
+
                 }
             }
             Text(

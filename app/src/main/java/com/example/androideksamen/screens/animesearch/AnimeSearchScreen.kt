@@ -31,8 +31,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.androideksamen.components.items.AnimeDetailsItem
 import com.example.androideksamen.components.shared.ErrorLoading
 
@@ -41,8 +39,8 @@ import com.example.androideksamen.components.shared.ErrorLoading
 @Composable
 fun AnimeSearchScreen(
     animeSearchViewModel: AnimeSearchViewModel,
-    navController: NavController
-) {
+
+    ) {
     val anime by animeSearchViewModel.anime.collectAsState()
     val mainCharacters by animeSearchViewModel.mainCharacters.collectAsState()
     var id by remember { mutableStateOf("") }
@@ -146,6 +144,6 @@ fun AnimeSearchScreen(
 fun AnimeSearchScreenPreview() {
     AnimeSearchScreen(
         animeSearchViewModel = AnimeSearchViewModel(),
-        navController = rememberNavController()
-    )
+
+        )
 }

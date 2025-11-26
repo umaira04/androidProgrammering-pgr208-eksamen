@@ -2,12 +2,17 @@ package com.example.androideksamen.screens.character
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -65,13 +70,29 @@ fun CharacterScreen(
         ) {
             // CharacterList
             if (characters.isEmpty()) {
-                Text(
-                    text = "We're currently having an error loading characters. \nPlease check your network connection and try again",
-                    fontSize = 16.sp,
-                    color = Color.Black,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(top = 8.dp)
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = 16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Top
                 )
+                {
+                    Text(
+                        text = "We're currently having an error loading characters. \nPlease check your network connection and try again",
+                        fontSize = 16.sp,
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(top = 8.dp)
+                    )
+                    Icon(
+                        imageVector = Icons.Outlined.Warning,
+                        contentDescription = "none",
+                        tint = Color.Red,
+                        modifier = Modifier.size(88.dp)
+                    )
+
+                }
 
             } else {
                 if (showOnlyFavorites && favorites.isEmpty()) {

@@ -64,14 +64,37 @@ fun CharacterScreen(
                 .fillMaxWidth()
         ) {
             // CharacterList
-            CharacterList(
-                characterList = displayedCharacters,
-                favorites = favorites,
-                onFavoriteClick = { characterId ->
-                    characterViewModel.toggleFavorite(characterId)
-                },
-                modifier = Modifier.fillMaxSize()
-            )
+            if (characters.isEmpty()) {
+                Text(
+                    text = "We're currently having an error loading characters. \nPlease check your network connection and try again",
+                    fontSize = 16.sp,
+                    color = Color.Black,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(top = 8.dp)
+                )
+
+            } else {
+                if (showOnlyFavorites && favorites.isEmpty()) {
+                    Text(
+                        text = "No favorites. Press the heart to mark a character as favorite",
+                        fontSize = 16.sp,
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(top = 8.dp)
+                    )
+                } else {
+
+
+                    CharacterList(
+                        characterList = displayedCharacters,
+                        favorites = favorites,
+                        onFavoriteClick = { characterId ->
+                            characterViewModel.toggleFavorite(characterId)
+                        },
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
+            }
 
             Button(
                 onClick = { showOnlyFavorites = !showOnlyFavorites },
@@ -79,7 +102,11 @@ fun CharacterScreen(
                     .align(Alignment.BottomEnd)
                     .padding(16.dp)
             ) {
-                Text("Toggle favorites")
+                if (!showOnlyFavorites) {
+                    Text("Show favorites")
+                } else {
+                    Text("Show all")
+                }
             }
         }
     } // End column

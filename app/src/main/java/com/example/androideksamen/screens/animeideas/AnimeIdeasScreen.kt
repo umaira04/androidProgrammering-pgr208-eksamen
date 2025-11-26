@@ -1,6 +1,5 @@
 package com.example.androideksamen.screens.animeideas
 
-import android.R
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,8 +13,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Check
-import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -185,27 +182,28 @@ fun AnimeIdeasScreen(
                     .padding(horizontal = 16.dp)
 
             ) {
-            Button(
-                onClick = {
-                    if (title.isNotEmpty() && synopsis.isNotEmpty()) {
-                        animeIdeasViewModel.insertAnimeIdea(
-                            AnimeDB(title = title, synopsis = synopsis)
-                        )
-                        title = ""
-                        synopsis = ""
-                        userFeedbackMessage = "Save: Successful"
+                Button(
+                    onClick = {
+                        if (title.isNotEmpty() && synopsis.isNotEmpty()) {
+                            animeIdeasViewModel.insertAnimeIdea(
+                                AnimeDB(title = title, synopsis = synopsis)
+                            )
+                            title = ""
+                            synopsis = ""
+                            userFeedbackMessage = "Save: Successful"
+                        }
                     }
+                ) {
+                    Text("Save anime")
                 }
-            ) {
-                Text("Save anime")
-            }
                 Text(
                     text = userFeedbackMessage,
                     color = Color(0xFF08864A),
                     fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold)
-        }
+                    fontWeight = FontWeight.Bold
+                )
             }
+        }
 
         if (isDeleting) {
 
@@ -238,7 +236,7 @@ fun AnimeIdeasScreen(
                     )
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        modifier = Modifier.padding(top=16.dp)
+                        modifier = Modifier.padding(top = 16.dp)
 
                     ) {
                         Button(

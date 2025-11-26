@@ -71,7 +71,6 @@ fun AnimeSearchScreen(
             anime?.let { anime ->
                 AnimeDetailsItem(
                     anime = anime,
-                    goBack = {},
                     isSearchScreen = true,
                     characters = mainCharacters
                 )

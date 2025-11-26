@@ -1,14 +1,27 @@
 package com.example.androideksamen.screens.animedetails
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,7 +46,8 @@ fun AnimeDetailsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 8.dp)
+            .background(Color(0xFFFBBAED))
+            .padding(8.dp, 8.dp, 8.dp, 0.dp)
     ) {
 
         // Tittel
@@ -48,12 +62,24 @@ fun AnimeDetailsScreen(
 
         )
 
+        IconButton ( // TODO: DENNE MÅ STYLES SÅ ALLE KNAPPENE VÅRE ER LIKE
+            // Go back button
+            onClick = { navController.popBackStack() },
+            modifier = Modifier
+                .padding(bottom = 16.dp)
+                .padding(start = 24.dp)
+                .clip(RoundedCornerShape(24.dp))
+                .background(Color.White)
+                .width(60.dp)
+                .height(48.dp)
+
+        ) {
+            Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Go back")
+        }// End go back button
+
         anime.value?.let {
             AnimeDetailsItem(
-                it,
-                goBack = {
-                    navController.popBackStack()
-                }
+                it
             )
         }
 

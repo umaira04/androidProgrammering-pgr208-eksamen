@@ -38,7 +38,7 @@ fun AnimeItem(
             .padding(8.dp)
             .clickable { showDetails() }
             .background(
-                color = Color(0xFFFBBAED),
+                color = Color(0xFFF9FAFB),
                 shape = RoundedCornerShape(8.dp)
             )
     ) {

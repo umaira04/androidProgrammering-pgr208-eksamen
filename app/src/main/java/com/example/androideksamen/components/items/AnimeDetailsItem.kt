@@ -41,7 +41,7 @@ import com.example.androideksamen.data.dataclasses.character.Character
 //MULIG Å LEGGE TILBAKE KNAPP UTENFOR ITEM?? -U
 @Composable
 fun AnimeDetailsItem(
-    anime: Anime, goBack: () -> Unit,
+    anime: Anime,
     isSearchScreen: Boolean = false, characters: List<Character> = emptyList()
 
 ) {
@@ -58,14 +58,6 @@ fun AnimeDetailsItem(
             .padding(horizontal = 24.dp)
     ) {
 
-        item { // TODO: DENNE MÅ STYLES SÅ ALLE KNAPPENE VÅRE ER LIKE
-            Button(
-                // Go back button
-                onClick = { goBack() },
-            ) {
-                Text("Go back")
-            }
-        } // End go back button
 
 
         item { // Image

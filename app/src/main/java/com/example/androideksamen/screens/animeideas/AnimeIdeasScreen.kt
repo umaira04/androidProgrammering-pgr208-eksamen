@@ -33,7 +33,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.lists.AnimeIdeaList
+import com.example.androideksamen.components.shared.GenreDropdownMenu
+import com.example.androideksamen.components.shared.Title
 import com.example.androideksamen.data.database.AnimeDB
+import com.example.androideksamen.data.database.Genre
 import kotlinx.coroutines.delay
 
 @Composable
@@ -41,10 +44,13 @@ fun AnimeIdeasScreen(
     animeIdeasViewModel: AnimeIdeasViewModel,
 ) {
 
+    // TODO? BØR STATES LIGGE I VIEWMODEL?
+
     val animeIdeas = animeIdeasViewModel.animeIdeas.collectAsState()
     var title: String by remember { mutableStateOf("") }
     var synopsis: String by remember { mutableStateOf("") }
     var id: Int by remember { mutableStateOf(value = 0) }
+    var genre: Genre by remember { mutableStateOf(value = Genre.OTHER) }
 
     var isEditing by remember { mutableStateOf(false) }
     var isDeleting by remember { mutableStateOf(false) }
@@ -62,6 +68,7 @@ fun AnimeIdeasScreen(
         title = animeIdea.title
         synopsis = animeIdea.synopsis
         id = animeIdea.id
+        genre = animeIdea.genre
         isEditing = true
     }
 
@@ -70,24 +77,14 @@ fun AnimeIdeasScreen(
         animeIdeaToDelete = animeIdea
     }
 
-    Column( //MAIN COLUMN START
+    Column( // MAIN COLUMN START
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFFBBAED))
             .padding(8.dp, 8.dp, 8.dp, 0.dp)
-
     ) {
-        Text(
-            "Anime ideas",
-            fontSize = 28.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color(0xFF0A0E0D),
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(vertical = 8.dp)
-                .fillMaxWidth()
-        )
+        Title("Anime Ideas")
 
         Text(
             "Make your personal anime ideas!",
@@ -104,187 +101,188 @@ fun AnimeIdeasScreen(
                 .padding(horizontal = 24.dp)
         )
 
-        TextField(
-            value = title,
-            onValueChange = { title = it },
-            placeholder = { Text("Enter your anime title...") },
-            modifier = Modifier
-                .padding(horizontal = 16.dp)
-                .clip(RoundedCornerShape(32.dp))
-                .fillMaxWidth(),
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color.White,
-                unfocusedContainerColor = Color(0xFFF7EAF9),
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-                focusedPlaceholderColor = Color(0xFF0A0E0D),
-                unfocusedPlaceholderColor = Color(0xFF0A0E0D),
-                focusedTextColor = Color(0xFF0A0E0D),
-                unfocusedTextColor = Color(0xFF0A0E0D)
-            )
+    TextField(
+        value = title,
+        onValueChange = { title = it },
+        placeholder = { Text("Enter your anime title...") },
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .clip(RoundedCornerShape(32.dp))
+            .fillMaxWidth(),
+        colors = TextFieldDefaults.colors(
+            focusedContainerColor = Color.White,
+            unfocusedContainerColor = Color(0xFFF7EAF9),
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent,
+            focusedPlaceholderColor = Color(0xFF0A0E0D),
+            unfocusedPlaceholderColor = Color(0xFF0A0E0D),
+            focusedTextColor = Color(0xFF0A0E0D),
+            unfocusedTextColor = Color(0xFF0A0E0D)
         )
+    )
 
-        Text(
-            text = "Synopsis *",
-            fontSize = 16.sp,
-            modifier = Modifier
-                .padding(horizontal = 24.dp)
+    Text(
+        text = "Synopsis *",
+        fontSize = 16.sp,
+        modifier = Modifier
+            .padding(horizontal = 24.dp)
+    )
+
+    TextField(
+        value = synopsis,
+        onValueChange = { synopsis = it },
+        placeholder = { Text("Describe your anime idea...") },
+        modifier = Modifier
+            .padding(horizontal = 16.dp)
+            .clip(RoundedCornerShape(32.dp))
+            .fillMaxWidth(),
+        colors = TextFieldDefaults.colors(
+            focusedContainerColor = Color.White,
+            unfocusedContainerColor = Color(0xFFF7EAF9),
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent,
+            focusedPlaceholderColor = Color(0xFF0A0E0D),
+            unfocusedPlaceholderColor = Color(0xFF0A0E0D),
+            focusedTextColor = Color(0xFF0A0E0D),
+            unfocusedTextColor = Color(0xFF0A0E0D)
         )
+    )
 
-        TextField(
-            value = synopsis,
-            onValueChange = { synopsis = it },
-            placeholder = { Text("Describe your anime idea...") },
-            modifier = Modifier
-                .padding(horizontal = 16.dp)
-                .clip(RoundedCornerShape(32.dp))
-                .fillMaxWidth(),
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color.White,
-                unfocusedContainerColor = Color(0xFFF7EAF9),
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-                focusedPlaceholderColor = Color(0xFF0A0E0D),
-                unfocusedPlaceholderColor = Color(0xFF0A0E0D),
-                focusedTextColor = Color(0xFF0A0E0D),
-                unfocusedTextColor = Color(0xFF0A0E0D)
-            )
+    GenreDropdownMenu(
+            selectedGenre = genre,
+            onGenreSelected = {genre = it}
         )
+    if (isEditing) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier
+        ) {
+            Button(
+                onClick = {
+                    if (title.isNotEmpty() && synopsis.isNotEmpty()) {
+                        animeIdeasViewModel.updateAnimeIdea(
+                            AnimeDB(id = id, title = title, synopsis = synopsis, genre = genre)
+                        )
 
-        if (isEditing) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = Modifier
-
-            ) {
-                Button(
-                    onClick = {
-                        if (title.isNotEmpty() && synopsis.isNotEmpty()) {
-                            animeIdeasViewModel.updateAnimeIdea(
-                                AnimeDB(id = id, title = title, synopsis = synopsis)
-                            )
-
-                            isEditing = false
-                            title = ""
-                            synopsis = ""
-                            userFeedbackMessage = "Update: Successful"
-                        }
-                    }
-                ) {
-                    Text("Save changes")
-                }
-
-                Button(
-                    onClick = {
                         isEditing = false
                         title = ""
                         synopsis = ""
+                        userFeedbackMessage = "Update: Successful"
                     }
-                ) {
-                    Text("Cancel")
                 }
+            ) {
+                Text("Save changes")
             }
-        } else {
 
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
+            Button(
+                onClick = {
+                    isEditing = false
+                    title = ""
+                    synopsis = ""
+                }
+            ) {
+                Text("Cancel")
+            }
+        }
+    } else {
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+        ) {
+            Button(
+                onClick = {
+                    if (title.isNotEmpty() && synopsis.isNotEmpty()) {
+                        animeIdeasViewModel.insertAnimeIdea(
+                            AnimeDB(title = title, synopsis = synopsis, genre = genre)
+                        )
+                        title = ""
+                        synopsis = ""
+                        userFeedbackMessage = "Save: Successful"
+                    }
+                }
+            ) {
+                Text("Save anime")
+            }
+            Text(
+                text = userFeedbackMessage,
+                color = Color(0xFF08864A),
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+    }
+
+    if (isDeleting) {
+        Box(
+            modifier = Modifier
+                .padding(16.dp)
+                .clip(RoundedCornerShape(16.dp))
+                .background(Color.White)
+                .fillMaxWidth(),
+            contentAlignment = Alignment.Center
+        ) {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-
-            ) {
-                Button(
-                    onClick = {
-                        if (title.isNotEmpty() && synopsis.isNotEmpty()) {
-                            animeIdeasViewModel.insertAnimeIdea(
-                                AnimeDB(title = title, synopsis = synopsis)
-                            )
-                            title = ""
-                            synopsis = ""
-                            userFeedbackMessage = "Save: Successful"
-                        }
-                    }
-                ) {
-                    Text("Save anime")
-                }
-                Text(
-                    text = userFeedbackMessage,
-                    color = Color(0xFF08864A),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
-                )
-            }
-        }
-
-        if (isDeleting) {
-
-            Box(
-                modifier = Modifier
                     .padding(16.dp)
-                    .clip(RoundedCornerShape(16.dp))
-                    .background(Color.White)
-                    .fillMaxWidth(),
-                contentAlignment = Alignment.Center
             ) {
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(16.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)
+                Icon(
+                    imageVector = Icons.Outlined.Warning,
+                    contentDescription = "none",
+                    tint = Color.Red,
+                    modifier = Modifier.size(64.dp)
+                )
+                Text("Are you sure you want to delete: ")
+                Text(
+                    text = animeIdeaToDelete?.title ?: "unknown",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                )
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    modifier = Modifier.padding(top = 16.dp)
+
                 ) {
-                    Icon(
-                        imageVector = Icons.Outlined.Warning,
-                        contentDescription = "none",
-                        tint = Color.Red,
-                        modifier = Modifier.size(64.dp)
-                    )
-                    Text("Are you sure you want to delete: ")
-                    Text(
-                        text = animeIdeaToDelete?.title ?: "unknown",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
-                    )
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        modifier = Modifier.padding(top = 16.dp)
-
+                    Button(
+                        onClick = {
+                            animeIdeaToDelete?.let { animeIdea ->
+                                animeIdeasViewModel.deleteAnimeIdea(animeIdea)
+                            }
+                            isDeleting = false
+                            animeIdeaToDelete = null
+                            userFeedbackMessage = "Delete: Successful"
+                        }
                     ) {
-                        Button(
-                            onClick = {
-                                animeIdeaToDelete?.let { animeIdea ->
-                                    animeIdeasViewModel.deleteAnimeIdea(animeIdea)
-                                }
-                                isDeleting = false
-                                animeIdeaToDelete = null
-                                userFeedbackMessage = "Delete: Successful"
-                            }
-                        ) {
-                            Text("Delete")
-                        }
+                        Text("Delete")
+                    }
 
-                        Button(
-                            onClick = {
-                                isDeleting = false
-                                animeIdeaToDelete = null
-                            }
-                        ) {
-                            Text("Cancel")
+                    Button(
+                        onClick = {
+                            isDeleting = false
+                            animeIdeaToDelete = null
                         }
+                    ) {
+                        Text("Cancel")
                     }
                 }
             }
-        } else {
-            if (animeIdeas.value.count() > 0 && !isDeleting) {
-                AnimeIdeaList(
-                    animeIdeas = animeIdeas.value,
-                    handleEditBtnClick = { handleEditBtnClick(animeIdea = it) },
-                    handleDeleteBtnClick = { handleDeleteBtnClick(animeIdea = it) }
-                )
-            } else {
-                Text("No anime ideas yet")
-            }
         }
+    } else {
+        if (animeIdeas.value.count() > 0 && !isDeleting) {
+            AnimeIdeaList(
+                animeIdeas = animeIdeas.value,
+                handleEditBtnClick = { handleEditBtnClick(animeIdea = it) },
+                handleDeleteBtnClick = { handleDeleteBtnClick(animeIdea = it) }
+            )
+        } else {
+            Text("No anime ideas yet")
+        }
+    }
     } //MAIN COLUMN END
 }//AnimeIdeasScreen END
+

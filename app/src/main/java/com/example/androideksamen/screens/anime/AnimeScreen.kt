@@ -22,6 +22,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.androideksamen.components.lists.AnimeList
 import com.example.androideksamen.components.shared.ErrorLoading
 import com.example.androideksamen.fonts.Jaro
+import com.example.androideksamen.components.shared.Title
 import com.example.androideksamen.navigation.NavRoutes
 
 //TODO: HJERTEKNAPP TIL Å VELGE FAVORITTER
@@ -41,17 +42,7 @@ fun AnimeScreen(
             .padding(8.dp, 8.dp, 8.dp, 0.dp)
     ) {
         // Tittel
-        Text(
-            "Anime",
-            fontSize = 48.sp,
-            fontFamily = Jaro,
-            fontWeight = FontWeight.Bold,
-            color = Color(0xFF0A0E0D),
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(vertical = 8.dp)
-                .fillMaxWidth()
-        )
+        Title("Anime")
 
         // AnimeList
         if (animes.isEmpty()) {

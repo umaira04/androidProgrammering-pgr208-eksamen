@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.lists.CharacterList
 import com.example.androideksamen.components.shared.ErrorLoading
+import com.example.androideksamen.components.shared.Title
 
 @Composable
 fun CharacterScreen(
@@ -50,16 +51,8 @@ fun CharacterScreen(
             .padding(8.dp, 8.dp, 8.dp, 0.dp)
     ) {
         // Tittel
-        Text(
-            text = "Characters",
-            fontSize = 28.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color(0xFF0A0E0D),
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(vertical = 8.dp)
-                .fillMaxWidth()
-        )
+        Title("Characters")
+
         Box(
             modifier = Modifier
                 .weight(1f)

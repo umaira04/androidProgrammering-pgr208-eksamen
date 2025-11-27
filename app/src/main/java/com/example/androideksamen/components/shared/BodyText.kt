@@ -8,12 +8,12 @@ import androidx.compose.ui.unit.sp
 import com.example.androideksamen.fonts.BodyFont
 
 @Composable
-fun Subtitle(subtitle: String) {
+fun BodyText(bodyText: String) {
     Text(
-        text = subtitle,
+        text = bodyText,
         fontFamily = BodyFont,
-        fontSize = 24.sp,
-        fontWeight = FontWeight.Bold,
-        color = Color(0xFF0A0E0D),
+        fontSize = 16.sp,
+        fontWeight = FontWeight.Normal,
+        color = Color(0xFF0A0E0D)
     )
 }

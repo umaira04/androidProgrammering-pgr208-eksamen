@@ -19,10 +19,6 @@ fun AnimeInfo(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Subtitle(subtitle)
-        Text(
-            text = animeInfo,
-            color = Color.Black,
-            fontSize = 16.sp
-        )
+        BodyText(animeInfo)
     }
 }

@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.lists.AnimeIdeaList
 import com.example.androideksamen.components.shared.GenreDropdownMenu
 import com.example.androideksamen.components.shared.Title
+import com.example.androideksamen.components.shared.UserInputField
 import com.example.androideksamen.data.database.AnimeDB
 import com.example.androideksamen.data.database.Genre
 import kotlinx.coroutines.delay

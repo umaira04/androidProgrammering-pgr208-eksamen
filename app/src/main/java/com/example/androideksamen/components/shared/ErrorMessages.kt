@@ -7,35 +7,37 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.graphics.rotationMatrix
 
 @Composable
 fun ErrorLoading(errorType: Int, errorItem: String? = null) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 16.dp),
+            .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top
+        verticalArrangement = Arrangement.spacedBy(40.dp)
     )
     {
-
         if (errorType == 1) {
             Text(
                 text = "We're currently having an error loading ${errorItem}. \nPlease check your network connection and try again",
                 fontSize = 16.sp,
                 color = Color.Black,
-                fontWeight = FontWeight.Bold,
                 modifier = Modifier
                     .padding(top = 8.dp)
                     .fillMaxWidth(),
@@ -46,7 +48,6 @@ fun ErrorLoading(errorType: Int, errorItem: String? = null) {
                 text = "No anime with this ID exists. \nPlease try a different Anime ID",
                 fontSize = 16.sp,
                 color = Color.Black,
-                fontWeight = FontWeight.Bold,
                 modifier = Modifier
                     .padding(top = 8.dp)
                     .fillMaxWidth(),
@@ -54,12 +55,14 @@ fun ErrorLoading(errorType: Int, errorItem: String? = null) {
             )
         }
         Icon(
-            imageVector = Icons.Outlined.Warning,
-            contentDescription = "none",
-            tint = Color.Red,
-            modifier = Modifier.size(88.dp)
-        )
+            imageVector = Icons.Outlined.Info,
+            contentDescription = "Error symbol",
+            tint = Color(0xFF656391),
+            modifier = Modifier
+                .size(112.dp)
+                .rotate(180f)
 
+        )
     }
 
 }

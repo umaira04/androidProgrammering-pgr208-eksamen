@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun UserInputField(
+fun InputTextField(
     value: String,
     onValueChange: (String) -> Unit,
     placeholder: String

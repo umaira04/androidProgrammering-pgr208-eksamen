@@ -34,8 +34,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.lists.AnimeIdeaList
 import com.example.androideksamen.components.shared.GenreDropdownMenu
+import com.example.androideksamen.components.shared.InputTextField
 import com.example.androideksamen.components.shared.Title
-import com.example.androideksamen.components.shared.UserInputField
 import com.example.androideksamen.data.database.AnimeDB
 import com.example.androideksamen.data.database.Genre
 import kotlinx.coroutines.delay
@@ -79,7 +79,7 @@ fun AnimeIdeasScreen(
     }
 
     Column( // MAIN COLUMN START
-        verticalArrangement = Arrangement.spacedBy(16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFFBBAED))
@@ -102,24 +102,10 @@ fun AnimeIdeasScreen(
                 .padding(horizontal = 24.dp)
         )
 
-        TextField(
+        InputTextField(
             value = title,
             onValueChange = { title = it },
-            placeholder = { Text("Enter your anime title...") },
-            modifier = Modifier
-                .padding(horizontal = 16.dp)
-                .clip(RoundedCornerShape(32.dp))
-                .fillMaxWidth(),
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color.White,
-                unfocusedContainerColor = Color(0xFFF7EAF9),
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-                focusedPlaceholderColor = Color(0xFF0A0E0D),
-                unfocusedPlaceholderColor = Color(0xFF0A0E0D),
-                focusedTextColor = Color(0xFF0A0E0D),
-                unfocusedTextColor = Color(0xFF0A0E0D)
-            )
+            placeholder = "Enter your anime title..."
         )
 
         Text(
@@ -129,35 +115,42 @@ fun AnimeIdeasScreen(
                 .padding(horizontal = 24.dp)
         )
 
-        TextField(
+        InputTextField(
             value = synopsis,
             onValueChange = { synopsis = it },
-            placeholder = { Text("Describe your anime idea...") },
+            placeholder = "Describe your anime idea...")
+
+        Text(
+            text = "Genre",
+            fontSize = 16.sp,
             modifier = Modifier
-                .padding(horizontal = 16.dp)
-                .clip(RoundedCornerShape(32.dp))
-                .fillMaxWidth(),
-            colors = TextFieldDefaults.colors(
-                focusedContainerColor = Color.White,
-                unfocusedContainerColor = Color(0xFFF7EAF9),
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent,
-                focusedPlaceholderColor = Color(0xFF0A0E0D),
-                unfocusedPlaceholderColor = Color(0xFF0A0E0D),
-                focusedTextColor = Color(0xFF0A0E0D),
-                unfocusedTextColor = Color(0xFF0A0E0D)
-            )
+                .padding(horizontal = 24.dp)
         )
 
         GenreDropdownMenu(
             selectedGenre = genre,
             onGenreSelected = { genre = it }
         )
+
         if (isEditing) {
             Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp)
+                    .padding(top = 16.dp)
             ) {
+
+                Button(
+                    onClick = {
+                        isEditing = false
+                        title = ""
+                        synopsis = ""
+                    }
+                ) {
+                    Text("Cancel")
+                }
                 Button(
                     onClick = {
                         if (title.isNotEmpty() && synopsis.isNotEmpty()) {
@@ -174,16 +167,6 @@ fun AnimeIdeasScreen(
                 ) {
                     Text("Save changes")
                 }
-
-                Button(
-                    onClick = {
-                        isEditing = false
-                        title = ""
-                        synopsis = ""
-                    }
-                ) {
-                    Text("Cancel")
-                }
             }
         } else {
             Row(
@@ -192,7 +175,14 @@ fun AnimeIdeasScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp)
+                    .padding(top = 16.dp)
             ) {
+                Text(
+                    text = userFeedbackMessage,
+                    color = Color(0xFF08864A),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
+                )
                 Button(
                     onClick = {
                         if (title.isNotEmpty() && synopsis.isNotEmpty()) {
@@ -207,12 +197,6 @@ fun AnimeIdeasScreen(
                 ) {
                     Text("Save anime")
                 }
-                Text(
-                    text = userFeedbackMessage,
-                    color = Color(0xFF08864A),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold
-                )
             }
         }
 
@@ -281,7 +265,14 @@ fun AnimeIdeasScreen(
                     handleDeleteBtnClick = { handleDeleteBtnClick(animeIdea = it) }
                 )
             } else {
-                Text("No anime ideas yet")
+                Text("No anime ideas yet...♥",
+                    textAlign = TextAlign.Center,
+                    fontSize = 16.sp,
+                    color = Color.Black,
+                    modifier = Modifier
+                        .padding(top = 56.dp)
+                        .fillMaxWidth()
+                )
             }
         }
     } //MAIN COLUMN END

@@ -52,6 +52,7 @@ fun AnimeSearchScreen(
         modifier = Modifier
             .background(color = Color(0xFFFBBAED))
             .fillMaxSize()
+            .padding(8.dp, 8.dp, 8.dp, 0.dp)
     ) {
         // Tittel
         Title("Search")

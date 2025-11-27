@@ -26,7 +26,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
-import com.example.androideksamen.components.shared.animeTheme
+import com.example.androideksamen.components.shared.navBarTheme
 import com.example.androideksamen.screens.anime.AnimeScreen
 import com.example.androideksamen.screens.anime.AnimeViewModel
 import com.example.androideksamen.screens.animedetails.AnimeDetailsScreen
@@ -69,7 +69,7 @@ fun AppNavigation(
                         )
                     },
                     label = { Text("Anime") },
-                    colors = animeTheme()
+                    colors = navBarTheme()
                 ) // End Anime
 
                 NavigationBarItem( // Start AnimeSearch
@@ -85,7 +85,7 @@ fun AppNavigation(
                         )
                     },
                     label = { Text("Search") },
-                    colors = animeTheme()
+                    colors = navBarTheme()
                 ) // End AnimeSearch
 
                 NavigationBarItem( // Start AnimeIdeas
@@ -101,7 +101,7 @@ fun AppNavigation(
                         )
                     },
                     label = { Text("Ideas") },
-                    colors = animeTheme()
+                    colors = navBarTheme()
                 ) // End AnimeIdeas
 
                 NavigationBarItem( // Start Character
@@ -117,7 +117,7 @@ fun AppNavigation(
                         )
                     },
                     label = { Text("Characters") },
-                    colors = animeTheme()
+                    colors = navBarTheme()
                 ) // End Character
             }
         } // End NavigationBar

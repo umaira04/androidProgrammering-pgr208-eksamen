@@ -42,6 +42,8 @@ fun AnimeIdeasScreen(
     animeIdeasViewModel: AnimeIdeasViewModel,
 ) {
 
+    // TODO? BØR STATES LIGGE I VIEWMODEL?
+
     val animeIdeas = animeIdeasViewModel.animeIdeas.collectAsState()
     var title: String by remember { mutableStateOf("") }
     var synopsis: String by remember { mutableStateOf("") }

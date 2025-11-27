@@ -21,6 +21,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.androideksamen.components.lists.AnimeList
 import com.example.androideksamen.components.shared.ErrorLoading
+import com.example.androideksamen.fonts.Jaro
 import com.example.androideksamen.components.shared.Title
 import com.example.androideksamen.navigation.NavRoutes
 

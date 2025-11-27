@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.items.AnimeDetailsItem
 import com.example.androideksamen.components.shared.ErrorLoading
+import com.example.androideksamen.components.shared.Title
 
 
 //FORELESNING 9 FOR Å SE AKKURAT DENNE OPPGAVEN
@@ -53,16 +54,7 @@ fun AnimeSearchScreen(
             .fillMaxSize()
     ) {
         // Tittel
-        Text(
-            "Search",
-            fontSize = 28.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color(0xFF0A0E0D),
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(vertical = 16.dp)
-                .fillMaxWidth()
-        )
+        Title("Search")
 
         Column(
             modifier = Modifier

@@ -33,6 +33,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
 import coil.compose.AsyncImage
+import com.example.androideksamen.components.shared.AnimeInfo
+import com.example.androideksamen.components.shared.Subtitle
 import com.example.androideksamen.data.dataclasses.anime.Anime
 import com.example.androideksamen.data.dataclasses.character.Character
 
@@ -47,6 +49,7 @@ fun AnimeDetailsItem(
     val context = LocalContext.current
 
     //TODO? ENDRE TIL EN COLUMN?? OG HELLER KALLE PÅ I EN LAZYCOLUMN
+    //TODO? JEG TROR IKKE DET GÅR DA DETAILSSCREEN KALLES PÅ FRA APPNAVIGATION SOM IKKE ER @COMPOSABLE
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier
@@ -56,7 +59,6 @@ fun AnimeDetailsItem(
             )
             .padding(horizontal = 24.dp)
     ) {
-
 
         item { // Image
             AsyncImage(
@@ -139,79 +141,29 @@ fun AnimeDetailsItem(
                     .padding(vertical = 16.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "Year",
-                        color = Color(0xFF0A0E0D),
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Text(
-                        text = anime.year?.toString() ?: "No year",
-                        color = Color.Black,
-                        fontSize = 16.sp
-                    )
-                }
-
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "Type",
-                        color = Color(0xFF0A0E0D),
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Text(
-                        text = anime.type ?: "No type", color = Color.Black, fontSize = 16.sp
-                    )
-                }
+                AnimeInfo(
+                    subtitle = "Year",
+                    animeInfo = anime.year?.toString() ?: "No year"
+                )
+                AnimeInfo(
+                    subtitle = "Type",
+                    animeInfo = anime.type ?: "No type"
+                )
 
                 if (anime.type != null) {
                     if (anime.type == "TV") {
-
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(8.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                            Text(
-                                text = "Episodes",
-                                color = Color(0xFF0A0E0D),
-                                fontSize = 24.sp,
-                                fontWeight = FontWeight.Bold
-                            )
-                            Text(
-                                text = anime.episodes?.toString() ?: "No episodes",
-                                color = Color.Black,
-                                fontSize = 16.sp,
+                        AnimeInfo(
+                            subtitle = "Episodes",
+                            animeInfo = anime.episodes?.toString() ?: "No episodes"
                             )
                         }
                     } else { // End if anime.type == TV
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(8.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally
-                        ) {
-                            Text(
-                                text = "Duration",
-                                color = Color(0xFF0A0E0D),
-                                fontSize = 24.sp,
-                                fontWeight = FontWeight.Bold
-                            )
-                            Text(
-                                text = anime.duration ?: "No duration", style = TextStyle(
-                                    color = Color(0xFF0A0E0D),
-                                    fontSize = 16.sp,
-                                )
-                            )
-                        }
+                        AnimeInfo(
+                            subtitle = "Duration",
+                            animeInfo = anime.duration ?: "No duration"
+                        )
                     } // End else if anime.type != TV
                 } // End if anime.type != null
-
-            }
         }// End row with anime info: Year, Episodes, Type
 
         item {  // Synposis
@@ -222,12 +174,7 @@ fun AnimeDetailsItem(
                     .padding(bottom = 8.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Text(
-                    "Synopsis ",
-                    color = Color(0xFF0A0E0D),
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold
-                )
+                Subtitle("Synopsis")
                 Text(
                     anime.synopsis ?: "No synopsis",
                     color = Color.Black,
@@ -241,12 +188,7 @@ fun AnimeDetailsItem(
             Column(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                Text(
-                    text = "Genres ",
-                    color = Color(0xFF0A0E0D),
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold
-                )
+                Subtitle("Genres")
                 Row( // Start row genres
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -275,33 +217,17 @@ fun AnimeDetailsItem(
             } // End row genres
         }
 
-        //UMAIR PRØVER Å COOKE START
-
         if (isSearchScreen) {
             item {
-                Text(
-                    text = "Main characters",
-                    color = Color(0xFF0A0E0D),
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold
-                )
+                Subtitle("Main characters")
             }
             items(characters) { character ->
                 MainCharacterItem(character = character)
             }
-        } //UMAIR PRØVER Å COOKE END
-
+        }
 
         item {
-            Text(
-                // More information
-                text = "More information",
-                color = Color(0xFF0A0E0D),
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 8.dp)
-            )
-
+            Subtitle("More information")
             Text(
                 text = anime.url.toString(),
                 color = Color.Black,

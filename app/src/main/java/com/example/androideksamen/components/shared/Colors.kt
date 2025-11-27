@@ -15,9 +15,8 @@ val LightPink = Color(0xFFF7EAF9)
 val DarkBlue = Color(0xFF324663)
 val LightYellow = Color(0xFFfdf1b2)
 
-// Theme for NavBar
 @Composable
-fun animeTheme(): NavigationBarItemColors {
+fun navBarTheme(): NavigationBarItemColors {
     return colors(
         indicatorColor = Color(0xFF0A0E0D),
         selectedIconColor = Color(0xFFF5F5F5),
@@ -27,7 +26,6 @@ fun animeTheme(): NavigationBarItemColors {
     )
 }
 
-// Theme for Input
 @Composable
 fun inputTheme(): TextFieldColors {
     return colors(

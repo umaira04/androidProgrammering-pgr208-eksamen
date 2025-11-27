@@ -19,12 +19,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.lists.CharacterList
 import com.example.androideksamen.components.shared.ErrorLoading
 import com.example.androideksamen.components.shared.Title
+import com.example.androideksamen.fonts.BodyFont
 
 @Composable
 fun CharacterScreen(
@@ -65,6 +67,7 @@ fun CharacterScreen(
                     Text(
                         text = "No favorites. Press the heart to mark a character as favorite",
                         fontSize = 16.sp,
+                        fontFamily = BodyFont,
                         color = Color.Black,
                         modifier = Modifier.padding(top = 8.dp)
                     )
@@ -91,9 +94,15 @@ fun CharacterScreen(
                 )
             ) {
                 if (!showOnlyFavorites) {
-                    Text("Show favorites")
+                    Text(
+                        "Show favorites",
+                        fontFamily = BodyFont
+                    )
                 } else {
-                    Text("Show all")
+                    Text(
+                        "Show all",
+                        fontFamily = BodyFont
+                    )
                 }
             }
         }

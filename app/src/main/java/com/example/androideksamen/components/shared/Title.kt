@@ -10,13 +10,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.androideksamen.fonts.TitleFont
 
 @Composable
-fun Title(
-    title: String,
-) {
+fun Title(title: String) {
     Text(
         text = title,
+        fontFamily = TitleFont,
         fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
         color = Color(0xFF0A0E0D),

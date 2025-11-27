@@ -32,10 +32,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
 import coil.compose.AsyncImage
+import com.example.androideksamen.components.shared.Subtitle
 import com.example.androideksamen.data.dataclasses.character.Character
+import com.example.androideksamen.fonts.BodyFont
 
-//TODO: søk
-//TODO: endre fontSize i animeitem så det er likt som characteritem
 @Composable
 fun CharacterItem(
     character: Character,
@@ -69,6 +69,7 @@ fun CharacterItem(
             ) {
                 Text(
                     text = character.name,
+                    fontFamily = BodyFont,
                     fontSize = if (character.name.length > 16) 16.sp else 24.sp,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
@@ -78,6 +79,7 @@ fun CharacterItem(
 
                 Text(
                     text = character.nameJapanese ?: "No japanese name",
+                    fontFamily = BodyFont,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     color = Color.Black
@@ -87,6 +89,7 @@ fun CharacterItem(
 
                 Text(
                     text = "Open in MyAnimeList.net",
+                    fontFamily = BodyFont,
                     color = Color.Black,
                     fontSize = 16.sp,
                     modifier = Modifier

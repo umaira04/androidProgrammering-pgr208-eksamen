@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
 import coil.compose.AsyncImage
 import com.example.androideksamen.components.shared.AnimeInfo
+import com.example.androideksamen.components.shared.BodyText
 import com.example.androideksamen.components.shared.Subtitle
 import com.example.androideksamen.data.dataclasses.anime.Anime
 import com.example.androideksamen.data.dataclasses.character.Character
@@ -174,11 +175,8 @@ fun AnimeDetailsItem(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Subtitle("Synopsis")
-                Text(
+                BodyText(
                     anime.synopsis ?: "No synopsis",
-                    color = Color.Black,
-                    fontSize = 16.sp,
-                    lineHeight = 24.sp
                 )
             }
         } // End synopsis

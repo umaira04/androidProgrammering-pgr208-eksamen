@@ -33,8 +33,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.lists.AnimeIdeaList
+import com.example.androideksamen.components.shared.GenreDropdownMenu
 import com.example.androideksamen.components.shared.Title
 import com.example.androideksamen.data.database.AnimeDB
+import com.example.androideksamen.data.database.Genre
 import kotlinx.coroutines.delay
 
 @Composable
@@ -48,6 +50,7 @@ fun AnimeIdeasScreen(
     var title: String by remember { mutableStateOf("") }
     var synopsis: String by remember { mutableStateOf("") }
     var id: Int by remember { mutableStateOf(value = 0) }
+    var genre: Genre by remember { mutableStateOf(value = Genre.OTHER) }
 
     var isEditing by remember { mutableStateOf(false) }
     var isDeleting by remember { mutableStateOf(false) }
@@ -65,6 +68,7 @@ fun AnimeIdeasScreen(
         title = animeIdea.title
         synopsis = animeIdea.synopsis
         id = animeIdea.id
+        genre = animeIdea.genre
         isEditing = true
     }
 
@@ -144,6 +148,10 @@ fun AnimeIdeasScreen(
         )
     )
 
+    GenreDropdownMenu(
+            selectedGenre = genre,
+            onGenreSelected = {genre = it}
+        )
     if (isEditing) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -153,7 +161,7 @@ fun AnimeIdeasScreen(
                 onClick = {
                     if (title.isNotEmpty() && synopsis.isNotEmpty()) {
                         animeIdeasViewModel.updateAnimeIdea(
-                            AnimeDB(id = id, title = title, synopsis = synopsis)
+                            AnimeDB(id = id, title = title, synopsis = synopsis, genre = genre)
                         )
 
                         isEditing = false
@@ -188,7 +196,7 @@ fun AnimeIdeasScreen(
                 onClick = {
                     if (title.isNotEmpty() && synopsis.isNotEmpty()) {
                         animeIdeasViewModel.insertAnimeIdea(
-                            AnimeDB(title = title, synopsis = synopsis)
+                            AnimeDB(title = title, synopsis = synopsis, genre = genre)
                         )
                         title = ""
                         synopsis = ""

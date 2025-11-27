@@ -102,6 +102,7 @@ fun AnimeIdeaItem(
                     fontSize = 16.sp,
                     modifier = Modifier
                 )
+                Text(animeIdea.genre.toString())
             }
         }
 

@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.sp
 fun AnimeInfo(
     subtitle: String,
     animeInfo: String,
-){
+) {
     Column(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally

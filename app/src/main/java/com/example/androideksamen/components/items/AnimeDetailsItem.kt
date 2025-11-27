@@ -26,7 +26,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -155,15 +154,15 @@ fun AnimeDetailsItem(
                         AnimeInfo(
                             subtitle = "Episodes",
                             animeInfo = anime.episodes?.toString() ?: "No episodes"
-                            )
-                        }
-                    } else { // End if anime.type == TV
-                        AnimeInfo(
-                            subtitle = "Duration",
-                            animeInfo = anime.duration ?: "No duration"
                         )
-                    } // End else if anime.type != TV
-                } // End if anime.type != null
+                    }
+                } else { // End if anime.type == TV
+                    AnimeInfo(
+                        subtitle = "Duration",
+                        animeInfo = anime.duration ?: "No duration"
+                    )
+                } // End else if anime.type != TV
+            } // End if anime.type != null
         }// End row with anime info: Year, Episodes, Type
 
         item {  // Synposis

@@ -7,7 +7,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun Subtitle(subtitle: String){
+fun Subtitle(subtitle: String) {
     Text(
         text = subtitle,
         color = Color(0xFF0A0E0D),

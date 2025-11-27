@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun Title(
     title: String,
-){
+) {
     Text(
         text = title,
         fontSize = 40.sp,

@@ -50,11 +50,11 @@ fun MainCharacterItem(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(104.dp)
-                .padding(4.dp)
                 .background(
-                    color = Color(0xFFFDF1B2),
+                    color = Color(0xFFF7EAF9),
                     shape = RoundedCornerShape(8.dp)
-                ),
+                )
+                .padding(4.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(
@@ -78,7 +78,7 @@ fun MainCharacterItem(
                 //LINK TO MYANIMELIST WIKI FOR CHARACTER
 
                 Text(
-                    text = "Open in myanimelist",
+                    text = "Open in MyAnimeList.net",
                     color = Color.Black,
                     fontSize = 16.sp,
                     modifier = Modifier

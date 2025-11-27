@@ -20,6 +20,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -35,9 +37,9 @@ fun AnimeIdeaItem(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(16.dp)
             .background(
-                color = Color(0xFFF9FAFB),
+                color = Color(0xFFF7EAF9),
                 shape = RoundedCornerShape(8.dp)
             )
     ) {
@@ -94,15 +96,18 @@ fun AnimeIdeaItem(
                     color = Color(0xFF0A0E0D),
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
-                    modifier = Modifier
+                )
+                Text(text = animeIdea.genre.toString(),
+                    color = Color(0xFF324663),
+                    fontSize = 16.sp,
+                    fontStyle = FontStyle.Italic
                 )
                 Text(
                     text = animeIdea.synopsis,
                     color = Color(0xFF0A0E0D),
                     fontSize = 16.sp,
-                    modifier = Modifier
                 )
-                Text(animeIdea.genre.toString())
+
             }
         }
 

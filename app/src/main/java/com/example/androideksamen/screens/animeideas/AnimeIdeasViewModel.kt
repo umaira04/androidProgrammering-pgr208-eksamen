@@ -32,7 +32,7 @@ class AnimeIdeasViewModel : ViewModel() {
                 val newAnimeIdea = animeIdea.copy(id = newAnimeIdeaId.toInt())
                 _animeIdeas.value += newAnimeIdea
             } else {
-                //LEGG INN KODE FOR Å SI IFRA TIL BRUKER AT NOE HAR GÅTT GALT
+                //TODO LEGG INN KODE FOR Å SI IFRA TIL BRUKER AT NOE HAR GÅTT GALT
                 Log.d(
                     "insertAnimeIdeaElse", "error inserting new animeIdea from AnimeIdeasViewModel"
                 )
@@ -46,7 +46,7 @@ class AnimeIdeasViewModel : ViewModel() {
             if (deletedRows > 0) {
                 _animeIdeas.value -= animeIdea
             } else {
-                // LEGG INN KODE FOR Å SI IFRA TIL BRUKER AT NOE HAR GÅTT GALT
+                //TODO  LEGG INN KODE FOR Å SI IFRA TIL BRUKER AT NOE HAR GÅTT GALT
                 Log.d(
                     "deleteAnimeIdeaElse", "error deleting animeIdea from AnimeIdeasViewModel"
                 )
@@ -63,7 +63,7 @@ class AnimeIdeasViewModel : ViewModel() {
                 setAnimeIdeas()
                 Log.d("animeIdeaState updated", _animeIdeas.toString())
             } else {
-                // LEGGE INN KODE FOR Å SI IFRA TIL BRUKER AT NOE HAR GÅTT GALT
+                //TODO LEGGE INN KODE FOR Å SI IFRA TIL BRUKER AT NOE HAR GÅTT GALT
                 Log.d(
                     "updateAnimeIdeaElse", "error updating animeIdea from AnimeIdeasViewModel"
                 )

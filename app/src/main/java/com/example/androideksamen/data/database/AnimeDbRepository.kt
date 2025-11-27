@@ -13,7 +13,7 @@ object AnimeDbRepository {
             context = context,
             klass = AppDatabase::class.java,
             name = "animeIdea-database"
-        ).build()
+        ).fallbackToDestructiveMigration().build() //
     }
 
     suspend fun getAnimeIdeas(): List<AnimeDB> {
@@ -49,7 +49,7 @@ object AnimeDbRepository {
             return _animeDao.updateAnimeIdea(animeIdea)
         } catch (e: Exception) {
             Log.d("updateAnimeIdeasCatch", e.message.toString())
-            return -1 // ER DETTE RIKTIG? Skal det være long? Eller noe annet?
+            return -1 //TODO ER DETTE RIKTIG? Skal det være long? Eller noe annet?
         }
     }
 
@@ -58,7 +58,7 @@ object AnimeDbRepository {
             return _animeDao.deleteAnimeIdea(animeIdea)
         } catch (e: Exception) {
             Log.d("deleteAnimeIdeasCatch", e.message.toString())
-            return -1 // ER DETTE RIKTIG? Skal det være long? Eller noe annet?
+            return -1 //TODO ER DETTE RIKTIG? Skal det være long? Eller noe annet?
         }
     }
 }

@@ -22,6 +22,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.androideksamen.components.items.AnimeDetailsItem
+import com.example.androideksamen.components.shared.DarkPink
+import com.example.androideksamen.components.shared.DarkBlue
 
 @Composable
 fun AnimeDetailsScreen(
@@ -38,7 +40,7 @@ fun AnimeDetailsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFFBBAED))
+            .background(DarkPink)
             .padding(8.dp, 8.dp, 8.dp, 0.dp)
     ) {
 
@@ -46,15 +48,17 @@ fun AnimeDetailsScreen(
             // Go back button
             onClick = { navController.popBackStack() },
             modifier = Modifier
-                .padding(bottom = 16.dp)
-                .padding(start = 24.dp)
+                .padding(start = 24.dp, top = 8.dp ,bottom = 16.dp, )
                 .clip(RoundedCornerShape(24.dp))
                 .background(Color.White)
                 .width(60.dp)
                 .height(48.dp)
-
         ) {
-            Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Go back")
+            Icon(
+                Icons.AutoMirrored.Filled.ArrowBack,
+                contentDescription = "Go back",
+                tint = DarkBlue
+            )
         }// End go back button
 
         anime.value?.let {
@@ -62,7 +66,6 @@ fun AnimeDetailsScreen(
                 it
             )
         }
-
     }
 }// End AnimeDetailsScreen
 

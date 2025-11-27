@@ -12,7 +12,6 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,6 +26,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.example.androideksamen.components.shared.animeTheme
 import com.example.androideksamen.screens.anime.AnimeScreen
 import com.example.androideksamen.screens.anime.AnimeViewModel
 import com.example.androideksamen.screens.animedetails.AnimeDetailsScreen
@@ -49,13 +49,6 @@ fun AppNavigation(
 ) {
     val navController = rememberNavController()
     var activeItem by rememberSaveable { mutableIntStateOf(0) }
-    val animeTheme = NavigationBarItemDefaults.colors(
-        indicatorColor = Color(0xFF0A0E0D),
-        selectedIconColor = Color(0xFFF5F5F5),
-        unselectedIconColor = Color(0xFFF5F5F5),
-        selectedTextColor = Color(0xFFF5F5F5),
-        unselectedTextColor = Color(0xFFF5F5F5)
-    )
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -76,7 +69,7 @@ fun AppNavigation(
                         )
                     },
                     label = { Text("Anime") },
-                    colors = animeTheme
+                    colors = animeTheme()
                 ) // End Anime
 
                 NavigationBarItem( // Start AnimeSearch
@@ -92,7 +85,7 @@ fun AppNavigation(
                         )
                     },
                     label = { Text("Search") },
-                    colors = animeTheme
+                    colors = animeTheme()
                 ) // End AnimeSearch
 
                 NavigationBarItem( // Start AnimeIdeas
@@ -108,7 +101,7 @@ fun AppNavigation(
                         )
                     },
                     label = { Text("Ideas") },
-                    colors = animeTheme
+                    colors = animeTheme()
                 ) // End AnimeIdeas
 
                 NavigationBarItem( // Start Character
@@ -124,8 +117,7 @@ fun AppNavigation(
                         )
                     },
                     label = { Text("Characters") },
-                    colors = animeTheme
-
+                    colors = animeTheme()
                 ) // End Character
             }
         } // End NavigationBar

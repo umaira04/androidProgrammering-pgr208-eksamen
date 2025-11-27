@@ -19,11 +19,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.lists.CharacterList
+import com.example.androideksamen.components.shared.DarkBlue
 import com.example.androideksamen.components.shared.ErrorLoading
 import com.example.androideksamen.components.shared.Title
 import com.example.androideksamen.fonts.BodyFont
@@ -89,7 +89,7 @@ fun CharacterScreen(
                     .align(Alignment.BottomEnd)
                     .padding(16.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF324663),
+                    containerColor = DarkBlue,
                     contentColor = Color.White
                 )
             ) {

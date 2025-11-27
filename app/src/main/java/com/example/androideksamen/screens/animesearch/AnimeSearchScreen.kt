@@ -13,7 +13,6 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -32,8 +31,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.items.AnimeDetailsItem
+import com.example.androideksamen.components.shared.DarkPink
 import com.example.androideksamen.components.shared.ErrorLoading
+import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.components.shared.Title
+import com.example.androideksamen.components.shared.inputTheme
 
 
 //FORELESNING 9 FOR Å SE AKKURAT DENNE OPPGAVEN
@@ -50,7 +52,7 @@ fun AnimeSearchScreen(
 
     Column(
         modifier = Modifier
-            .background(color = Color(0xFFFBBAED))
+            .background(DarkPink)
             .fillMaxSize()
             .padding(8.dp, 8.dp, 8.dp, 0.dp)
     ) {
@@ -69,7 +71,7 @@ fun AnimeSearchScreen(
                 Text(
                     text = "Search for anime by ID",
                     fontSize = 18.sp,
-                    color = Color.Black,
+                    color = Onyx,
                     fontWeight = FontWeight.SemiBold,
                     modifier = Modifier
                         .padding(top = 8.dp)
@@ -118,16 +120,7 @@ fun AnimeSearchScreen(
                     .padding(horizontal = 16.dp)
                     .clip(RoundedCornerShape(32.dp))
                     .fillMaxWidth(),
-                colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color.White,
-                    unfocusedContainerColor = Color(0xFFF7EAF9),
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    focusedPlaceholderColor = Color(0xFF0A0E0D),
-                    unfocusedPlaceholderColor = Color(0xFF0A0E0D),
-                    focusedTextColor = Color(0xFF0A0E0D),
-                    unfocusedTextColor = Color(0xFF0A0E0D)
-                )
+                colors = inputTheme()
             )
         }
     }

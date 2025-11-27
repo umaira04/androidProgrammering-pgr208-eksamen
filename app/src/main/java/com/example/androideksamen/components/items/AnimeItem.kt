@@ -18,13 +18,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.example.androideksamen.components.shared.LightPink
+import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.data.dataclasses.anime.Anime
 import com.example.androideksamen.data.dataclasses.anime.Genre
 
@@ -38,7 +39,7 @@ fun AnimeItem(
             .padding(8.dp)
             .clickable { showDetails() }
             .background(
-                color = Color(0xFFF7EAF9),
+                color = LightPink,
                 shape = RoundedCornerShape(8.dp)
             )
     ) {
@@ -52,7 +53,7 @@ fun AnimeItem(
                 overflow = TextOverflow.Ellipsis,
                 lineHeight = 32.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF0A0E0D)
+                color = Onyx
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -74,7 +75,7 @@ fun AnimeItem(
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     lineHeight = 32.sp,
-                    color = Color(0xFF0A0E0D),
+                    color = Onyx,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
                         .align(Alignment.Center)
@@ -94,14 +95,14 @@ fun AnimeItem(
                     fontSize = 24.sp,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
-                    color = Color(0xFF0A0E0D),
+                    color = Onyx,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
                     text = anime.year?.toString() ?: "No year",
                     fontSize = 24.sp,
                     maxLines = 1,
-                    color = Color(0xFF0A0E0D),
+                    color = Onyx,
                     fontWeight = FontWeight.Bold
                 )
             }

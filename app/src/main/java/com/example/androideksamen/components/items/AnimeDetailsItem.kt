@@ -23,7 +23,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -33,13 +32,15 @@ import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
 import coil.compose.AsyncImage
 import com.example.androideksamen.components.shared.AnimeInfo
+import com.example.androideksamen.components.shared.DarkPink
 import com.example.androideksamen.components.shared.BodyText
 import com.example.androideksamen.components.shared.Subtitle
+import com.example.androideksamen.components.shared.Onyx
+import com.example.androideksamen.components.shared.LightYellow
 import com.example.androideksamen.data.dataclasses.anime.Anime
 import com.example.androideksamen.data.dataclasses.character.Character
 
 
-//MULIG Å LEGGE TILBAKE KNAPP UTENFOR ITEM?? -U
 @Composable
 fun AnimeDetailsItem(
     anime: Anime,
@@ -54,9 +55,7 @@ fun AnimeDetailsItem(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier
             .fillMaxWidth()
-            .background(
-                color = Color(0xFFFBBAED),
-            )
+            .background(color = DarkPink)
             .padding(horizontal = 24.dp)
     ) {
 
@@ -88,7 +87,7 @@ fun AnimeDetailsItem(
                         overflow = TextOverflow.Ellipsis,
                         lineHeight = 32.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF0A0E0D)
+                        color = Onyx
                     )
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -101,7 +100,7 @@ fun AnimeDetailsItem(
                             maxLines = 2,
                             overflow = TextOverflow.Ellipsis,
                             lineHeight = 24.sp,
-                            color = Color(0xFF0A0E0D),
+                            color = Onyx,
                             modifier = Modifier
                                 .weight(1f)
                                 .padding(end = 8.dp)
@@ -110,7 +109,8 @@ fun AnimeDetailsItem(
                             modifier = Modifier
                                 .size(80.dp, 32.dp)
                                 .background(
-                                    color = Color(0xFFfdf1b2), shape = RoundedCornerShape(16.dp)
+                                    color = LightYellow,
+                                    shape = RoundedCornerShape(16.dp)
                                 )
                         ) {
                             Row(
@@ -170,8 +170,7 @@ fun AnimeDetailsItem(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 8.dp)
-                    .padding(bottom = 8.dp),
+                    .padding(vertical = 8.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Subtitle("Synopsis")
@@ -195,7 +194,7 @@ fun AnimeDetailsItem(
                             modifier = Modifier
                                 .height(32.dp)
                                 .background(
-                                    color = Color(0xFFFDF1B2),
+                                    color = LightYellow,
                                     shape = RoundedCornerShape(16.dp)
                                 )
                                 .padding(horizontal = 8.dp),
@@ -206,7 +205,7 @@ fun AnimeDetailsItem(
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.Bold,
                                 overflow = TextOverflow.Ellipsis,
-                                color = Color(0xFF0A0E0D)
+                                color = Onyx
                             )
                         }
                     }
@@ -227,7 +226,7 @@ fun AnimeDetailsItem(
             Subtitle("More information")
             Text(
                 text = anime.url.toString(),
-                color = Color.Black,
+                color = Onyx,
                 fontSize = 16.sp,
                 modifier = Modifier
                     .clickable {

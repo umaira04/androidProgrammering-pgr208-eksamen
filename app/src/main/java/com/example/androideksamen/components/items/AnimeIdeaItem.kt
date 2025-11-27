@@ -20,11 +20,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.androideksamen.components.shared.DarkBlue
+import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.data.database.AnimeDB
 
 
@@ -68,7 +69,7 @@ fun AnimeIdeaItem(
                     Icon(
                         Icons.Outlined.Delete,
                         contentDescription = "Delete",
-                        tint = Color(0xFF324663)
+                        tint = DarkBlue
                     )
                 }
                 IconButton(
@@ -81,7 +82,7 @@ fun AnimeIdeaItem(
                     Icon(
                         Icons.Outlined.Edit,
                         contentDescription = "Edit",
-                        tint = Color(0xFF324663)
+                        tint = DarkBlue
                     )
 
                 }
@@ -93,18 +94,18 @@ fun AnimeIdeaItem(
             ) {
                 Text(
                     text = animeIdea.title,
-                    color = Color(0xFF0A0E0D),
+                    color = Onyx,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
                 )
                 Text(text = animeIdea.genre.toString(),
-                    color = Color(0xFF324663),
+                    color = Onyx,
                     fontSize = 16.sp,
                     fontStyle = FontStyle.Italic
                 )
                 Text(
                     text = animeIdea.synopsis,
-                    color = Color(0xFF0A0E0D),
+                    color = Onyx,
                     fontSize = 16.sp,
                 )
 

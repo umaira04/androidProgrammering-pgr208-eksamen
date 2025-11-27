@@ -8,8 +8,6 @@ val TitleFont = FontFamily(
     Font(R.font.mangat, )
 )
 
-val BodyFont = FontFamily(
-    Font(R.font.helvetica)
-)
+val BodyFont = FontFamily.Default
 
 

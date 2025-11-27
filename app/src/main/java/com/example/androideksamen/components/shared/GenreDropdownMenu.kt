@@ -11,7 +11,6 @@ import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -70,18 +69,9 @@ fun GenreDropdownMenu(
                 readOnly = true,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .menuAnchor()
+                    .menuAnchor() //TODO: sjekke ut dette
                     .clip(RoundedCornerShape(32.dp)),
-                colors = TextFieldDefaults.colors(
-                    focusedContainerColor = Color.White,
-                    unfocusedContainerColor = Color(0xFFF7EAF9),
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    focusedPlaceholderColor = Color(0xFF0A0E0D),
-                    unfocusedPlaceholderColor = Color(0xFF0A0E0D),
-                    focusedTextColor = Color(0xFF0A0E0D),
-                    unfocusedTextColor = Color(0xFF0A0E0D)
-                ),
+                colors = inputTheme(),
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpanded)
                 }
@@ -99,7 +89,7 @@ fun GenreDropdownMenu(
                         text = {
                             Text(
                                 text = genre.name,
-                                color = Color(0xFF0A0E0D)
+                                color = Onyx
                             )
                         },
                         onClick = {
@@ -107,8 +97,7 @@ fun GenreDropdownMenu(
                             isExpanded = false
                         },
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .background(Color.White),
+                            .fillMaxWidth(),
                         contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding
                     )
                 }

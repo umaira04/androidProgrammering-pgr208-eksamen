@@ -13,10 +13,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -33,9 +32,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.lists.AnimeIdeaList
+import com.example.androideksamen.components.shared.DarkPink
+import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.GenreDropdownMenu
 import com.example.androideksamen.components.shared.InputTextField
+import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.components.shared.Title
+import com.example.androideksamen.components.shared.buttonTheme
 import com.example.androideksamen.data.database.AnimeDB
 import com.example.androideksamen.data.database.Genre
 import kotlinx.coroutines.delay
@@ -46,6 +49,7 @@ fun AnimeIdeasScreen(
 ) {
 
     // TODO? BØR STATES LIGGE I VIEWMODEL?
+    // TODO: LazyColumn på hele siden
 
     val animeIdeas = animeIdeasViewModel.animeIdeas.collectAsState()
     var title: String by remember { mutableStateOf("") }
@@ -82,7 +86,7 @@ fun AnimeIdeasScreen(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFFBBAED))
+            .background(DarkPink)
             .padding(8.dp, 8.dp, 8.dp, 0.dp)
     ) {
         Title("Anime Ideas")
@@ -147,7 +151,8 @@ fun AnimeIdeasScreen(
                         isEditing = false
                         title = ""
                         synopsis = ""
-                    }
+                    },
+                    colors = buttonTheme()
                 ) {
                     Text("Cancel")
                 }
@@ -163,7 +168,8 @@ fun AnimeIdeasScreen(
                             synopsis = ""
                             userFeedbackMessage = "Update: Successful"
                         }
-                    }
+                    },
+                    colors = buttonTheme()
                 ) {
                     Text("Save changes")
                 }
@@ -179,7 +185,7 @@ fun AnimeIdeasScreen(
             ) {
                 Text(
                     text = userFeedbackMessage,
-                    color = Color(0xFF08864A),
+                    color = Onyx,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -193,9 +199,11 @@ fun AnimeIdeasScreen(
                             synopsis = ""
                             userFeedbackMessage = "Save: Successful"
                         }
-                    }
+                    },
+                    colors = buttonTheme()
                 ) {
-                    Text("Save anime")
+                    Text(
+                        "Save anime")
                 }
             }
         }
@@ -205,7 +213,7 @@ fun AnimeIdeasScreen(
                 modifier = Modifier
                     .padding(16.dp)
                     .clip(RoundedCornerShape(16.dp))
-                    .background(Color.White)
+                    .background(LightPink)
                     .fillMaxWidth(),
                 contentAlignment = Alignment.Center
             ) {
@@ -241,7 +249,8 @@ fun AnimeIdeasScreen(
                                 isDeleting = false
                                 animeIdeaToDelete = null
                                 userFeedbackMessage = "Delete: Successful"
-                            }
+                            },
+                            colors = buttonTheme()
                         ) {
                             Text("Delete")
                         }
@@ -250,7 +259,8 @@ fun AnimeIdeasScreen(
                             onClick = {
                                 isDeleting = false
                                 animeIdeaToDelete = null
-                            }
+                            },
+                            colors = buttonTheme()
                         ) {
                             Text("Cancel")
                         }
@@ -268,7 +278,7 @@ fun AnimeIdeasScreen(
                 Text("No anime ideas yet...♥",
                     textAlign = TextAlign.Center,
                     fontSize = 16.sp,
-                    color = Color.Black,
+                    color = Onyx,
                     modifier = Modifier
                         .padding(top = 56.dp)
                         .fillMaxWidth()

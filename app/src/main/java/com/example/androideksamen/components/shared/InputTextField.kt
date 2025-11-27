@@ -26,15 +26,6 @@ fun InputTextField(
             .padding(horizontal = 16.dp)
             .clip(RoundedCornerShape(32.dp))
             .fillMaxWidth(),
-        colors = TextFieldDefaults.colors(
-            focusedContainerColor = Color.White,
-            unfocusedContainerColor = Color(0xFFF7EAF9),
-            focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent,
-            focusedPlaceholderColor = Color(0xFF0A0E0D),
-            unfocusedPlaceholderColor = Color(0xFF0A0E0D),
-            focusedTextColor = Color(0xFF0A0E0D),
-            unfocusedTextColor = Color(0xFF0A0E0D)
-        )
+        colors = inputTheme()
     )
 }

@@ -24,6 +24,10 @@ import com.example.androideksamen.data.database.Genre
 //source for this func
 //https://www.youtube.com/watch?v=5h737wNN-qM
 
+/*
+    her ser vi at vi kunne lagt inn listen som en parameter for å gjøre koden mer skalerbar,
+    men vi har valgt å droppe det, da vi kun bruker drowdown menyen en gang.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GenreDropdownMenu(

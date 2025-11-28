@@ -16,7 +16,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -50,31 +49,26 @@ fun AnimeIdeasScreen(
     // TODO? BØR STATES LIGGE I VIEWMODEL?
     // TODO: LazyColumn på hele siden
 
-    val animeIdeas = animeIdeasViewModel.animeIdeas.collectAsState()
-    var title: String by remember { mutableStateOf("") }
-    var synopsis: String by remember { mutableStateOf("") }
-    var id: Int by remember { mutableStateOf(value = 0) }
-    var genre: Genre by remember { mutableStateOf(value = Genre.OTHER) }
+    val animeIdeas by animeIdeasViewModel.animeIdeas.collectAsState()
+    val title by animeIdeasViewModel.title.collectAsState()
+    val synopsis by animeIdeasViewModel.synopsis.collectAsState()
+    val id by animeIdeasViewModel.id.collectAsState()
+    val genre by animeIdeasViewModel.genre.collectAsState()
+    val isEditing by animeIdeasViewModel.isEditing.collectAsState()
+    val showFeedbackMessage by animeIdeasViewModel.userFeedbackMessage.collectAsState()
 
-    var isEditing by remember { mutableStateOf(false) }
     var isDeleting by remember { mutableStateOf(false) }
     var animeIdeaToDelete: AnimeDB? by remember { mutableStateOf(null) }
-    var userFeedbackMessage by remember { mutableStateOf("") }
 
-    LaunchedEffect(userFeedbackMessage) {
-        if (userFeedbackMessage.isNotEmpty()) {
-            delay(3000)
-            userFeedbackMessage = ""
-        }
-    }
 
-    fun handleEditBtnClick(animeIdea: AnimeDB) {
+
+    /*fun handleEditBtnClick(animeIdea: AnimeDB) {
         title = animeIdea.title
         synopsis = animeIdea.synopsis
         id = animeIdea.id
         genre = animeIdea.genre
         isEditing = true
-    }
+    }*/
 
     fun handleDeleteBtnClick(animeIdea: AnimeDB) {
         isDeleting = true
@@ -107,7 +101,7 @@ fun AnimeIdeasScreen(
 
         InputTextField(
             value = title,
-            onValueChange = { title = it },
+            onValueChange = { animeIdeasViewModel.setTitle(it) },
             placeholder = "Enter your anime title..."
         )
 
@@ -120,7 +114,7 @@ fun AnimeIdeasScreen(
 
         InputTextField(
             value = synopsis,
-            onValueChange = { synopsis = it },
+            onValueChange = { animeIdeasViewModel.setSynopsis(it) },
             placeholder = "Describe your anime idea..."
         )
 
@@ -133,7 +127,7 @@ fun AnimeIdeasScreen(
 
         GenreDropdownMenu(
             selectedGenre = genre,
-            onGenreSelected = { genre = it }
+            onGenreSelected = { animeIdeasViewModel.setGenre(it) }
         )
 
         if (isEditing) {
@@ -147,11 +141,7 @@ fun AnimeIdeasScreen(
             ) {
 
                 Button(
-                    onClick = {
-                        isEditing = false
-                        title = ""
-                        synopsis = ""
-                    },
+                    onClick = { animeIdeasViewModel.cancelEditing() },
                     colors = buttonTheme()
                 ) {
                     Text("Cancel")
@@ -160,13 +150,10 @@ fun AnimeIdeasScreen(
                     onClick = {
                         if (title.isNotEmpty() && synopsis.isNotEmpty()) {
                             animeIdeasViewModel.updateAnimeIdea(
-                                AnimeDB(id = id, title = title, synopsis = synopsis, genre = genre)
+                                AnimeDB( id, title, synopsis, genre)
                             )
-
-                            isEditing = false
-                            title = ""
-                            synopsis = ""
-                            userFeedbackMessage = "Update: Successful"
+                            animeIdeasViewModel.cancelEditing()
+                            animeIdeasViewModel.showFeedbackMessage("Update: Successful")
                         }
                     },
                     colors = buttonTheme()
@@ -184,7 +171,7 @@ fun AnimeIdeasScreen(
                     .padding(top = 16.dp)
             ) {
                 Text(
-                    text = userFeedbackMessage,
+                    showFeedbackMessage,
                     color = Onyx,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
@@ -195,9 +182,8 @@ fun AnimeIdeasScreen(
                             animeIdeasViewModel.insertAnimeIdea(
                                 AnimeDB(title = title, synopsis = synopsis, genre = genre)
                             )
-                            title = ""
-                            synopsis = ""
-                            userFeedbackMessage = "Save: Successful"
+                            animeIdeasViewModel.clearForm()
+                            animeIdeasViewModel.showFeedbackMessage("Save: Successful")
                         }
                     },
                     colors = buttonTheme()
@@ -247,9 +233,8 @@ fun AnimeIdeasScreen(
                                 animeIdeaToDelete?.let { animeIdea ->
                                     animeIdeasViewModel.deleteAnimeIdea(animeIdea)
                                 }
-                                isDeleting = false
-                                animeIdeaToDelete = null
-                                userFeedbackMessage = "Delete: Successful"
+                                animeIdeasViewModel.clearForm()
+                                animeIdeasViewModel.showFeedbackMessage("Delete: Successful")
                             },
                             colors = buttonTheme()
                         ) {
@@ -269,11 +254,11 @@ fun AnimeIdeasScreen(
                 }
             }
         } else {
-            if (animeIdeas.value.count() > 0 && !isDeleting) {
+            if (animeIdeas.isNotEmpty() && !isDeleting) {
                 AnimeIdeaList(
-                    animeIdeas = animeIdeas.value,
-                    handleEditBtnClick = { handleEditBtnClick(animeIdea = it) },
-                    handleDeleteBtnClick = { handleDeleteBtnClick(animeIdea = it) }
+                    animeIdeas = animeIdeas,
+                    handleEditBtnClick = { animeIdeasViewModel.handleEditBtnClick(it) },
+                    handleDeleteBtnClick = { handleDeleteBtnClick(it) }
                 )
             } else {
                 Text(

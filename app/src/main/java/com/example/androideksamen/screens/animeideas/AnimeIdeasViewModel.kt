@@ -21,6 +21,8 @@ class AnimeIdeasViewModel : ViewModel() {
         }
     }
 
+    //Funksjoner som kjører med en gang siden åpnes.
+    //henter verdier fra ROOM db
     init {
         setAnimeIdeas()
     }

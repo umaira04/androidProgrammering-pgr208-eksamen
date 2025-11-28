@@ -16,6 +16,10 @@ object AnimeDbRepository {
         ).fallbackToDestructiveMigration().build() //
     }
 
+
+
+
+    // Henter animeer fra database
     suspend fun getAnimeIdeas(): List<AnimeDB> {
         try {
             return _animeDao.getAnimeIdeas()
@@ -25,6 +29,7 @@ object AnimeDbRepository {
         }
     }
 
+    // Setter inn animeIde til db
     suspend fun insertAnimeIdeas(animeIdea: AnimeDB): Long {
         try {
             return _animeDao.insertAnimeIdea(animeIdea)
@@ -34,31 +39,24 @@ object AnimeDbRepository {
         }
     }
 
-    //TODO? TRENGER VI DENNE??
-    suspend fun getAnimeIdeaById(id: Int): AnimeDB? {
-        try {
-            return _animeDao.getAnimeIdeaById(id)
-        } catch (e: Exception) {
-            return null
-        }
-    }
-
+    // Oppdaterer animeIde
     suspend fun updateAnimeIdea(animeIdea: AnimeDB): Int {
         try {
             Log.d("updateAnimeIdea", animeIdea.toString())
             return _animeDao.updateAnimeIdea(animeIdea)
         } catch (e: Exception) {
             Log.d("updateAnimeIdeasCatch", e.message.toString())
-            return -1 //TODO ER DETTE RIKTIG? Skal det være long? Eller noe annet?
+            return -1
         }
     }
 
+    // Sletter animeIde
     suspend fun deleteAnimeIdea(animeIdea: AnimeDB): Int {
         try {
             return _animeDao.deleteAnimeIdea(animeIdea)
         } catch (e: Exception) {
             Log.d("deleteAnimeIdeasCatch", e.message.toString())
-            return -1 //TODO ER DETTE RIKTIG? Skal det være long? Eller noe annet?
+            return -1
         }
     }
 }

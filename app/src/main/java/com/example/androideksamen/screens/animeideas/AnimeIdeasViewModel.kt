@@ -56,7 +56,12 @@ class AnimeIdeasViewModel : ViewModel() {
         }
     }
 
-    // Sender animeIde til db
+    //Funksjoner som kjører med en gang siden åpnes.
+    //henter verdier fra ROOM db
+    init {
+        setAnimeIdeas()
+    }
+
     fun insertAnimeIdea(animeIdea: AnimeDB) {
         viewModelScope.launch(Dispatchers.IO) {
             val newAnimeIdeaId = AnimeDbRepository.insertAnimeIdeas(animeIdea)

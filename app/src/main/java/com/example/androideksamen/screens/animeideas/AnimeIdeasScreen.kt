@@ -139,8 +139,7 @@ fun AnimeIdeasScreen(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-                    .padding(top = 16.dp)
+                    .padding(start = 8.dp, top = 16.dp, end = 8.dp, bottom = 0.dp)
             ) {
 
                 Button(
@@ -179,8 +178,7 @@ fun AnimeIdeasScreen(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-                    .padding(top = 16.dp)
+                    .padding(start = 8.dp, top = 16.dp, end = 8.dp, bottom = 0.dp)
             ) {
                 Text(
                     text = userFeedbackMessage,

@@ -15,7 +15,9 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.androideksamen.components.lists.AnimeList
+import com.example.androideksamen.components.shared.DarkPink
 import com.example.androideksamen.components.shared.ErrorLoading
+import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.Title
 import com.example.androideksamen.navigation.NavRoutes
 
@@ -32,7 +34,7 @@ fun AnimeScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFFBBAED))
+            .background(DarkPink)
             .padding(16.dp, 8.dp, 16.dp, 0.dp)
     ) {
         // Tittel

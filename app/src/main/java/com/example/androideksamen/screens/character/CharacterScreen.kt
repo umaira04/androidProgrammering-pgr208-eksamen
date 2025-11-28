@@ -24,7 +24,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.lists.CharacterList
 import com.example.androideksamen.components.shared.DarkBlue
+import com.example.androideksamen.components.shared.DarkPink
 import com.example.androideksamen.components.shared.ErrorLoading
+import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.components.shared.Title
 import com.example.androideksamen.fonts.BodyFont
 
@@ -47,7 +49,7 @@ fun CharacterScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFFBBAED))
+            .background(DarkPink)
             .padding(8.dp, 8.dp, 8.dp, 0.dp)
     ) {
         // Tittel
@@ -68,7 +70,7 @@ fun CharacterScreen(
                         text = "No favorites. Press the heart to mark a character as favorite",
                         fontSize = 16.sp,
                         fontFamily = BodyFont,
-                        color = Color.Black,
+                        color = Onyx,
                         modifier = Modifier.padding(top = 8.dp)
                     )
                 } else {

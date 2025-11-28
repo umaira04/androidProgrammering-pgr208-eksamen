@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.shared.DarkBlue
+import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.data.database.AnimeDB
 
@@ -40,7 +41,7 @@ fun AnimeIdeaItem(
             .fillMaxWidth()
             .padding(16.dp)
             .background(
-                color = Color(0xFFF7EAF9),
+                color = LightPink,
                 shape = RoundedCornerShape(8.dp)
             )
     ) {
@@ -64,7 +65,7 @@ fun AnimeIdeaItem(
                     modifier = Modifier
                         .size(48.dp)
                         .clip(RoundedCornerShape(25.dp))
-                        .background(Color(0xFFF9FAFB))
+                        .background(Color.White)
                 ) {
                     Icon(
                         Icons.Outlined.Delete,
@@ -77,7 +78,7 @@ fun AnimeIdeaItem(
                     modifier = Modifier
                         .size(48.dp)
                         .clip(RoundedCornerShape(25.dp))
-                        .background(Color(0xFFF9FAFB))
+                        .background(Color.White)
                 ) {
                     Icon(
                         Icons.Outlined.Edit,

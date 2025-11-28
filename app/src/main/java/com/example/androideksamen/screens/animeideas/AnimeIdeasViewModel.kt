@@ -7,14 +7,17 @@ import com.example.androideksamen.data.database.AnimeDB
 import com.example.androideksamen.data.database.AnimeDbRepository
 import com.example.androideksamen.data.database.Genre
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.delay
 
 class AnimeIdeasViewModel : ViewModel() {
+
+    // Instansvariabler
     private val _animeIdeas = MutableStateFlow<List<AnimeDB>>(emptyList())
     val animeIdeas = _animeIdeas.asStateFlow()
+
     private val _title = MutableStateFlow("")
     val title = _title.asStateFlow()
 
@@ -29,74 +32,31 @@ class AnimeIdeasViewModel : ViewModel() {
 
     private val _isEditing = MutableStateFlow(false)
     val isEditing = _isEditing.asStateFlow()
+
     private val _isDeleting = MutableStateFlow(false)
     val isDeleting = _isDeleting.asStateFlow()
 
     private val _animeIdeaToDelete = MutableStateFlow<AnimeDB?>(null)
     val animeIdeaToDelete = _animeIdeaToDelete.asStateFlow()
+
     private val _userFeedbackMessage = MutableStateFlow("")
     val userFeedbackMessage = _userFeedbackMessage.asStateFlow()
 
+
+    // Funksjoner som kjører når appen starter
     init {
         setAnimeIdeas()
     }
 
-    fun setTitle(value: String) { _title.value = value }
-    fun setSynopsis(value: String) { _synopsis.value = value }
-    fun setGenre(value: Genre) { _genre.value = value }
-
-    fun clearForm() {
-        _title.value = ""
-        _synopsis.value = ""
-        _genre.value = Genre.OTHER
-    }
-
-    fun handleEditBtnClick(animeIdea: AnimeDB) {
-        _title.value = animeIdea.title
-        _synopsis.value = animeIdea.synopsis
-        _id.value = animeIdea.id
-        _genre.value = animeIdea.genre
-        _isEditing.value = true
-    }
-
-    fun cancelEditing() {
-        _isEditing.value = false
-        clearForm()
-    }
-
-    fun handleDeleteBtnClick(animeIdea: AnimeDB) {
-        _isDeleting.value = true
-        _animeIdeaToDelete.value = animeIdea
-    }
-
-    fun cancelDelete() {
-        _isDeleting.value = false
-        _animeIdeaToDelete.value = null
-    }
-
-    fun confirmDelete() {
-        _animeIdeaToDelete.value?.let { animeIdea ->
-            deleteAnimeIdea(animeIdea)
-        }
-        _isDeleting.value = false
-        _animeIdeaToDelete.value = null
-        showFeedbackMessage("Delete: Successful")
-    }
-
-    fun showFeedbackMessage(message: String) {
-        viewModelScope.launch {
-            _userFeedbackMessage.value = message
-            delay(3000)
-            _userFeedbackMessage.value = ""
-        }
-    }
-
+    // Henter ideer fra ROOM db.
+    // Ved første bruk av appen så vil ikke setAnimeIdeas returnere noe da db er tom
     fun setAnimeIdeas() {
         viewModelScope.launch(Dispatchers.IO) {
             _animeIdeas.value = AnimeDbRepository.getAnimeIdeas()
         }
     }
 
+    // Sender animeIde til db
     fun insertAnimeIdea(animeIdea: AnimeDB) {
         viewModelScope.launch(Dispatchers.IO) {
             val newAnimeIdeaId = AnimeDbRepository.insertAnimeIdeas(animeIdea)
@@ -111,6 +71,7 @@ class AnimeIdeasViewModel : ViewModel() {
         }
     }
 
+    // Sletter animeIde fra DB
     fun deleteAnimeIdea(animeIdea: AnimeDB) {
         viewModelScope.launch(Dispatchers.IO) {
             val deletedRows = AnimeDbRepository.deleteAnimeIdea(animeIdea)
@@ -124,6 +85,7 @@ class AnimeIdeasViewModel : ViewModel() {
         }
     }
 
+    // Oppdaterer animeIde i db
     fun updateAnimeIdea(animeIdea: AnimeDB) {
         viewModelScope.launch(Dispatchers.IO) {
             val updatedRows = AnimeDbRepository.updateAnimeIdea(animeIdea)
@@ -137,5 +99,76 @@ class AnimeIdeasViewModel : ViewModel() {
                 )
             }
         }
+    }
+
+    // STØTTEFUNKSJONER
+
+    // REDIGERING AV IDE
+    fun handleEditBtnClick(animeIdea: AnimeDB) {
+        _title.value = animeIdea.title
+        _synopsis.value = animeIdea.synopsis
+        _id.value = animeIdea.id
+        _genre.value = animeIdea.genre
+        _isEditing.value = true
+    }
+
+    // Angre redigering
+    fun cancelEditing() {
+        _isEditing.value = false
+        clearForm()
+    }
+
+    // SLETTING AV IDE
+    fun handleDeleteBtnClick(animeIdea: AnimeDB) {
+        _isDeleting.value = true
+        _animeIdeaToDelete.value = animeIdea
+    }
+
+    // Angre sletting av ide
+    fun cancelDelete() {
+        _isDeleting.value = false
+        _animeIdeaToDelete.value = null
+    }
+
+    fun confirmDelete() {
+        _animeIdeaToDelete.value?.let { animeIdea ->
+            deleteAnimeIdea(animeIdea)
+        }
+        _isDeleting.value = false
+        _animeIdeaToDelete.value = null
+        showFeedbackMessage("Delete: Successful")
+    }
+
+    // FEEDBACK
+    // Gir bruker feedback ved sletting og/eller redigering
+    fun showFeedbackMessage(message: String) {
+        viewModelScope.launch {
+            _userFeedbackMessage.value = message
+            delay(3000)
+            _userFeedbackMessage.value = ""
+        }
+    }
+
+    // Setter tittel
+    fun setTitle(value: String) {
+        _title.value = value
+    }
+
+    // Setter synopsis
+    fun setSynopsis(value: String) {
+        _synopsis.value = value
+    }
+
+    // Setter sjanger
+    fun setGenre(value: Genre) {
+        _genre.value = value
+    }
+
+    // Tømmer verdiene fra inputfelt.
+    // Kjøres etter lagring eller kansellering
+    fun clearForm() {
+        _title.value = ""
+        _synopsis.value = ""
+        _genre.value = Genre.OTHER
     }
 }

@@ -1,6 +1,5 @@
 package com.example.androideksamen.screens.animeideas
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,25 +18,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.lists.AnimeIdeaList
-import com.example.androideksamen.components.shared.DarkPink
 import com.example.androideksamen.components.shared.GenreDropdownMenu
 import com.example.androideksamen.components.shared.InputTextField
 import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.components.shared.Title
+import com.example.androideksamen.components.shared.buttonTheme
 import com.example.androideksamen.data.database.AnimeDB
 
 @Composable
@@ -57,7 +52,8 @@ fun AnimeIdeasScreen(
     val isDeleting by animeIdeasViewModel.isDeleting.collectAsState()
     val animeIdeaToDelete by animeIdeasViewModel.animeIdeaToDelete.collectAsState()
 
-    Column( // MAIN COLUMN START
+    // MAIN COLUMN START
+    Column(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier
             .fillMaxSize()
@@ -220,16 +216,6 @@ fun AnimeIdeasScreen(
                 )
             }
         }
-    } //MAIN COLUMN END
-}//AnimeIdeasScreen END
-
-
-@SuppressLint("ViewModelConstructorInComposable")
-@Preview(showBackground = true)
-@Composable
-fun AnimeIdeasScreenPreview() {
-    AnimeIdeasScreen(
-        animeIdeasViewModel = AnimeIdeasViewModel()
-    )
-}
+    } // MAIN COLUMN END
+} // AnimeIdeasScreen END
 

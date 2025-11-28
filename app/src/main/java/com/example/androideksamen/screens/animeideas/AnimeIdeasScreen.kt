@@ -13,7 +13,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Warning
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -33,9 +32,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.lists.AnimeIdeaList
 import com.example.androideksamen.components.shared.DarkPink
-import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.GenreDropdownMenu
 import com.example.androideksamen.components.shared.InputTextField
+import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.components.shared.Title
 import com.example.androideksamen.components.shared.buttonTheme
@@ -122,7 +121,8 @@ fun AnimeIdeasScreen(
         InputTextField(
             value = synopsis,
             onValueChange = { synopsis = it },
-            placeholder = "Describe your anime idea...")
+            placeholder = "Describe your anime idea..."
+        )
 
         Text(
             text = "Genre",
@@ -203,7 +203,8 @@ fun AnimeIdeasScreen(
                     colors = buttonTheme()
                 ) {
                     Text(
-                        "Save anime")
+                        "Save anime"
+                    )
                 }
             }
         }
@@ -275,7 +276,8 @@ fun AnimeIdeasScreen(
                     handleDeleteBtnClick = { handleDeleteBtnClick(animeIdea = it) }
                 )
             } else {
-                Text("No anime ideas yet...♥",
+                Text(
+                    "No anime ideas yet...♥",
                     textAlign = TextAlign.Center,
                     fontSize = 16.sp,
                     color = Onyx,

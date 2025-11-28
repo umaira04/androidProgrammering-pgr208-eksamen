@@ -80,7 +80,7 @@ fun CharacterScreen(
                         favorites = favorites,
                         onFavoriteClick = { characterId ->
                             characterViewModel.toggleFavorite(characterId)
-                        },
+                        }
                     )
                 }
             }

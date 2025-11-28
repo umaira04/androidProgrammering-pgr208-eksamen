@@ -5,24 +5,96 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androideksamen.data.database.AnimeDB
 import com.example.androideksamen.data.database.AnimeDbRepository
+import com.example.androideksamen.data.database.Genre
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
 
 class AnimeIdeasViewModel : ViewModel() {
-
     private val _animeIdeas = MutableStateFlow<List<AnimeDB>>(emptyList())
     val animeIdeas = _animeIdeas.asStateFlow()
+    private val _title = MutableStateFlow("")
+    val title = _title.asStateFlow()
+
+    private val _synopsis = MutableStateFlow("")
+    val synopsis = _synopsis.asStateFlow()
+
+    private val _id = MutableStateFlow(0)
+    val id = _id.asStateFlow()
+
+    private val _genre = MutableStateFlow(Genre.OTHER)
+    val genre = _genre.asStateFlow()
+
+    private val _isEditing = MutableStateFlow(false)
+    val isEditing = _isEditing.asStateFlow()
+    private val _isDeleting = MutableStateFlow(false)
+    val isDeleting = _isDeleting.asStateFlow()
+
+    private val _animeIdeaToDelete = MutableStateFlow<AnimeDB?>(null)
+    val animeIdeaToDelete = _animeIdeaToDelete.asStateFlow()
+    private val _userFeedbackMessage = MutableStateFlow("")
+    val userFeedbackMessage = _userFeedbackMessage.asStateFlow()
+
+    init {
+        setAnimeIdeas()
+    }
+
+    fun setTitle(value: String) { _title.value = value }
+    fun setSynopsis(value: String) { _synopsis.value = value }
+    fun setGenre(value: Genre) { _genre.value = value }
+
+    fun clearForm() {
+        _title.value = ""
+        _synopsis.value = ""
+        _genre.value = Genre.OTHER
+    }
+
+    fun handleEditBtnClick(animeIdea: AnimeDB) {
+        _title.value = animeIdea.title
+        _synopsis.value = animeIdea.synopsis
+        _id.value = animeIdea.id
+        _genre.value = animeIdea.genre
+        _isEditing.value = true
+    }
+
+    fun cancelEditing() {
+        _isEditing.value = false
+        clearForm()
+    }
+
+    fun handleDeleteBtnClick(animeIdea: AnimeDB) {
+        _isDeleting.value = true
+        _animeIdeaToDelete.value = animeIdea
+    }
+
+    fun cancelDelete() {
+        _isDeleting.value = false
+        _animeIdeaToDelete.value = null
+    }
+
+    fun confirmDelete() {
+        _animeIdeaToDelete.value?.let { animeIdea ->
+            deleteAnimeIdea(animeIdea)
+        }
+        _isDeleting.value = false
+        _animeIdeaToDelete.value = null
+        showFeedbackMessage("Delete: Successful")
+    }
+
+    fun showFeedbackMessage(message: String) {
+        viewModelScope.launch {
+            _userFeedbackMessage.value = message
+            delay(3000)
+            _userFeedbackMessage.value = ""
+        }
+    }
 
     fun setAnimeIdeas() {
         viewModelScope.launch(Dispatchers.IO) {
             _animeIdeas.value = AnimeDbRepository.getAnimeIdeas()
         }
-    }
-
-    init {
-        setAnimeIdeas()
     }
 
     fun insertAnimeIdea(animeIdea: AnimeDB) {
@@ -32,7 +104,6 @@ class AnimeIdeasViewModel : ViewModel() {
                 val newAnimeIdea = animeIdea.copy(id = newAnimeIdeaId.toInt())
                 _animeIdeas.value += newAnimeIdea
             } else {
-                //TODO LEGG INN KODE FOR Å SI IFRA TIL BRUKER AT NOE HAR GÅTT GALT
                 Log.d(
                     "insertAnimeIdeaElse", "error inserting new animeIdea from AnimeIdeasViewModel"
                 )
@@ -46,12 +117,10 @@ class AnimeIdeasViewModel : ViewModel() {
             if (deletedRows > 0) {
                 _animeIdeas.value -= animeIdea
             } else {
-                //TODO  LEGG INN KODE FOR Å SI IFRA TIL BRUKER AT NOE HAR GÅTT GALT
                 Log.d(
                     "deleteAnimeIdeaElse", "error deleting animeIdea from AnimeIdeasViewModel"
                 )
             }
-
         }
     }
 
@@ -63,13 +132,10 @@ class AnimeIdeasViewModel : ViewModel() {
                 setAnimeIdeas()
                 Log.d("animeIdeaState updated", _animeIdeas.toString())
             } else {
-                //TODO LEGGE INN KODE FOR Å SI IFRA TIL BRUKER AT NOE HAR GÅTT GALT
                 Log.d(
-                    "updateAnimeIdeaElse", "error updating animeIdea from AnimeIdeasViewModel"
+                    "UpdateAnimeIdeaElse", "Error updating animeIdea from AnimeIdeasViewModel"
                 )
             }
         }
     }
-
-
 }

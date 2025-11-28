@@ -105,7 +105,7 @@ fun AnimeSearchScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color.Transparent)
-                .padding(vertical = 8.dp),
+                .padding(top = 0.dp, bottom = 16.dp),
             horizontalArrangement = Arrangement.Center,
         ) {
             TextField(

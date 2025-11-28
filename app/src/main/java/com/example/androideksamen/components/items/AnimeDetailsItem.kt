@@ -59,17 +59,16 @@ fun AnimeDetailsItem(
             .background(
                 color = DarkPink,
             )
-            .padding(horizontal = 24.dp)
+            .padding(horizontal = 16.dp)
     ) {
 
         item { // Image
             AsyncImage(
                 model = anime.images?.jpg?.imageUrl,
-                contentDescription = "bilde av ${anime.titleEnglish}",
+                contentDescription = "Bilde av ${anime.titleEnglish}",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clip(RoundedCornerShape(8.dp))
                     .padding(bottom = 8.dp)
             )
         }// End image
@@ -133,7 +132,7 @@ fun AnimeDetailsItem(
                             }
                         } // End yellow rating box
                     } // End row with japanese title and rating bow
-                } //
+                }
             } // End row
         }
 

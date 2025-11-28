@@ -68,13 +68,3 @@ fun AnimeDetailsScreen(
         }
     }
 }// End AnimeDetailsScreen
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun AnimeDetailsScreenPreview() {
-    AnimeDetailsScreen(
-        animeDetailsViewModel = AnimeDetailsViewModel(),
-        navController = rememberNavController(),
-        animeId = 1
-    )
-}

@@ -1,5 +1,6 @@
 package com.example.androideksamen.screens.animeideas
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -27,6 +28,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.lists.AnimeIdeaList
@@ -36,7 +38,6 @@ import com.example.androideksamen.components.shared.InputTextField
 import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.components.shared.Title
-import com.example.androideksamen.components.shared.buttonTheme
 import com.example.androideksamen.data.database.AnimeDB
 
 @Composable
@@ -60,8 +61,8 @@ fun AnimeIdeasScreen(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier
             .fillMaxSize()
-            .background(DarkPink)
-            .padding(8.dp, 8.dp, 8.dp, 0.dp)
+            .background(Color(0xFFFBBAED))
+            .padding(16.dp, 8.dp, 16.dp, 0.dp)
     ) {
         Title("Anime Ideas")
 
@@ -105,8 +106,7 @@ fun AnimeIdeasScreen(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-                    .padding(top = 16.dp)
+                    .padding(start = 8.dp, top = 16.dp, end = 8.dp, bottom = 0.dp)
             ) {
                 Button(
                     onClick = { animeIdeasViewModel.cancelEditing() }, colors = buttonTheme()
@@ -127,8 +127,7 @@ fun AnimeIdeasScreen(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-                    .padding(top = 16.dp)
+                    .padding(start = 8.dp, top = 16.dp, end = 8.dp, bottom = 0.dp)
             ) {
                 Text(
                     showFeedbackMessage,
@@ -149,9 +148,7 @@ fun AnimeIdeasScreen(
                         }
                     }, colors = buttonTheme()
                 ) {
-                    Text(
-                        "Save anime"
-                    )
+                    Text("Save anime")
                 }
             }
         }
@@ -173,13 +170,13 @@ fun AnimeIdeasScreen(
                 ) {
                     Icon(
                         imageVector = Icons.Outlined.Warning,
-                        contentDescription = "none",
+                        contentDescription = null,
                         tint = Color.Red,
                         modifier = Modifier.size(64.dp)
                     )
                     Text("Are you sure you want to delete: ")
                     Text(
-                        text = animeIdeaToDelete?.title ?: "unknown",
+                        text = animeIdeaToDelete?.title ?: "Unknown",
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold,
                     )
@@ -216,7 +213,7 @@ fun AnimeIdeasScreen(
                     "No anime ideas yet...♥",
                     textAlign = TextAlign.Center,
                     fontSize = 16.sp,
-                    color = Onyx,
+                    color = Color.Black,
                     modifier = Modifier
                         .padding(top = 56.dp)
                         .fillMaxWidth()
@@ -225,4 +222,14 @@ fun AnimeIdeasScreen(
         }
     } //MAIN COLUMN END
 }//AnimeIdeasScreen END
+
+
+@SuppressLint("ViewModelConstructorInComposable")
+@Preview(showBackground = true)
+@Composable
+fun AnimeIdeasScreenPreview() {
+    AnimeIdeasScreen(
+        animeIdeasViewModel = AnimeIdeasViewModel()
+    )
+}
 

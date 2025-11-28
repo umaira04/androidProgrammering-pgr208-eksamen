@@ -50,7 +50,7 @@ fun CharacterScreen(
         modifier = Modifier
             .fillMaxSize()
             .background(DarkPink)
-            .padding(8.dp, 8.dp, 8.dp, 0.dp)
+            .padding(16.dp, 8.dp, 16.dp, 0.dp)
     ) {
         // Tittel
         Title("Characters")
@@ -80,7 +80,7 @@ fun CharacterScreen(
                         favorites = favorites,
                         onFavoriteClick = { characterId ->
                             characterViewModel.toggleFavorite(characterId)
-                        },
+                        }
                     )
                 }
             }

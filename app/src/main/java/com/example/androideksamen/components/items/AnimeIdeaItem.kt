@@ -39,7 +39,7 @@ fun AnimeIdeaItem(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp)
+            .padding(vertical = 16.dp, horizontal = 8.dp)
             .background(
                 color = LightPink,
                 shape = RoundedCornerShape(8.dp)
@@ -91,7 +91,7 @@ fun AnimeIdeaItem(
             Column(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier
-                    .padding(8.dp)
+                    .padding(16.dp)
             ) {
                 Text(
                     text = animeIdea.title,

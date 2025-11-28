@@ -23,7 +23,7 @@ fun InputTextField(
         onValueChange = onValueChange,
         placeholder = { Text(placeholder) },
         modifier = Modifier
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = 8.dp)
             .clip(RoundedCornerShape(32.dp))
             .fillMaxWidth(),
         colors = inputTheme()

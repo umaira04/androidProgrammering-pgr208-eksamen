@@ -23,7 +23,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -35,7 +34,6 @@ import coil.compose.AsyncImage
 import com.example.androideksamen.components.shared.AnimeInfo
 import com.example.androideksamen.components.shared.BodyText
 import com.example.androideksamen.components.shared.DarkPink
-import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.LightYellow
 import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.components.shared.Subtitle

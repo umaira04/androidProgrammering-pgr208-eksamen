@@ -29,8 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
 import coil.compose.AsyncImage
-import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.DarkBlue
+import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.data.dataclasses.character.Character
 import com.example.androideksamen.fonts.BodyFont

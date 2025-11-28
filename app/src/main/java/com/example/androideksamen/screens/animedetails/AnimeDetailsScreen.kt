@@ -22,8 +22,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.androideksamen.components.items.AnimeDetailsItem
-import com.example.androideksamen.components.shared.DarkPink
 import com.example.androideksamen.components.shared.DarkBlue
+import com.example.androideksamen.components.shared.DarkPink
 
 @Composable
 fun AnimeDetailsScreen(
@@ -48,7 +48,7 @@ fun AnimeDetailsScreen(
             // Go back button
             onClick = { navController.popBackStack() },
             modifier = Modifier
-                .padding(start = 24.dp, top = 8.dp ,bottom = 16.dp, )
+                .padding(start = 24.dp, top = 8.dp, bottom = 16.dp)
                 .clip(RoundedCornerShape(24.dp))
                 .background(Color.White)
                 .width(60.dp)

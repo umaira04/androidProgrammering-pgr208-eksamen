@@ -99,7 +99,8 @@ fun AnimeIdeaItem(
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
                 )
-                Text(text = animeIdea.genre.toString(),
+                Text(
+                    text = animeIdea.genre.toString(),
                     color = Onyx,
                     fontSize = 16.sp,
                     fontStyle = FontStyle.Italic

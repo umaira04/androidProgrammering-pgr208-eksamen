@@ -31,7 +31,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.R
@@ -47,13 +46,12 @@ import com.example.androideksamen.components.shared.inputTheme
 @Composable
 fun AnimeSearchScreen(
     animeSearchViewModel: AnimeSearchViewModel,
-
     ) {
     val anime by animeSearchViewModel.anime.collectAsState()
     val mainCharacters by animeSearchViewModel.mainCharacters.collectAsState()
-    var id by remember { mutableStateOf("") }
+    val id by animeSearchViewModel.id.collectAsState()
+    val isSearched by animeSearchViewModel.isSearched.collectAsState()
     val focusManager = LocalFocusManager.current
-    var isSearched by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -70,7 +68,6 @@ fun AnimeSearchScreen(
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
             if (anime == null && isSearched) {
                 ErrorLoading(2)
             } else if (!isSearched) {
@@ -110,7 +107,7 @@ fun AnimeSearchScreen(
         ) {
             TextField(
                 value = id,
-                onValueChange = { id = it },
+                onValueChange = { animeSearchViewModel.setId(it) },
                 placeholder = { Text("Search by ID") },
                 keyboardOptions = KeyboardOptions.Default.copy(
                     keyboardType = KeyboardType.Number,
@@ -118,13 +115,7 @@ fun AnimeSearchScreen(
                 ),
                 keyboardActions = KeyboardActions(
                     onGo = {
-                        val idParsed = id.toIntOrNull()
-                        if (idParsed != null) {
-                            animeSearchViewModel.setAnimeById(idParsed)
-                            animeSearchViewModel.setAnimeMainCharactersByAnimeId(idParsed)
-                            isSearched = true
-                            Log.i("searchItem", anime.toString())
-                        }
+                        animeSearchViewModel.searchAnime()
                         focusManager.clearFocus()
                     }
                 ),
@@ -136,13 +127,4 @@ fun AnimeSearchScreen(
             )
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun AnimeSearchScreenPreview() {
-    AnimeSearchScreen(
-        animeSearchViewModel = AnimeSearchViewModel(),
-
-        )
 }

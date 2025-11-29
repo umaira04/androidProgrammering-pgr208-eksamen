@@ -30,7 +30,6 @@ import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.data.dataclasses.character.Character
 
-//TODO: filter etter fav
 //TODO: søk
 //TODO: endre fontSize i animeitem så det er likt som characteritem
 @Composable

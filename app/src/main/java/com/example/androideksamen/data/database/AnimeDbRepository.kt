@@ -17,8 +17,6 @@ object AnimeDbRepository {
     }
 
 
-
-
     // Henter animeer fra database
     suspend fun getAnimeIdeas(): List<AnimeDB> {
         try {

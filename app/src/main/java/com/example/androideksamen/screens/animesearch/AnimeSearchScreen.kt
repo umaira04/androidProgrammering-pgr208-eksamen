@@ -1,6 +1,5 @@
 package com.example.androideksamen.screens.animesearch
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,9 +17,6 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -46,7 +42,7 @@ import com.example.androideksamen.components.shared.inputTheme
 @Composable
 fun AnimeSearchScreen(
     animeSearchViewModel: AnimeSearchViewModel,
-    ) {
+) {
     val anime by animeSearchViewModel.anime.collectAsState()
     val mainCharacters by animeSearchViewModel.mainCharacters.collectAsState()
     val id by animeSearchViewModel.id.collectAsState()

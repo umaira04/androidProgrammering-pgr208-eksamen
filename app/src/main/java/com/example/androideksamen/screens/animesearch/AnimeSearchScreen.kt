@@ -59,7 +59,7 @@ fun AnimeSearchScreen(
         // Tittel
         Title("Search")
 
-        Column( // Start column
+        Column( // Start column med AnimeDetailsItem eller feilmelding
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth(),
@@ -72,7 +72,7 @@ fun AnimeSearchScreen(
             } else if (!isSearched) {
                 Text(
                     text = "Search for anime by ID",
-                    fontSize = 18.sp,
+                    fontSize = 16.sp,
                     color = Onyx,
                     fontWeight = FontWeight.SemiBold,
                     modifier = Modifier
@@ -126,6 +126,6 @@ fun AnimeSearchScreen(
                     .fillMaxWidth(),
                 colors = inputTheme()
             )
-        }
+        } // End styling av søkefelt
     } // Main column end
 }

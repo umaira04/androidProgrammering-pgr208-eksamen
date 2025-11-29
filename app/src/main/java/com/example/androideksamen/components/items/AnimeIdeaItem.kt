@@ -36,7 +36,7 @@ fun AnimeIdeaItem(
     handleEditBtnClick: (AnimeDB) -> Unit,
     handleDeleteBtnClick: (AnimeDB) -> Unit
 ) {
-    Box(
+    Box( // Start main box
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 16.dp, horizontal = 8.dp)
@@ -45,11 +45,10 @@ fun AnimeIdeaItem(
                 shape = RoundedCornerShape(8.dp)
             )
     ) {
-        Column(
+        Column( // Start main column
             verticalArrangement = Arrangement.spacedBy(8.dp),
-            modifier = Modifier
         ) {
-            Row(
+            Row( // Start row med knapper for slett og rediger
                 horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -58,8 +57,8 @@ fun AnimeIdeaItem(
                         shape = RoundedCornerShape(topEnd = 8.dp, topStart = 8.dp)
                     )
                     .padding(8.dp)
-
             ) {
+                // Slett-knapp
                 IconButton(
                     onClick = { handleDeleteBtnClick(animeIdea) },
                     modifier = Modifier
@@ -73,6 +72,8 @@ fun AnimeIdeaItem(
                         tint = DarkBlue
                     )
                 }
+
+                // Rediger-knapp
                 IconButton(
                     onClick = { handleEditBtnClick(animeIdea) },
                     modifier = Modifier
@@ -85,9 +86,10 @@ fun AnimeIdeaItem(
                         contentDescription = "Edit",
                         tint = DarkBlue
                     )
-
                 }
-            }
+            } // End row med knapper
+
+            // Tekst i ide-boksene
             Column(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier
@@ -110,9 +112,7 @@ fun AnimeIdeaItem(
                     color = Onyx,
                     fontSize = 16.sp,
                 )
-
             }
-        }
-
-    }
+        } // End main column
+    } // End main box
 }

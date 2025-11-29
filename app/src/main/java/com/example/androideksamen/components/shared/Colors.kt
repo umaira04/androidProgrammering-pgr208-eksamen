@@ -9,12 +9,14 @@ import androidx.compose.material3.TextFieldDefaults.colors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
+// Hovedfargene vi bruker ofte
 val Onyx = Color(0xFF0A0E0D)
 val DarkPink = Color(0xFFFBBAED)
 val LightPink = Color(0xFFF7EAF9)
 val DarkBlue = Color(0xFF324663)
 val LightYellow = Color(0xFFfdf1b2)
 
+// Tema for NavBar
 @Composable
 fun navBarTheme(): NavigationBarItemColors {
     return colors(
@@ -26,6 +28,7 @@ fun navBarTheme(): NavigationBarItemColors {
     )
 }
 
+// Tema for input
 @Composable
 fun inputTheme(): TextFieldColors {
     return colors(
@@ -40,6 +43,7 @@ fun inputTheme(): TextFieldColors {
     )
 }
 
+// Tema for knapper
 @Composable
 fun buttonTheme(): ButtonColors {
     return ButtonDefaults.buttonColors(

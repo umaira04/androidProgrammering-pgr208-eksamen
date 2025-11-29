@@ -41,16 +41,14 @@ import com.example.androideksamen.components.shared.Subtitle
 import com.example.androideksamen.data.dataclasses.anime.Anime
 import com.example.androideksamen.data.dataclasses.character.Character
 
-
-//MULIG Å LEGGE TILBAKE KNAPP UTENFOR ITEM?? -U
 @Composable
 fun AnimeDetailsItem(
     anime: Anime,
-    isSearchScreen: Boolean = false, characters: List<Character> = emptyList()
-
+    isSearchScreen: Boolean = false,
+    characters: List<Character> = emptyList()
 ) {
-    val context = LocalContext.current
 
+    val context = LocalContext.current
 
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -61,8 +59,8 @@ fun AnimeDetailsItem(
             )
             .padding(horizontal = 16.dp)
     ) {
-
-        item { // Image
+        // Bilde
+        item {
             AsyncImage(
                 model = anime.images?.jpg?.imageUrl,
                 contentDescription = "Bilde av ${anime.titleEnglish}",
@@ -71,10 +69,10 @@ fun AnimeDetailsItem(
                     .fillMaxWidth()
                     .padding(bottom = 8.dp)
             )
-        }// End image
+        }
 
-        item { // Start row with title and rating box
-            Row(
+        item {
+            Row( // Start row med tittel og rating box
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
@@ -82,7 +80,7 @@ fun AnimeDetailsItem(
                 Column(
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    Text( // Title english
+                    Text( // Tittel engelsk
                         text = anime.titleEnglish ?: "No english title",
                         fontSize = if (anime.titleEnglish.toString().length > 20) 24.sp else 32.sp,
                         maxLines = 2,
@@ -96,7 +94,7 @@ fun AnimeDetailsItem(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text( // Title japanese
+                        Text( // Tittel japansk
                             text = anime.titleJapanese ?: "No japanese title",
                             fontSize = if (anime.titleJapanese.toString().length > 12) 16.sp else 24.sp,
                             maxLines = 2,
@@ -107,7 +105,7 @@ fun AnimeDetailsItem(
                                 .weight(1f)
                                 .padding(end = 8.dp)
                         )
-                        Box(  // Yellow rating box
+                        Box( // Rating box start
                             modifier = Modifier
                                 .size(80.dp, 32.dp)
                                 .background(
@@ -131,14 +129,14 @@ fun AnimeDetailsItem(
                                     color = Onyx
                                 )
                             }
-                        } // End yellow rating box
-                    } // End row with japanese title and rating bow
+                        } // End rating box
+                    } // End row med japansk tittel og rating box
                 }
-            } // End row
+            } // End row med tittel og rating box
         }
 
-        item {  // Row with anime info: Year, Episodes, Type
-            Row(
+        item {
+            Row( // Row med anime info
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 16.dp),
@@ -153,24 +151,26 @@ fun AnimeDetailsItem(
                     animeInfo = anime.type ?: "No type"
                 )
 
+                // Viser episoder for TV-serier og varighet for andre typer
                 if (anime.type != null) {
                     if (anime.type == "TV") {
                         AnimeInfo(
                             subtitle = "Episodes",
                             animeInfo = anime.episodes?.toString() ?: "No episodes"
                         )
-                    } else { // End if anime.type == TV
+                    } else {
                         AnimeInfo(
                             subtitle = "Duration",
                             animeInfo = anime.duration ?: "No duration"
                         )
-                    } // End else if anime.type != TV
-                } // End if anime.type != null
-            } // End row with anime info: Year, Episodes, Type
-        } // End item
+                    }
+                }
+            } // End row med anime info
+        }
 
-        item {  // Synposis
-            Column(
+        // Synopsis
+        item {
+            Column( //
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 8.dp)
@@ -182,14 +182,15 @@ fun AnimeDetailsItem(
                     anime.synopsis ?: "No synopsis",
                 )
             }
-        } // End synopsis
+        }
 
+        // Sjangere
         item {
             Column(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 Subtitle("Genres")
-                Row( // Start row genres
+                Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
@@ -214,9 +215,10 @@ fun AnimeDetailsItem(
                         }
                     }
                 }
-            } // End row genres
+            }
         }
 
+        // Hovedkarakterer (vises bare i search)
         if (isSearchScreen) {
             item {
                 Subtitle("Main characters")
@@ -226,6 +228,7 @@ fun AnimeDetailsItem(
             }
         }
 
+        // Link til nettside
         item {
             Subtitle("More information")
             Text(
@@ -240,8 +243,6 @@ fun AnimeDetailsItem(
                     }
                     .padding(bottom = 8.dp)
             )
-        } // End more information
-    } // End Main LazyColumn
-} // End AnimeDetailsItem
-
-
+        }
+    }
+}

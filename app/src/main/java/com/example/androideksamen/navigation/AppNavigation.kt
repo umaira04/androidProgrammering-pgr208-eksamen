@@ -155,17 +155,4 @@ fun AppNavigation(
     }
 }
 
-@SuppressLint("ViewModelConstructorInComposable")
-@Preview(showBackground = true)
-@Composable
-fun AppNavigationPreview() {
-    AppNavigation(
-        animeViewModel = AnimeViewModel(),
-        animeSearchViewModel = AnimeSearchViewModel(),
-        animeIdeasViewModel = AnimeIdeasViewModel(),
-        characterViewModel = CharacterViewModel(),
-        animeDetailsViewModel = AnimeDetailsViewModel()
-    )
-}
-
 

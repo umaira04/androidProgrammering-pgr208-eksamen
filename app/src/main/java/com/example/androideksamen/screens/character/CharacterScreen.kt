@@ -46,7 +46,7 @@ fun CharacterScreen(
         characters
     }
 
-    Column(
+    Column( // Start main column
         modifier = Modifier
             .fillMaxSize()
             .background(DarkPink)
@@ -55,7 +55,7 @@ fun CharacterScreen(
         // Tittel
         Title("Characters")
 
-        Box(
+        Box( // Start box med alt innhold for skjermen
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth()
@@ -109,6 +109,6 @@ fun CharacterScreen(
                     )
                 }
             }
-        }
-    } // End column
+        } // End box
+    } // End main column
 }

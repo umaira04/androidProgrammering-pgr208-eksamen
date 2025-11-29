@@ -31,7 +31,7 @@ fun AnimeItem(
     anime: Anime,
     showDetails: () -> Unit
 ) {
-    Box(
+    Box( // Main box start
         modifier = Modifier
             .padding(8.dp)
             .clickable { showDetails() }
@@ -40,10 +40,11 @@ fun AnimeItem(
                 shape = RoundedCornerShape(8.dp)
             )
     ) {
-        Column(
+        Column( // Main column start
             modifier = Modifier.padding(horizontal = 24.dp, vertical = 16.dp)
         ) {
-            Text( // English
+            // Engelsk tittel
+            Text(
                 text = anime.titleEnglish ?: "No english title",
                 fontSize = if (anime.titleEnglish.toString().length > 20) 24.sp else 32.sp,
                 maxLines = 2,
@@ -54,10 +55,11 @@ fun AnimeItem(
                 modifier = Modifier.padding(bottom = 16.dp)
             )
 
-            Box( // Main box
+            Box( // Box for bilde og japansk tittel
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
+                // Bilde
                 AsyncImage(
                     model = anime.images?.jpg?.imageUrl,
                     contentDescription = "bilde av ${anime.titleEnglish}",
@@ -65,7 +67,8 @@ fun AnimeItem(
                         .width(270.dp)
                         .height(402.dp)
                 )
-                Text( // Japanese
+                // Japansk tittel
+                Text(
                     text = anime.titleJapanese.toString(),
                     fontSize = if (anime.titleJapanese.toString().length > 12) 24.sp else 32.sp,
                     maxLines = 1,
@@ -80,8 +83,9 @@ fun AnimeItem(
                         .offset(x = 144.dp)
                         .rotate(90f)
                 )
-            } // End main box
+            } // End box for bile og japansk tittel
 
+            // Sjanger og år
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -104,6 +108,6 @@ fun AnimeItem(
                     fontWeight = FontWeight.Bold
                 )
             }
-        }
-    }
+        } // Main column end
+    } // Main box end
 }

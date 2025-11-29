@@ -37,19 +37,20 @@ import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.components.shared.Title
 import com.example.androideksamen.components.shared.inputTheme
 
-
-//FORELESNING 9 FOR Å SE AKKURAT DENNE OPPGAVEN
 @Composable
 fun AnimeSearchScreen(
     animeSearchViewModel: AnimeSearchViewModel,
 ) {
+
+    // State fra ViewModel
     val anime by animeSearchViewModel.anime.collectAsState()
     val mainCharacters by animeSearchViewModel.mainCharacters.collectAsState()
     val id by animeSearchViewModel.id.collectAsState()
     val isSearched by animeSearchViewModel.isSearched.collectAsState()
+
     val focusManager = LocalFocusManager.current
 
-    Column(
+    Column( // Main column start
         modifier = Modifier
             .background(DarkPink)
             .fillMaxSize()
@@ -58,14 +59,16 @@ fun AnimeSearchScreen(
         // Tittel
         Title("Search")
 
-        Column(
+        Column( // Start column
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             if (anime == null && isSearched) {
+                // Feilmelding hvis søket ikke gir resultat
                 ErrorLoading(2)
+                // Visning før søk
             } else if (!isSearched) {
                 Text(
                     text = "Search for anime by ID",
@@ -84,6 +87,7 @@ fun AnimeSearchScreen(
                     modifier = Modifier.width(200.dp)
                 )
             } else {
+                // Viser detaljer hvis data blir hentet
                 anime?.let { anime ->
                     AnimeDetailsItem(
                         anime = anime,
@@ -92,8 +96,9 @@ fun AnimeSearchScreen(
                     )
                 }
             }
-        }
+        } // End column
 
+        // Styling av søkefelt
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -122,5 +127,5 @@ fun AnimeSearchScreen(
                 colors = inputTheme()
             )
         }
-    }
+    } // Main column end
 }

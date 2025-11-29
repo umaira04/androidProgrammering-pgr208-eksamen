@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class AnimeSearchViewModel : ViewModel() {
 
-    //FORELESNING 9 FOR Å SE AKKURAT DENNE OPPGAVEN
+    // Instansvariabler
     private val _anime = MutableStateFlow<Anime?>(null)
     val anime = _anime.asStateFlow()
 
@@ -24,10 +24,7 @@ class AnimeSearchViewModel : ViewModel() {
     private val _isSearched = MutableStateFlow(false)
     val isSearched = _isSearched.asStateFlow()
 
-    fun setId(value: String) {
-        _id.value = value
-    }
-
+    // Søker og henter anime og hovedkarakterer fra API
     fun searchAnime() {
         val idParsed = _id.value.toIntOrNull()
         if (idParsed != null) {
@@ -37,16 +34,23 @@ class AnimeSearchViewModel : ViewModel() {
         }
     }
 
+    // Henter anime fra API basert på id
     fun setAnimeById(id: Int) {
         viewModelScope.launch {
             _anime.value = AnimeAPIRepository.getAnimeById(id)
         }
     }
 
+    // Henter hovedkarakterer for anime fra API
     fun setAnimeMainCharactersByAnimeId(id: Int) {
         viewModelScope.launch {
             _mainCharacters.value = AnimeAPIRepository.getAllMainCharacters(id)
         }
+    }
+
+    // Setter id
+    fun setId(value: String) {
+        _id.value = value
     }
 
 }

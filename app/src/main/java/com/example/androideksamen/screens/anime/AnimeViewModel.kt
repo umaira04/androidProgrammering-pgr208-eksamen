@@ -10,17 +10,20 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class AnimeViewModel : ViewModel() {
-    private val _animes = MutableStateFlow<List<Anime>>(emptyList())
 
+    // Instansvariabler
+    private val _animes = MutableStateFlow<List<Anime>>(emptyList())
     val animes = _animes.asStateFlow()
 
+    // Funksjoner som kjører når appen starter
+    init {
+        setAnimes()
+    }
+
+    // Henter verdier fra API
     fun setAnimes() {
         viewModelScope.launch(Dispatchers.IO) {
             _animes.value = AnimeAPIRepository.getAllAnime()
         }
-    }
-
-    init {
-        setAnimes()
     }
 }

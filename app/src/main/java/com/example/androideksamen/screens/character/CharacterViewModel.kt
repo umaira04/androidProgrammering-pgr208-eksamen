@@ -11,22 +11,27 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class CharacterViewModel : ViewModel() {
+
+    // Instansvariabler
     private val _characters = MutableStateFlow<List<Character>>(emptyList())
     val characters = _characters.asStateFlow()
 
     private val _favorites = MutableStateFlow<List<Int>>(emptyList())
     val favorites = _favorites.asStateFlow()
 
+    // Funksjoner som kjører når appen starter
+    init {
+        setCharacters()
+    }
+
+    // Henter karakterer fra API
     fun setCharacters() {
         viewModelScope.launch(Dispatchers.IO) {
             _characters.value = AnimeAPIRepository.getAllCharacters()
         }
     }
 
-    init {
-        setCharacters()
-    }
-
+    // Bytter mellom favoritter og alle karakterer
     fun toggleFavorite(charId: Int) {
         val currentFavorites = _favorites.value.toMutableList()
 
@@ -39,5 +44,4 @@ class CharacterViewModel : ViewModel() {
         }
         _favorites.value = currentFavorites
     }
-
 }

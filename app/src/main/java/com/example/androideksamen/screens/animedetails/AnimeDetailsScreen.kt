@@ -29,8 +29,11 @@ fun AnimeDetailsScreen(
     navController: NavController,
     animeId: Int,
 ) {
+
+    // State fra ViewModel
     val anime = animeDetailsViewModel.anime.collectAsState()
 
+    // Henter detaljer fra API når skjermen laster
     LaunchedEffect(Unit) {
         animeDetailsViewModel.setAnime(animeId)
     }
@@ -42,8 +45,8 @@ fun AnimeDetailsScreen(
             .padding(8.dp, 8.dp, 8.dp, 0.dp)
     ) {
 
-        IconButton( // TODO: DENNE MÅ STYLES SÅ ALLE KNAPPENE VÅRE ER LIKE
-            // Go back button
+        // Tilbake-knapp
+        IconButton(
             onClick = { navController.popBackStack() },
             modifier = Modifier
                 .padding(start = 24.dp, top = 8.dp, bottom = 16.dp)
@@ -57,12 +60,13 @@ fun AnimeDetailsScreen(
                 contentDescription = "Go back",
                 tint = DarkBlue
             )
-        }// End go back button
+        } // End tilbake-knapp
 
+        // Viser detaljer hvis data er hentet
         anime.value?.let {
             AnimeDetailsItem(
                 it
             )
         }
     }
-}// End AnimeDetailsScreen
+}

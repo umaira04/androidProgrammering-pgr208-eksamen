@@ -42,6 +42,7 @@ fun AnimeIdeasScreen(
     animeIdeasViewModel: AnimeIdeasViewModel
 ) {
 
+    // State fra ViewModel
     val animeIdeas by animeIdeasViewModel.animeIdeas.collectAsState()
     val title by animeIdeasViewModel.title.collectAsState()
     val synopsis by animeIdeasViewModel.synopsis.collectAsState()
@@ -52,16 +53,15 @@ fun AnimeIdeasScreen(
     val isDeleting by animeIdeasViewModel.isDeleting.collectAsState()
     val animeIdeaToDelete by animeIdeasViewModel.animeIdeaToDelete.collectAsState()
 
-    // MAIN COLUMN START
-    LazyColumn(
-
+    LazyColumn(  // Main column start
         modifier = Modifier
             .fillMaxSize()
             .background(DarkPink)
             .padding(16.dp, 8.dp, 16.dp, 0.dp)
     ) {
-        item {
+        item { // Item start
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                // Tittel
                 Title("Anime Ideas")
 
                 Text(
@@ -72,8 +72,7 @@ fun AnimeIdeasScreen(
                     color = Onyx
                 )
 
-
-
+                // Input
                 Text(
                     text = "Title *",
                     fontSize = 16.sp,
@@ -110,7 +109,9 @@ fun AnimeIdeasScreen(
                 GenreDropdownMenu(
                     selectedGenre = genre, onGenreSelected = { animeIdeasViewModel.setGenre(it) })
 
+                // Knapper
                 if (isEditing) {
+                    // Kanseller og lagre endringer
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically,
@@ -137,6 +138,7 @@ fun AnimeIdeasScreen(
                         ) { Text("Save changes") }
                     }
                 } else {
+                    // Feedback og lagre ny
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically,
@@ -168,6 +170,7 @@ fun AnimeIdeasScreen(
                     }
                 }
 
+                // Slett
                 if (isDeleting) {
                     Box(
                         modifier = Modifier
@@ -219,6 +222,7 @@ fun AnimeIdeasScreen(
                         }
                     }
                 } else {
+                    // Viser liste eller melding om at liste er tom
                     if (animeIdeas.isNotEmpty()) {
                         AnimeIdeaList(
                             animeIdeas = animeIdeas,
@@ -237,7 +241,7 @@ fun AnimeIdeasScreen(
                     }
                 }
             }
-        }//item end
-    } // MAIN COLUMN END
-} // AnimeIdeasScreen END
+        } // Item end
+    } // Main column end
+}
 

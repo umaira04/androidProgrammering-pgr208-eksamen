@@ -30,13 +30,10 @@ import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.data.dataclasses.character.Character
 
-//TODO: søk
-//TODO: endre fontSize i animeitem så det er likt som characteritem
 @Composable
 fun MainCharacterItem(
     character: Character
 ) {
-
     val context = LocalContext.current
     Box {
         Row(
@@ -81,11 +78,6 @@ fun MainCharacterItem(
                 )
             }
 
-
-
-
-            Spacer(modifier = Modifier.width(8.dp))
-
             AsyncImage(
                 model = character.characterImage?.jpg?.imageUrl,
                 contentDescription = "Bilde av ${character.name}",
@@ -94,22 +86,5 @@ fun MainCharacterItem(
             )
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun MainCharacterItemPreview() {
-    MainCharacterItem(
-        character = Character(
-            id = 1,
-            name = "Pikachu",
-            characterImage = null,
-            nameJapanese = "Japansk Pikachu",
-            url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-        )
-
-    )
-
-
 }
 

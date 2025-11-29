@@ -48,18 +48,13 @@ class AnimeIdeasViewModel : ViewModel() {
         setAnimeIdeas()
     }
 
-    // Henter ideer fra ROOM db.
     // Ved første bruk av appen så vil ikke setAnimeIdeas returnere noe da db er tom
+
+    // Henter verdier fra ROOM db
     fun setAnimeIdeas() {
         viewModelScope.launch(Dispatchers.IO) {
             _animeIdeas.value = AnimeDbRepository.getAnimeIdeas()
         }
-    }
-
-    //Funksjoner som kjører med en gang siden åpnes.
-    //henter verdier fra ROOM db
-    init {
-        setAnimeIdeas()
     }
 
     fun insertAnimeIdea(animeIdea: AnimeDB) {
@@ -84,7 +79,7 @@ class AnimeIdeasViewModel : ViewModel() {
                 _animeIdeas.value -= animeIdea
             } else {
                 Log.d(
-                    "deleteAnimeIdeaElse", "error deleting animeIdea from AnimeIdeasViewModel"
+                    "deleteAnimeIdeaElse", "Error deleting animeIdea from AnimeIdeasViewModel"
                 )
             }
         }

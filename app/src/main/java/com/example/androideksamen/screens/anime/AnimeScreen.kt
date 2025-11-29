@@ -1,6 +1,5 @@
 package com.example.androideksamen.screens.anime
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,27 +8,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.androideksamen.components.lists.AnimeList
 import com.example.androideksamen.components.shared.DarkPink
 import com.example.androideksamen.components.shared.ErrorLoading
 import com.example.androideksamen.components.shared.Title
 import com.example.androideksamen.navigation.NavRoutes
 
-//TODO: HJERTEKNAPP TIL Å VELGE FAVORITTER
-//TODO: FILTER PÅ SJANGER
 @Composable
 fun AnimeScreen(
     animeViewModel: AnimeViewModel,
     navController: NavController
 ) {
 
+    // State fra ViewModel
     val animes by animeViewModel.animes.collectAsState()
 
-    Column(
+    Column( // Main column start
         modifier = Modifier
             .fillMaxSize()
             .background(DarkPink)
@@ -50,20 +46,6 @@ fun AnimeScreen(
                     )
                 }
             )
-
         }
-
-        // Vis favoritter
-
-    } // End column
-}
-
-@SuppressLint("ViewModelConstructorInComposable")
-@Preview(showBackground = true)
-@Composable
-fun AnimeScreenPreview() {
-    AnimeScreen(
-        animeViewModel = AnimeViewModel(),
-        navController = rememberNavController()
-    )
+    } // End main column
 }

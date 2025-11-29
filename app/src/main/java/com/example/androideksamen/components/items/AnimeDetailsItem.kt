@@ -121,11 +121,12 @@ fun AnimeDetailsItem(
                                     .fillMaxWidth()
                                     .padding(horizontal = 8.dp)
                             ) {
-                                Icon(Icons.Filled.Star, contentDescription = "none")
+                                Icon(Icons.Filled.Star, contentDescription = "none", tint = Onyx)
                                 Text(
                                     text = anime.score?.toString() ?: "...",
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.Bold,
+                                    color = Onyx
                                 )
                             }
                         } // End yellow rating box

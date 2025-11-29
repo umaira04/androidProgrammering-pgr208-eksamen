@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
@@ -20,14 +19,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.data.dataclasses.anime.Anime
-import com.example.androideksamen.data.dataclasses.anime.Genre
 
 @Composable
 fun AnimeItem(
@@ -47,20 +44,19 @@ fun AnimeItem(
             modifier = Modifier.padding(horizontal = 24.dp, vertical = 16.dp)
         ) {
             Text( // English
-                text = anime.titleEnglish?.toString() ?: "No english title",
+                text = anime.titleEnglish ?: "No english title",
                 fontSize = if (anime.titleEnglish.toString().length > 20) 24.sp else 32.sp,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
                 lineHeight = 32.sp,
                 fontWeight = FontWeight.Bold,
-                color = Onyx
+                color = Onyx,
+                modifier = Modifier.padding(bottom = 16.dp)
             )
-
-            Spacer(modifier = Modifier.height(16.dp))
 
             Box( // Main box
                 modifier = Modifier
-                    .fillMaxWidth() //TODO: endre dette
+                    .fillMaxWidth()
             ) {
                 AsyncImage(
                     model = anime.images?.jpg?.imageUrl,
@@ -79,15 +75,17 @@ fun AnimeItem(
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
                         .align(Alignment.Center)
-                        .offset(x = 144.dp) // TODO: si at det er AI?
+                        // Fant ingen annen måte å plassere rotert tekst, så vi brukte Claude Opus 4.5. Dette var prompten:
+                        // "hvordan kan jeg plassere titleJapanese til høyre når jeg bruker rotate(90f)? dette er koden min:" (også hele AnimeItem)
+                        .offset(x = 144.dp)
                         .rotate(90f)
                 )
             } // End main box
 
-            Spacer(modifier = Modifier.height(16.dp))
-
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
@@ -108,20 +106,4 @@ fun AnimeItem(
             }
         }
     }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun AnimeItemPreview() {
-    AnimeItem(
-        anime = Anime(
-            id = 1,
-            titleEnglish = "Pokemon",
-            genres = listOf(Genre(name = "Action")),
-            year = 1997,
-            titleJapanese = "ポケモン"
-        ),
-        showDetails = {}
-    )
 }

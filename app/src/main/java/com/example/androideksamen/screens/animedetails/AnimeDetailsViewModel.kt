@@ -8,13 +8,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-//TRENGER VI EN EGEN VIEWMODEL HER? DETAILSSCREEN KAN JO BARE HENTE FRA ANIMEVM
-// --UMAIR
-// TROR DEN MÅ HA EGEN? HAN GJORDE DET I FORELESNING. -- JEANETTE
 class AnimeDetailsViewModel : ViewModel() {
+
+    // Instansvariabler
     private val _anime = MutableStateFlow<Anime?>(null)
     val anime = _anime.asStateFlow()
 
+    // Henter verdier fra API
     fun setAnime(animeId: Int) {
         viewModelScope.launch {
             _anime.value = AnimeAPIRepository.getAnimeById(animeId)

@@ -38,7 +38,9 @@ fun AnimeScreen(
             .padding(16.dp, 8.dp, 16.dp, 0.dp)
     ) {
 
-        //TODO ser denne bedre ut over tittelen??
+        // Tittel
+        Title("Anime")
+
         Text(
             "Tap the cards to see more!",
             fontSize = 16.sp,
@@ -48,8 +50,6 @@ fun AnimeScreen(
             color = Onyx
         )
 
-        // Tittel
-        Title("Anime")
 
         // AnimeList
         if (animes.isEmpty()) {

@@ -68,6 +68,7 @@ fun AnimeIdeasScreen(
                     "Make your personal anime ideas!",
                     fontSize = 16.sp,
                     textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.SemiBold,
                     modifier = Modifier.fillMaxWidth(),
                     color = Onyx
                 )

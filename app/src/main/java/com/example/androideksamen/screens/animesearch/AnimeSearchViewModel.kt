@@ -24,7 +24,9 @@ class AnimeSearchViewModel : ViewModel() {
     private val _isSearched = MutableStateFlow(false)
     val isSearched = _isSearched.asStateFlow()
 
-    fun setId(value: String) { _id.value = value }
+    fun setId(value: String) {
+        _id.value = value
+    }
 
     fun searchAnime() {
         val idParsed = _id.value.toIntOrNull()

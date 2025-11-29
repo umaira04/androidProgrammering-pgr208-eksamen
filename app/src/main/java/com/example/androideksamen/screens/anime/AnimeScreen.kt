@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -17,7 +16,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.androideksamen.components.lists.AnimeList
 import com.example.androideksamen.components.shared.DarkPink
 import com.example.androideksamen.components.shared.ErrorLoading
-import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.Title
 import com.example.androideksamen.navigation.NavRoutes
 

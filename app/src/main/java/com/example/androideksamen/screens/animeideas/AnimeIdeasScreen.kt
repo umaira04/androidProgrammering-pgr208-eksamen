@@ -53,14 +53,16 @@ fun AnimeIdeasScreen(
     val isDeleting by animeIdeasViewModel.isDeleting.collectAsState()
     val animeIdeaToDelete by animeIdeasViewModel.animeIdeaToDelete.collectAsState()
 
-    LazyColumn(  // Main column start
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .background(DarkPink)
             .padding(16.dp, 8.dp, 16.dp, 0.dp)
     ) {
-        item { // Item start
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        item { // Wrapper for main column start
+            Column( // Main column med alt innhold start
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
                 // Tittel
                 Title("Anime Ideas")
 
@@ -241,8 +243,8 @@ fun AnimeIdeasScreen(
                         )
                     }
                 }
-            }
+            } // Main column end
         } // Item end
-    } // Main column end
+    }
 }
 

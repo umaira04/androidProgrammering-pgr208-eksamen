@@ -44,7 +44,8 @@ fun CharacterItem(
 ) {
 
     val context = LocalContext.current
-    Box(
+
+    Box( // Start main box
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
@@ -53,20 +54,20 @@ fun CharacterItem(
                 shape = RoundedCornerShape(8.dp)
             )
     ) {
-        Row(
+        Row( // Start main row
             modifier = Modifier
                 .fillMaxWidth()
                 .height(104.dp)
                 .padding(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column(
+            Column( // Column med engelsk navn, japansk navn og link
                 modifier = Modifier
                     .weight(1f)
                     .padding(horizontal = 8.dp),
                 verticalArrangement = Arrangement.spacedBy(4.dp)
-
             ) {
+                // Engelsk navn
                 Text(
                     text = character.name,
                     fontFamily = BodyFont,
@@ -77,6 +78,7 @@ fun CharacterItem(
                     fontWeight = FontWeight.Bold
                 )
 
+                // Japansk navn
                 Text(
                     text = character.nameJapanese ?: "No japanese name",
                     fontFamily = BodyFont,
@@ -85,8 +87,7 @@ fun CharacterItem(
                     overflow = TextOverflow.Ellipsis
                 )
 
-                //LINK TO MYANIMELIST WIKI FOR CHARACTER
-
+                // Link til MyAnimeList wiki for karakterer
                 Text(
                     text = "Open in MyAnimeList.net",
                     fontFamily = BodyFont,
@@ -99,8 +100,9 @@ fun CharacterItem(
                             context.startActivity(intent)
                         }
                 )
-            }
+            } // End column med navn og link
 
+            // Hjerte-knapp
             IconButton(
                 onClick = onFavClick,
                 modifier = Modifier.size(40.dp)
@@ -113,7 +115,7 @@ fun CharacterItem(
                 )
             }
 
-
+            // Bilde
             AsyncImage(
                 model = character.characterImage?.jpg?.imageUrl,
                 contentDescription = "Bilde av ${character.name}",
@@ -121,24 +123,6 @@ fun CharacterItem(
                     .size(80.dp)
                     .padding(start = 8.dp)
             )
-        }
-    }
+        } // End main row
+    } // End main box
 }
-
-@Preview(showBackground = true)
-@Composable
-fun CharacterItemPreview() {
-    CharacterItem(
-        character = Character(
-            id = 1,
-            name = "Pikachu",
-            characterImage = null,
-            nameJapanese = "Japansk Pikachu",
-            url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-        ),
-        isFavorite = false
-    )
-
-
-}
-

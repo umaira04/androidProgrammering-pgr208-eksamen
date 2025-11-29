@@ -39,7 +39,6 @@ fun GenreDropdownMenu(
     onGenreSelected: (Genre) -> Unit
 ) {
 
-
     val genreList = listOf(
         Genre.OTHER, Genre.ADVENTURE, Genre.DRAMA, Genre.SCIFI, Genre.ACTION,
         Genre.COMEDY
@@ -48,7 +47,6 @@ fun GenreDropdownMenu(
     var isExpanded: Boolean by remember {
         mutableStateOf(false)
     }
-
 
     Column(
         modifier = Modifier
@@ -104,10 +102,4 @@ fun GenreDropdownMenu(
             }
         }
     }
-
-}
-
-@Preview
-@Composable
-fun DropdownMenuPreview() {
 }

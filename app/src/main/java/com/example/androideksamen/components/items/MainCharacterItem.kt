@@ -37,8 +37,9 @@ fun MainCharacterItem(
     character: Character
 ) {
     val context = LocalContext.current
-    Box {
-        Row(
+
+    Box { // Start main box
+        Row( // Start main row
             modifier = Modifier
                 .fillMaxWidth()
                 .height(104.dp)
@@ -49,13 +50,14 @@ fun MainCharacterItem(
                 .padding(4.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column(
+            Column( // Column med engelsk navn og link
                 modifier = Modifier
                     .weight(1f)
                     .padding(horizontal = 8.dp),
                 verticalArrangement = Arrangement.spacedBy(4.dp)
 
             ) {
+                // Engelsk navn
                 Text(
                     text = character.name,
                     fontSize = if (character.name.length > 16) 16.sp else 24.sp,
@@ -66,8 +68,7 @@ fun MainCharacterItem(
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
 
-                //LINK TO MYANIMELIST WIKI FOR CHARACTER
-
+                // Link til MyAnimeList wiki for karakter
                 Text(
                     text = "Open in MyAnimeList.net",
                     color = DarkBlue,
@@ -79,8 +80,9 @@ fun MainCharacterItem(
                             context.startActivity(intent)
                         }
                 )
-            }
+            } // End column med engelsk navn og link
 
+            // Bilde
             AsyncImage(
                 model = character.characterImage?.jpg?.imageUrl,
                 contentDescription = "Bilde av ${character.name}",
@@ -88,6 +90,5 @@ fun MainCharacterItem(
                     .size(80.dp)
             )
         }
-    }
+    } // End main box
 }
-

@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -32,6 +33,7 @@ import androidx.core.net.toUri
 import coil.compose.AsyncImage
 import com.example.androideksamen.components.shared.AnimeInfo
 import com.example.androideksamen.components.shared.BodyText
+import com.example.androideksamen.components.shared.DarkBlue
 import com.example.androideksamen.components.shared.DarkPink
 import com.example.androideksamen.components.shared.LightYellow
 import com.example.androideksamen.components.shared.Onyx
@@ -228,7 +230,8 @@ fun AnimeDetailsItem(
             Subtitle("More information")
             Text(
                 text = anime.url.toString(),
-                color = Onyx,
+                color = DarkBlue,
+                textDecoration = TextDecoration.Underline,
                 fontSize = 16.sp,
                 modifier = Modifier
                     .clickable {

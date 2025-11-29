@@ -20,12 +20,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
 import coil.compose.AsyncImage
+import com.example.androideksamen.components.shared.DarkBlue
 import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.data.dataclasses.character.Character
@@ -68,7 +70,8 @@ fun MainCharacterItem(
 
                 Text(
                     text = "Open in MyAnimeList.net",
-                    color = Onyx,
+                    color = DarkBlue,
+                    textDecoration = TextDecoration.Underline,
                     fontSize = 16.sp,
                     modifier = Modifier
                         .clickable {

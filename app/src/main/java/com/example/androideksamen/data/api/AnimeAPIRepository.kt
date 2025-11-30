@@ -10,7 +10,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object AnimeAPIRepository {
 
-    //oppretter klient
+    // TILKOBLING TIL API
+
+    // Oppretter HTTP klient
     private val _httpClient = OkHttpClient.Builder()
         .addInterceptor(
             HttpLoggingInterceptor().setLevel(
@@ -18,17 +20,24 @@ object AnimeAPIRepository {
             )
         ).build()
 
-    //oppretter retrofit objekt
+
+    // Oppretter retrofit objekt med link til web APIet
     private val _retrofit = Retrofit.Builder()
         .client(_httpClient)
         .baseUrl("https://api.jikan.moe/v4/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
+
+    // Initierer anime service
     private val _animeService = _retrofit.create(AnimeService::class.java)
 
+    // ANIME
 
-    //GET ALL ANIME FROM API
+    // Henter alle anime objekter fra APIet
+    // NB: Jikan API returnerer kun en "page" med 25 objekter
+    // Vi har valgt å ikke hente alle 29424* animene da det ville gjort appen betydelig tregere
+    // *kilde: https://api.jikan.moe/v4/anime
     suspend fun getAllAnime(): List<Anime> {
         try {
             val response = _animeService.getAllAnime()
@@ -43,6 +52,8 @@ object AnimeAPIRepository {
         }
     }
 
+
+    // Henter anime objekt etter ID
     suspend fun getAnimeById(id: Int): Anime? {
         try {
             val response = _animeService.getAnimeById(id)
@@ -57,6 +68,13 @@ object AnimeAPIRepository {
         }
     }
 
+
+    //KARAKTERER
+
+    // Henter alle karakterer fra APIet
+    // NB: Jikan API returnerer kun en "page" med 25 objekter
+    // Vi har valgt å ikke hente alle 211842* karakterene da det ville gjort appen betydelig tregere
+    // *kilde: https://api.jikan.moe/v4/characters
     suspend fun getAllCharacters(): List<Character> {
         try {
             val response = _animeService.getAllCharacters()
@@ -71,6 +89,8 @@ object AnimeAPIRepository {
         }
     }
 
+
+    // Henter alle karakterer fra en serie og filtrerer etter hovedkarakterer
     suspend fun getAllMainCharacters(animeId: Int): List<Character> {
         try {
             val response = _animeService.getMainCharactersByAnimeId(animeId)

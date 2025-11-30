@@ -45,7 +45,8 @@ fun AnimeIdeaItem(
                 shape = RoundedCornerShape(8.dp)
             )
     ) {
-        Column( // Start main column
+        Column(
+            // Start main column
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Row( // Start row med knapper for slett og rediger

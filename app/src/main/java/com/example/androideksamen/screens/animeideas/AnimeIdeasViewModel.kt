@@ -48,15 +48,15 @@ class AnimeIdeasViewModel : ViewModel() {
         setAnimeIdeas()
     }
 
-    // Ved første bruk av appen så vil ikke setAnimeIdeas returnere noe da db er tom
-
     // Henter verdier fra ROOM db
+    // Ved første bruk av appen så vil ikke setAnimeIdeas returnere noe da db er tom
     fun setAnimeIdeas() {
         viewModelScope.launch(Dispatchers.IO) {
             _animeIdeas.value = AnimeDbRepository.getAnimeIdeas()
         }
     }
 
+    // Sender animeIde til database
     fun insertAnimeIdea(animeIdea: AnimeDB) {
         viewModelScope.launch(Dispatchers.IO) {
             val newAnimeIdeaId = AnimeDbRepository.insertAnimeIdeas(animeIdea)

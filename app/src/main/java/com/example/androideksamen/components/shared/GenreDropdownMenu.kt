@@ -66,7 +66,9 @@ fun GenreDropdownMenu(
                 readOnly = true,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .menuAnchor() //TODO: sjekke ut dette
+                    //Vi ser at menuAnchor er depreciated, men vi velger
+                    // likevel å bruke den da alternative teknikker vi fant var for omfattende
+                    .menuAnchor()
                     .clip(RoundedCornerShape(32.dp)),
                 colors = inputTheme(),
                 trailingIcon = {

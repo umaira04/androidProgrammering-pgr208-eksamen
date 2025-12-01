@@ -62,7 +62,7 @@ fun AnimeItem(
                 // Bilde
                 AsyncImage(
                     model = anime.images?.jpg?.imageUrl,
-                    contentDescription = "bilde av ${anime.titleDefault}",
+                    contentDescription = "image of ${anime.titleDefault}",
                     modifier = Modifier
                         .width(270.dp)
                         .height(402.dp)

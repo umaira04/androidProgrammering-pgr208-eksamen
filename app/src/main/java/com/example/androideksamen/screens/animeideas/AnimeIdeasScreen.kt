@@ -35,7 +35,7 @@ import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.components.shared.Title
 import com.example.androideksamen.components.shared.buttonTheme
-import com.example.androideksamen.data.database.AnimeDB
+import com.example.androideksamen.data.database.AnimeIdea
 
 @Composable
 fun AnimeIdeasScreen(
@@ -130,7 +130,7 @@ fun AnimeIdeasScreen(
                             onClick = {
                                 if (title.isNotEmpty() && synopsis.isNotEmpty()) {
                                     animeIdeasViewModel.updateAnimeIdea(
-                                        AnimeDB(
+                                        AnimeIdea(
                                             id, title, synopsis, genre
                                         )
                                     )
@@ -159,7 +159,7 @@ fun AnimeIdeasScreen(
                             onClick = {
                                 if (title.isNotEmpty() && synopsis.isNotEmpty()) {
                                     animeIdeasViewModel.insertAnimeIdea(
-                                        AnimeDB(
+                                        AnimeIdea(
                                             title = title, synopsis = synopsis, genre = genre
                                         )
                                     )
@@ -192,7 +192,7 @@ fun AnimeIdeasScreen(
                         ) {
                             Icon(
                                 imageVector = Icons.Outlined.Warning,
-                                contentDescription = null,
+                                contentDescription = "warning icon",
                                 tint = Color.Red,
                                 modifier = Modifier.size(64.dp)
                             )

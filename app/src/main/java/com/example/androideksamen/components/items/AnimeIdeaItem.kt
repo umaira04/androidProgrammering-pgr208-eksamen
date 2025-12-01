@@ -28,14 +28,14 @@ import com.example.androideksamen.components.shared.DarkBlue
 import com.example.androideksamen.components.shared.DustyGrape
 import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.Onyx
-import com.example.androideksamen.data.database.AnimeDB
+import com.example.androideksamen.data.database.AnimeIdea
 
 
 @Composable
 fun AnimeIdeaItem(
-    animeIdea: AnimeDB,
-    handleEditBtnClick: (AnimeDB) -> Unit,
-    handleDeleteBtnClick: (AnimeDB) -> Unit
+    animeIdea: AnimeIdea,
+    handleEditBtnClick: (AnimeIdea) -> Unit,
+    handleDeleteBtnClick: (AnimeIdea) -> Unit
 ) {
     Box( // Start main box
         modifier = Modifier

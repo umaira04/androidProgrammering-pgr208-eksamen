@@ -3,7 +3,7 @@ package com.example.androideksamen.screens.animeideas
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.androideksamen.data.database.AnimeDB
+import com.example.androideksamen.data.database.AnimeIdea
 import com.example.androideksamen.data.database.AnimeDbRepository
 import com.example.androideksamen.data.database.Genre
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 class AnimeIdeasViewModel : ViewModel() {
 
     // Instansvariabler
-    private val _animeIdeas = MutableStateFlow<List<AnimeDB>>(emptyList())
+    private val _animeIdeas = MutableStateFlow<List<AnimeIdea>>(emptyList())
     val animeIdeas = _animeIdeas.asStateFlow()
 
     private val _title = MutableStateFlow("")
@@ -36,7 +36,7 @@ class AnimeIdeasViewModel : ViewModel() {
     private val _isDeleting = MutableStateFlow(false)
     val isDeleting = _isDeleting.asStateFlow()
 
-    private val _animeIdeaToDelete = MutableStateFlow<AnimeDB?>(null)
+    private val _animeIdeaToDelete = MutableStateFlow<AnimeIdea?>(null)
     val animeIdeaToDelete = _animeIdeaToDelete.asStateFlow()
 
     private val _userFeedbackMessage = MutableStateFlow("")
@@ -57,7 +57,7 @@ class AnimeIdeasViewModel : ViewModel() {
     }
 
     // Sender animeIde til database
-    fun insertAnimeIdea(animeIdea: AnimeDB) {
+    fun insertAnimeIdea(animeIdea: AnimeIdea) {
         viewModelScope.launch(Dispatchers.IO) {
             val newAnimeIdeaId = AnimeDbRepository.insertAnimeIdeas(animeIdea)
             if (newAnimeIdeaId != -1L) {
@@ -72,7 +72,7 @@ class AnimeIdeasViewModel : ViewModel() {
     }
 
     // Sletter animeIde fra DB
-    fun deleteAnimeIdea(animeIdea: AnimeDB) {
+    fun deleteAnimeIdea(animeIdea: AnimeIdea) {
         viewModelScope.launch(Dispatchers.IO) {
             val deletedRows = AnimeDbRepository.deleteAnimeIdea(animeIdea)
             if (deletedRows > 0) {
@@ -86,7 +86,7 @@ class AnimeIdeasViewModel : ViewModel() {
     }
 
     // Oppdaterer animeIde i db
-    fun updateAnimeIdea(animeIdea: AnimeDB) {
+    fun updateAnimeIdea(animeIdea: AnimeIdea) {
         viewModelScope.launch(Dispatchers.IO) {
             val updatedRows = AnimeDbRepository.updateAnimeIdea(animeIdea)
             Log.d("animeIdea updatedRows", updatedRows.toString())
@@ -104,7 +104,7 @@ class AnimeIdeasViewModel : ViewModel() {
     // STØTTEFUNKSJONER
 
     // REDIGERING AV IDE
-    fun handleEditBtnClick(animeIdea: AnimeDB) {
+    fun handleEditBtnClick(animeIdea: AnimeIdea) {
         _title.value = animeIdea.title
         _synopsis.value = animeIdea.synopsis
         _id.value = animeIdea.id
@@ -119,7 +119,7 @@ class AnimeIdeasViewModel : ViewModel() {
     }
 
     // SLETTING AV IDE
-    fun handleDeleteBtnClick(animeIdea: AnimeDB) {
+    fun handleDeleteBtnClick(animeIdea: AnimeIdea) {
         _isDeleting.value = true
         _animeIdeaToDelete.value = animeIdea
     }

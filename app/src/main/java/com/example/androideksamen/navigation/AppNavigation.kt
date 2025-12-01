@@ -65,7 +65,7 @@ fun AppNavigation(
                     icon = {
                         Icon(
                             imageVector = Icons.Default.Home,
-                            contentDescription = null
+                            contentDescription = "Home icon"
                         )
                     },
                     label = { Text("Anime") },
@@ -81,7 +81,7 @@ fun AppNavigation(
                     icon = {
                         Icon(
                             imageVector = Icons.Default.Search,
-                            contentDescription = null
+                            contentDescription = "search icon"
                         )
                     },
                     label = { Text("Search") },
@@ -97,7 +97,7 @@ fun AppNavigation(
                     icon = {
                         Icon(
                             imageVector = Icons.Default.AddCircle,
-                            contentDescription = null
+                            contentDescription = "Ideas Icon"
                         )
                     },
                     label = { Text("Ideas") },
@@ -113,7 +113,7 @@ fun AppNavigation(
                     icon = {
                         Icon(
                             imageVector = Icons.Default.Face,
-                            contentDescription = null
+                            contentDescription = "character icon"
                         )
                     },
                     label = { Text("Characters") },

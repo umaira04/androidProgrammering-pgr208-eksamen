@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 
 // AppDatabase konfigurerer databasen
 @Database(
-    entities = [AnimeDB::class],
+    entities = [AnimeIdea::class],
     version = 2,
     exportSchema = false
 )

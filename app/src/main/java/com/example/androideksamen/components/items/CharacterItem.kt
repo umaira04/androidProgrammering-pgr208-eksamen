@@ -117,7 +117,7 @@ fun CharacterItem(
             // Bilde
             AsyncImage(
                 model = character.characterImage?.jpg?.imageUrl,
-                contentDescription = "Bilde av ${character.name}",
+                contentDescription = "Image of ${character.name}",
                 modifier = Modifier
                     .size(80.dp)
                     .padding(start = 8.dp)

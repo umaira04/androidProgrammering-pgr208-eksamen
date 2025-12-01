@@ -63,7 +63,7 @@ fun AnimeDetailsItem(
         item {
             AsyncImage(
                 model = anime.images?.jpg?.imageUrl,
-                contentDescription = "Bilde av ${anime.titleDefault}",
+                contentDescription = "Image of ${anime.titleDefault}",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()

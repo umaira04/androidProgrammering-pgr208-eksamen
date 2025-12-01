@@ -23,7 +23,7 @@ object AnimeDbRepository {
     // CRUD OPERASJONER
 
     // Henter animeIde fra database
-    suspend fun getAnimeIdeas(): List<AnimeDB> {
+    suspend fun getAnimeIdeas(): List<AnimeIdea> {
         try {
             return _animeDao.getAnimeIdeas()
         } catch (e: Exception) {
@@ -33,7 +33,7 @@ object AnimeDbRepository {
     }
 
     // Sender animeIde til database
-    suspend fun insertAnimeIdeas(animeIdea: AnimeDB): Long {
+    suspend fun insertAnimeIdeas(animeIdea: AnimeIdea): Long {
         try {
             return _animeDao.insertAnimeIdea(animeIdea)
         } catch (e: Exception) {
@@ -43,7 +43,7 @@ object AnimeDbRepository {
     }
 
     // Oppdaterer animeIde i database
-    suspend fun updateAnimeIdea(animeIdea: AnimeDB): Int {
+    suspend fun updateAnimeIdea(animeIdea: AnimeIdea): Int {
         try {
             Log.d("updateAnimeIdea", animeIdea.toString())
             return _animeDao.updateAnimeIdea(animeIdea)
@@ -54,7 +54,7 @@ object AnimeDbRepository {
     }
 
     // Sletter animeIde
-    suspend fun deleteAnimeIdea(animeIdea: AnimeDB): Int {
+    suspend fun deleteAnimeIdea(animeIdea: AnimeIdea): Int {
         try {
             return _animeDao.deleteAnimeIdea(animeIdea)
         } catch (e: Exception) {

@@ -9,6 +9,6 @@ data class Images(
 )
 
 data class JpgImage(
-    @SerializedName("large_image_url")
+    @SerializedName("image_url")
     val imageUrl: String? = null
 )

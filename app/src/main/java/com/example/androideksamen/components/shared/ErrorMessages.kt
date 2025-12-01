@@ -19,6 +19,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+// ErrorLoading er en delt komponent som blir brukt av AnimeScreen, CharacterScreen og AnimeSearchScreen
+// Vi har sendt med errorType som en parameter for å skille på de ulike typene meldinger man kan få
 @Composable
 fun ErrorLoading(errorType: Int, errorItem: String? = null) {
     Column(

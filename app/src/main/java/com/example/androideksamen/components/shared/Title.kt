@@ -11,6 +11,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.fonts.TitleFont
 
+// Styling for tittel
+// Brukes i alle skjermer med unntak av AnimeDetailsItem
 @Composable
 fun Title(title: String) {
     Text(

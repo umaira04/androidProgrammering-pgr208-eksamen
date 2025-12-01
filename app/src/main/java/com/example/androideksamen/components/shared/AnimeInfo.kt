@@ -6,6 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
 
+
+// Viser fremhevet informasjon om en Anime i AnimeDetailsScreen (Tittel og info sentrert under hverandre)
+// Laget komponent for å minimere gjentagende kode da denne ble brukt fire ganger etter hverandre
+
 @Composable
 fun AnimeInfo(
     subtitle: String,

@@ -43,10 +43,10 @@ fun AnimeItem(
         Column( // Main column start
             modifier = Modifier.padding(horizontal = 24.dp, vertical = 16.dp)
         ) {
-            // Engelsk tittel
+            // Tittel
             Text(
-                text = anime.titleEnglish ?: "No english title",
-                fontSize = if (anime.titleEnglish.toString().length > 20) 24.sp else 32.sp,
+                text = anime.titleDefault ?: "No title",
+                fontSize = if (anime.titleDefault.toString().length > 20) 24.sp else 32.sp,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
                 lineHeight = 32.sp,
@@ -62,7 +62,7 @@ fun AnimeItem(
                 // Bilde
                 AsyncImage(
                     model = anime.images?.jpg?.imageUrl,
-                    contentDescription = "bilde av ${anime.titleEnglish}",
+                    contentDescription = "bilde av ${anime.titleDefault}",
                     modifier = Modifier
                         .width(270.dp)
                         .height(402.dp)

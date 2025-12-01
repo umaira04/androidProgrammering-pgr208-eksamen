@@ -4,8 +4,10 @@ import android.content.Context
 import android.util.Log
 import androidx.room.Room
 
+// AnimeDbRepository bruker SQL kommandoene fra AnimeDao for å utføre CRUD operasjoner
 object AnimeDbRepository {
-    // Denne siden har tatt utgangspunkt i slidene til Rolando (Slideserie 19)
+
+    // TILKOBLING TIL DATABASE
     private lateinit var _appDatabase: AppDatabase
     private val _animeDao by lazy { _appDatabase.animeDao() }
 
@@ -17,6 +19,8 @@ object AnimeDbRepository {
         ).fallbackToDestructiveMigration().build() //
     }
 
+
+    // CRUD OPERASJONER
 
     // Henter animeIde fra database
     suspend fun getAnimeIdeas(): List<AnimeDB> {

@@ -1,15 +1,18 @@
 package com.example.androideksamen.data.dataclasses.anime
 
+import com.example.androideksamen.data.dataclasses.Images
 import com.google.gson.annotations.SerializedName
 
+// Anime dataklassen blir kalt på i data fra AnimeResponse og definerer verdiene vi tar i bruk fra APIet
 data class Anime(
     @SerializedName("mal_id")
     val id: Int,
 
-    val images: AnimeImages? = null,
+    // images returnerer en liste så her har vi valgt å lage en egen dataklasse
+    val images: Images? = null,
 
-    @SerializedName("title_english")
-    val titleEnglish: String?,
+    @SerializedName("title")
+    val titleDefault: String?,
 
     @SerializedName("title_japanese")
     val titleJapanese: String?,
@@ -18,6 +21,7 @@ data class Anime(
 
     val synopsis: String? = null,
 
+    // genres returnerer en liste så her har vi laget en egen dataklasse for genres
     val genres: List<Genre>? = emptyList(),
 
     val score: Double? = null,
@@ -28,6 +32,5 @@ data class Anime(
 
     val duration: String? = null,
 
-    val url: String? = null,
-
-    )
+    val url: String? = null
+)

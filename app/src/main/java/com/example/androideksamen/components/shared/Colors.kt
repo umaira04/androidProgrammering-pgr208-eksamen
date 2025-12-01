@@ -14,17 +14,21 @@ val Onyx = Color(0xFF0A0E0D)
 val DarkPink = Color(0xFFFBBAED)
 val LightPink = Color(0xFFF7EAF9)
 val DarkBlue = Color(0xFF324663)
+
+val DustyGrape = Color(0xFF656391)
 val LightYellow = Color(0xFFfdf1b2)
+
+val OffWhite = Color(0xFFF5F5F5)
 
 // Tema for NavBar
 @Composable
 fun navBarTheme(): NavigationBarItemColors {
     return colors(
-        indicatorColor = Color(0xFF0A0E0D),
-        selectedIconColor = Color(0xFFF5F5F5),
-        unselectedIconColor = Color(0xFFF5F5F5),
-        selectedTextColor = Color(0xFFF5F5F5),
-        unselectedTextColor = Color(0xFFF5F5F5)
+        indicatorColor = Onyx,
+        selectedIconColor = OffWhite,
+        unselectedIconColor = OffWhite,
+        selectedTextColor = OffWhite,
+        unselectedTextColor = OffWhite
     )
 }
 

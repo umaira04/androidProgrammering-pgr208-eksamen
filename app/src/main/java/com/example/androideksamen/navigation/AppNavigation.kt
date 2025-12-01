@@ -19,11 +19,11 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.example.androideksamen.components.shared.DustyGrape
 import com.example.androideksamen.components.shared.navBarTheme
 import com.example.androideksamen.screens.anime.AnimeScreen
 import com.example.androideksamen.screens.anime.AnimeViewModel
@@ -35,6 +35,8 @@ import com.example.androideksamen.screens.animesearch.AnimeSearchScreen
 import com.example.androideksamen.screens.animesearch.AnimeSearchViewModel
 import com.example.androideksamen.screens.character.CharacterScreen
 import com.example.androideksamen.screens.character.CharacterViewModel
+
+// Appnavigasjon er ansvarlig for navigasjon mellom sider og styrer blant annet navbaren
 
 @Composable
 fun AppNavigation(
@@ -52,7 +54,7 @@ fun AppNavigation(
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
             NavigationBar(
-                containerColor = Color(0xFF656391)
+                containerColor = DustyGrape
             ) {
                 NavigationBarItem( // Start Anime
                     selected = activeItem == 0,

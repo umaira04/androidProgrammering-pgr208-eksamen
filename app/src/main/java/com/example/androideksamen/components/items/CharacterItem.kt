@@ -66,7 +66,7 @@ fun CharacterItem(
                     .padding(horizontal = 8.dp),
                 verticalArrangement = Arrangement.spacedBy(4.dp)
             ) {
-                // Engelsk navn
+                // Navn
                 Text(
                     text = character.name,
                     fontFamily = BodyFont,

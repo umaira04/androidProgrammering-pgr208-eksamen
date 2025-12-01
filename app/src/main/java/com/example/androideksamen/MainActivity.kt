@@ -23,6 +23,7 @@ import com.example.androideksamen.screens.character.CharacterViewModel
 import com.example.androideksamen.ui.theme.AndroidEksamenTheme
 
 class MainActivity : ComponentActivity() {
+    // Lager private viewModels for å sende til AppNavigation
     private val _animeViewModel: AnimeViewModel by viewModels()
     private val _animeSearchViewModel: AnimeSearchViewModel by viewModels()
     private val _animeIdeasViewModel: AnimeIdeasViewModel by viewModels()
@@ -32,6 +33,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Initialiserer databasen
         AnimeDbRepository.initializeDatabase(applicationContext)
 
         enableEdgeToEdge()

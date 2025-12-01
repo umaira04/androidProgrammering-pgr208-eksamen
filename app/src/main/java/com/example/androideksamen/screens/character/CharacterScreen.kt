@@ -18,6 +18,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.lists.CharacterList
@@ -70,9 +72,12 @@ fun CharacterScreen(
                     Text(
                         text = "No favorites. Press the heart to mark a character as favorite",
                         fontSize = 16.sp,
-                        fontFamily = BodyFont,
-                        color = Onyx,
-                        modifier = Modifier.padding(top = 8.dp)
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.SemiBold,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 8.dp),
+                        color = Onyx
                     )
                 } else {
                     // Viser liste med karakterer

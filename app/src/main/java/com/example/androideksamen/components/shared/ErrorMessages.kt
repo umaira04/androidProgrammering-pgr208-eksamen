@@ -19,6 +19,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+// ErrorLoading er en delt komponent som blir brukt av AnimeScreen, CharacterScreen og AnimeSearchScreen
+// Vi har sendt med errorType som en parameter for å skille på de ulike typene meldinger man kan få
 @Composable
 fun ErrorLoading(errorType: Int, errorItem: String? = null) {
     Column(
@@ -53,7 +55,7 @@ fun ErrorLoading(errorType: Int, errorItem: String? = null) {
         Icon(
             imageVector = Icons.Outlined.Info,
             contentDescription = "Error symbol",
-            tint = Color(0xFF656391),
+            tint = DustyGrape,
             modifier = Modifier
                 .size(112.dp)
                 .rotate(180f)

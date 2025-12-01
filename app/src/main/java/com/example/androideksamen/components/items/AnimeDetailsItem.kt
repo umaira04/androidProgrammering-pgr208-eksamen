@@ -63,7 +63,7 @@ fun AnimeDetailsItem(
         item {
             AsyncImage(
                 model = anime.images?.jpg?.imageUrl,
-                contentDescription = "Bilde av ${anime.titleEnglish}",
+                contentDescription = "Bilde av ${anime.titleDefault}",
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -80,9 +80,9 @@ fun AnimeDetailsItem(
                 Column(
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    Text( // Tittel engelsk
-                        text = anime.titleEnglish ?: "No english title",
-                        fontSize = if (anime.titleEnglish.toString().length > 20) 24.sp else 32.sp,
+                    Text( // Tittel
+                        text = anime.titleDefault ?: "No title",
+                        fontSize = if (anime.titleDefault.toString().length > 20) 24.sp else 32.sp,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis,
                         lineHeight = 32.sp,

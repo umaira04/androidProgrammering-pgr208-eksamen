@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import com.example.androideksamen.data.database.Genre
 
 
-//source for this func
+// I denne siden har vi tatt utgangspunkt i denne YouTube videoen for hvordan man lager en dropDown meny
 //https://www.youtube.com/watch?v=5h737wNN-qM
 
 /*

@@ -3,8 +3,8 @@ package com.example.androideksamen.screens.animeideas
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.androideksamen.data.database.AnimeIdea
 import com.example.androideksamen.data.database.AnimeDbRepository
+import com.example.androideksamen.data.database.AnimeIdea
 import com.example.androideksamen.data.database.Genre
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

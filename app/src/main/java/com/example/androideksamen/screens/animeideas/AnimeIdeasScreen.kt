@@ -230,8 +230,8 @@ fun AnimeIdeasScreen(
                         animeIdeas.forEach { animeIdea ->
                             AnimeIdeaItem(
                                 animeIdea,
-                                handleEditBtnClick = { it },
-                                handleDeleteBtnClick = { it }
+                                handleEditBtnClick = { animeIdeasViewModel.handleEditBtnClick(it) },
+                                handleDeleteBtnClick = { animeIdeasViewModel.handleDeleteBtnClick(it) }
                             )
                         }
                     } else {

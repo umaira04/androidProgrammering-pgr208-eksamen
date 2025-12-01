@@ -46,7 +46,7 @@ fun AnimeScreen(
             fontSize = 16.sp,
             textAlign = TextAlign.Center,
             fontWeight = FontWeight.SemiBold,
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
             color = Onyx
         )
 

@@ -27,7 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.androideksamen.components.lists.AnimeIdeaList
+import com.example.androideksamen.components.items.AnimeIdeaItem
 import com.example.androideksamen.components.shared.DarkPink
 import com.example.androideksamen.components.shared.GenreDropdownMenu
 import com.example.androideksamen.components.shared.InputTextField
@@ -227,10 +227,13 @@ fun AnimeIdeasScreen(
                 } else {
                     // Viser liste eller melding om at liste er tom
                     if (animeIdeas.isNotEmpty()) {
-                        AnimeIdeaList(
-                            animeIdeas = animeIdeas,
-                            handleEditBtnClick = { animeIdeasViewModel.handleEditBtnClick(it) },
-                            handleDeleteBtnClick = { animeIdeasViewModel.handleDeleteBtnClick(it) })
+                        animeIdeas.forEach { animeIdea ->
+                            AnimeIdeaItem(
+                                animeIdea,
+                                handleEditBtnClick = { it },
+                                handleDeleteBtnClick = { it }
+                            )
+                        }
                     } else {
                         Text(
                             "No anime ideas yet...♥",

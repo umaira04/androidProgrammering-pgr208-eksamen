@@ -3,6 +3,7 @@ package com.example.androideksamen.data.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 
+// AppDatabase konfigurerer databasen
 @Database(
     entities = [AnimeDB::class],
     version = 2,

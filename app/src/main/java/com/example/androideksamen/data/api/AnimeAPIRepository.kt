@@ -8,6 +8,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+// AnimeAPIRepository bruker AnimeService interfacet for å kjøre HTTP kall mot API
 object AnimeAPIRepository {
 
     // TILKOBLING TIL API

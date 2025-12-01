@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.components.shared.DarkBlue
+import com.example.androideksamen.components.shared.DustyGrape
 import com.example.androideksamen.components.shared.LightPink
 import com.example.androideksamen.components.shared.Onyx
 import com.example.androideksamen.data.database.AnimeDB
@@ -54,7 +55,7 @@ fun AnimeIdeaItem(
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(
-                        color = Color(0xFF656391),
+                        color = DustyGrape,
                         shape = RoundedCornerShape(topEnd = 8.dp, topStart = 8.dp)
                     )
                     .padding(8.dp)

@@ -53,7 +53,7 @@ fun ErrorLoading(errorType: Int, errorItem: String? = null) {
         Icon(
             imageVector = Icons.Outlined.Info,
             contentDescription = "Error symbol",
-            tint = Color(0xFF656391),
+            tint = DustyGrape,
             modifier = Modifier
                 .size(112.dp)
                 .rotate(180f)

@@ -10,6 +10,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 
+// Inputfelt for tekst som brukes i AnimeIdeasScreen
+// Sikrer lik styling av alle tekst-inputfelt i appen
+// Ønsket i utgangspunktet å lage en felles komponent som kunne brukes for input av både tekst og tall,
+// men endte med å droppe dette da det ble litt for komplekst basert på nåværende kunnskap
+
 @Composable
 fun InputTextField(
     value: String,

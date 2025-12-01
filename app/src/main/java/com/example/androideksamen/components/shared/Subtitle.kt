@@ -6,6 +6,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.androideksamen.fonts.BodyFont
 
+// Styling for undertitler
+// Brukes i AnimeDetailsItem og AnimeInfo
 @Composable
 fun Subtitle(subtitle: String) {
     Text(

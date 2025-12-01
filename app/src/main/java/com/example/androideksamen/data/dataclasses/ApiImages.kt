@@ -3,7 +3,7 @@ package com.example.androideksamen.data.dataclasses
 import com.google.gson.annotations.SerializedName
 
 // images i APIet inneholder en liste med JPG og WEBP filer, sp vi har valgt å
-// lage dataklasser som går inn i hver liste og henter til slutt "large_image_url"
+// lage dataklasser som går inn i hver liste og henter til slutt "image_url"
 data class Images(
     val jpg: JpgImage?
 )

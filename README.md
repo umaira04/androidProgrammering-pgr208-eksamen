@@ -4,9 +4,11 @@
 
 **Karakter: A** 
 
-Eksamensoppgaven er besvart i gruppe med @magnus0402 og @jeanettebk
+Eksamensoppgaven er besvart i gruppe med [@magnus0402](https://github.com/Magnus0402) og [@jeanettebk](https://github.com/jeanettebk)
 
-**Tema:** Temaet for oppgaven var å lage en app som kobles opp mot 
+
+**Beskrivelse:**
+Temaet for oppgaven er Anime. Vi har laget en android app som kobles opp mot [JIKAN API](https://jikan.moe/). Appen gir brukere mulighet til å liste ut de første 25 animene fra API'et, Søke etter animeer, lagre egne ideer som blir lagret i en database, og søke etter karakterer fra Jikan API'et. 
 
 ### Begrunnelse:
 

@@ -27,11 +27,13 @@ hoveddeler:
 2. Dokumentasjon til app (25%)
 
 Dere skal gjøre bruk av hovedteknikkene som er gjennomgått i emnet. Det å velge andre
-hovedteknikker istedenfor vil kunne lede til ingen eller lavere poeng. Hovedteknikker
-refererer blant annet til Jetpack Compose, Retrofit, Compose Navigation, Room database
+hovedteknikker istedenfor vil kunne lede til ingen eller lavere poeng. 
+Hovedteknikker refererer blant annet til Jetpack Compose, Retrofit, Compose Navigation, Room database
 og MVVM.
 Kotlin er programmeringsspråket og Android Studio din IDE
 
 
+
 [Les hele oppgaveteksten her](https://github.com/umaira04/androidProgrammering-pgr208-eksamen/blob/main/Eksamen-PGR208-Android-Programming-H%C3%B8st-2025.pdf)
+
 [Les rapporten her](https://github.com/umaira04/androidProgrammering-pgr208-eksamen/blob/main/Android-eksamen.-rapport.pdf)
